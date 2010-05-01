@@ -41,8 +41,9 @@ function hook_init_menu(){
  */
 function hook_check_security(){
 	$ci = &get_instance();
-	// исключаем welcome, login, logout
-	if($ci->menu->get_currcontroller()=='' || $ci->menu->get_currcontroller()=='login' || $ci->menu->get_currcontroller()=='logout' || $ci->menu->get_currcontroller()=='welcome') return;
+	// исключаем welcome, login, logout, tasks
+	$free_controllers = array('', 'login', 'logout', 'welcome', 'tasks');
+	if(in_array($ci->menu->get_currcontroller(), $free_controllers)) return;
 	$permissions = $ci->menu->get_rights();
 	if(!element('viewed_space', $permissions, null)) return show_error(lang('MENU_SECURITY_ERROR'));
 	if(!element('add_allow', $permissions, null) && element('create', $ci->a_uri_assoc, null)) return show_error(lang('MENU_SECURITY_ERROR')); 	
