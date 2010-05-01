@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+.chat {
+	margin-top: 10px;
+}
+
+.chat h3{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom:2px solid #ABC3D7;
+}
+.chat input.text, input.title, textarea {
+	margin-top:0;
+	padding:1px;
+	width:200px;
+}
+
+#chat_messages{
+	max-height: 200px;
+	overflow-y: scroll;
+	border-bottom:2px solid #ABC3D7;
+	padding-bottom: 20px;  
+}
+
+.chat p{
+	margin:0 0 0.5em;
+	border-bottom:1px solid #CBDAE6;	
+}

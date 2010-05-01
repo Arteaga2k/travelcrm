@@ -1,0 +1,2 @@
+<?phpinclude_once APPPATH."libraries/core/Crmcontroller.php";/** * TravelCRM * * An open source CRM system for travel agencies * * @package		Core * @author		mazvv * @license		GNU GPLv3 (http://gplv3.fsf.org)  * @link		http://code.google.com/p/travelcrm/ *//** * Abstract controller class, base for all controllers *  * @author mazvv * @package Libraries * @subpackage Core */
+abstract class Doccontroller extends Crmcontroller{		public function get_typedoc(){		return $this->get_objtype(); 		}	}

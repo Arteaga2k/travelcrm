@@ -1,0 +1,3 @@
+<?php/** * TravelCRM * * An open source CRM system for travel agencies * * @package		Core * @author		mazvv * @license		GNU GPLv3 (http://gplv3.fsf.org)  * @link		http://code.google.com/p/travelcrm/ *//** * Abstract model class, base for all reports models *  * @author mazvv * @package Libraries * @subpackage Core */include_once APPPATH."libraries/core/Crmmodel.php";abstract class Reportmodel extends Crmmodel{		public function __construct() {		parent::__construct();	}
+	}
+?>

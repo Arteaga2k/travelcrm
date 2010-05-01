@@ -1,0 +1,70 @@
+@CHARSET "UTF-8";
+div.grid{
+	/*background:#FFFFFF url(../images/bg/grid_h.gif) repeat-x top;*/
+	color:#444444;
+	padding-top: 10px;
+	margin: 0px;
+}
+
+div.grid .tools{
+	text-align: left;
+	background-color: #F6F6F6;
+}
+
+div.grid table{
+	border:1px solid #ABC3D7;
+	padding-top: 3px;
+	border-width: 2px 0px 0px 0px;
+}
+
+div.grid table tr td.gridHeader{
+	background:#EBEBED none repeat scroll 0 0;
+	border-color:#CCCCCC;
+	border-style:solid none;
+	border-width:1px medium;
+	font-weight:bold;
+	text-align:left;
+	height: 2.5em;	
+}
+
+div.grid table tr td{
+	padding: 1px 2px;
+	height: 1.8em;
+}
+
+div.grid table tr.odd{
+	background-color: #f0f5fe;
+}
+
+div.grid table tr:HOVER{
+	background-color: #f0f5fe;
+	cursor: pointer;
+}
+
+div.grid div#history table {
+	border:0px solid #ABC3D7;
+}
+
+div.grid div#history table th, div#doc_body table th, div#routes table th, div.cllist table th{
+	background-color: #ffffff;
+	border-bottom: 1px solid #f6f6f6;
+	border-top: 1px solid #f6f6f6;
+}
+
+div#doc_body{
+	margin-bottom: 10px;
+	border-bottom: 2px solid #f6f6f6;
+}
+
+div.bbordered{
+	border-bottom: 1px solid #f6f6f6;
+	border-top: 1px solid #f6f6f6;
+	margin: 5px 0px;
+}
+
+.routes-table, div.cllist table{
+	margin: 20px 0px;
+	border-width: 0px !important;
+	padding: 0px;
+}
+

@@ -1,0 +1,1 @@
+<sup>&nbsp;[<a href="javascript: void(0);" title="<?=$help_conent;?>" class="vtip">?</a>]&nbsp;</sup>

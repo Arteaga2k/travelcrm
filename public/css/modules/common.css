@@ -1,0 +1,172 @@
+@CHARSET "UTF-8";
+body{
+	font-family: Arial, Helvetica;
+	background-color: #FFFFFF;
+	font-size: 0.7em!important;
+}
+
+div.crmpage{
+	margin: 0.3em;
+	min-width: 1024px;
+}
+
+div.vcrmpage{
+	margin: 0.3em;
+}
+
+div.logoheader{
+	margin: 0px;
+	padding-bottom: 10px;
+	border-bottom:2px solid #0046AD;
+}
+
+div.logoheader .logout{ text-align: right;}
+
+div.container{margin: 0px;}
+h3{
+	font-size:1.1em;
+	line-height:1;
+	margin:0 0 1em 5px;
+	font-weight: bold;
+	color: #000000;
+}
+
+a, a:HOVER, a:VISITED{
+	color: #3956E6;
+	text-decoration: none;
+	text-transform: none;
+}
+
+div.delimiter{
+	margin: 10px 4px;
+	background-color: #cccccc;
+}
+
+/* { Fieldsets style */
+FIELDSET {
+	clear: both;
+}
+/* } Fieldsets style */
+div.lang-panel{
+	 text-align:right;
+}
+
+div.clear{
+	clear: both;
+}
+
+
+/* { Forms elements *******************************************/
+label       { font-weight: normal; font-style: italic; }
+fieldset{ 
+	padding:0em; 
+	margin: 1.5em 0px; 
+	border: 1px dashed #ccc;
+	border-width: 1px 0px;
+	/*position: relative;*/
+	padding-top: 10px !important;
+	padding-bottom: 5px !important;
+}
+legend{ 
+	font-weight: bold; 
+	font-size:1.0em;
+	color: #000000;
+	font-style: oblique;
+	/*position: relative;*/
+	/**top: -0.5em;*/
+	padding: 0 5px;
+	background-color: #ffffff;
+	clear: both;
+}
+
+LEGEND:HOVER{color: #c6c6c6;}
+
+/* Form fields
+-------------------------------------------------------------- */
+
+input.text, input.title,
+textarea, select {
+  margin:0.1em 0;
+  border:1px solid #bbb;
+  font-family: inherit;
+  font-size: 100%;
+}
+
+input.text:focus, input.title:focus,
+textarea:focus, select:focus {
+  border:1px solid #666;
+}
+
+input.text, 
+input.title   { width: 300px; padding:1px; }
+input.title   { font-size:1.5em; }
+textarea      { 
+	width: 390px; 
+	height: 150px; 
+	padding:1px;
+	font-family: Arial,Helvetica;
+	font-size: 100%; 
+}
+
+input.part{width: 40px;}
+input.part-2{width: 80px;}
+input.part-3{width: 120px;}
+input.part-4{width: 160px;}
+input.part-5{width: 200px;}
+input.part-6{width: 240px;}
+input.part-7{width: 280px;}
+/* Success, notice and error boxes
+-------------------------------------------------------------- */
+
+.error,
+.notice, 
+.success    { padding: .8em; margin-bottom: 1em; border: 2px solid #ddd; }
+
+.error      { background: #FBE3E4; color: #8a1f11; border-color: #FBC2C4; }
+.notice     { background: #FFF6BF; color: #514721; border-color: #FFD324; }
+.success    { background: #E6EFC2; color: #264409; border-color: #C6D880; }
+.error a    { color: #8a1f11; }
+.notice a   { color: #514721; }
+.success a  { color: #264409; }
+/* }  Forms elements *******************************************/
+
+div.footer{
+	border-top:2px solid #DDDDDD; 
+	margin-top: 30px;
+	text-align: center;
+}
+
+.header-div{
+	padding: 2px 0px;
+	margin: 5px 0px;
+	border-bottom:	1px dashed #c6c6c6;
+}
+
+.div-margin-tb-2{
+	margin: 2px 0px;
+}
+
+input.date-entry{
+	width: 65px;
+}
+
+div.horizontal-delimiter-dashed{
+	border-bottom: 1px dashed #ccc;
+}
+
+sup{
+	font-style: normal;
+}
+
+.tr{
+	text-align: right;
+}
+.tl{
+	text-align: left;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}

@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+{
+	/*background:#FFFFFF url(../images/bg/grid_h.gif) repeat-x top;*/
+}
+
+table.report{
+	color:#444444;
+	margin-top: 10px;
+	border:1px solid #ABC3D7;
+	border-width: 1px 0px;
+}
+
+table.report tr th{
+	background:#EBEBED none repeat scroll 0 0;
+	border-color:#CCCCCC;
+	border-style:solid none;
+	border-width:1px medium;
+	font-weight:bold;
+	text-align:left;
+	height: 2.5em;	
+}
+
+table.report tr td{
+	padding: 1px 2px;
+	height: 1.8em;
+}
+
+table.report tr.odd{
+	background-color: #f0f5fe;
+}
+
+table.report tr:HOVER{
+	background-color: #f0f5fe;
+	cursor: pointer;
+}
+

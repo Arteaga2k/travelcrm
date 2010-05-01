@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+#paging{  
+   	font-family:Arial, Helvetica, sans-serif;  
+	font-size:0.95em;  
+	color:#000000;  
+	font-weight:bold;  
+	margin: 0px 0px;
+	vertical-align: middle;
+	text-align: right;
+}  
+#paging a{  
+	padding:0px 2px 0px 2px;  
+	margin:0px 0px 0px 0px;  
+	border:1px solid #94C1E8;  
+	background:#FFFFFF;  
+	color:#CCCCCC;  
+	text-decoration:none;
+	
+}  
+
+#paging a:hover{  
+	border:1px solid #94C1E8;  
+	background:#94C1E8;  
+	color:#FFFFFF;  
+	text-decoration:none;  
+}  

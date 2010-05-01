@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+.fieldscontainer{
+	padding-top: 10px;
+}
+
+.editform {
+	border: 2px solid #ABC3D7;
+	border-width: 2px 0px 0px 0px; 
+	padding: 5px 0px;
+}
+
+.button{
+	background:#ECF1F4 url(../images/bg/bgBtn.gif) repeat-x top;
+	border:1px solid #ABC3D7;
+	color:#000000;
+	vertical-align:middle;
+	font-family: inherit;
+	font-size: 100%;
+	padding: 0px 2px;
+}
+
+.button:hover{
+	background-color:#4E8CCF;
+	border-color:#4E8CCF;
+	color: #FFFFFF;
+	background-image: none;
+}
+
+.fieldscontainer .controls {
+	margin: 10px 0px;
+}

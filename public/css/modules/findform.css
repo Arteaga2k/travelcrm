@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+.findform {
+	background-color:#F6F6F6;
+	border:1px solid #ABC3D7;
+	color:#000000;
+	margin: 0px 0px 5px 0px !important;
+	padding: 5px;
+	clear: both;
+}
+
+.button{
+	background:#ECF1F4 url(../images/bg/bgBtn.gif) repeat-x top;
+	border:1px solid #ABC3D7;
+	color:#000000;
+	vertical-align:middle;
+}
+
+.button:hover{
+	background-color:#4E8CCF;
+	border-color:#4E8CCF;
+	color: #FFFFFF;
+	background-image: none;
+}
+
+.findform select.text {
+	margin-top: 0px;
+}
+
+.findform .find-tools{
+	text-align: right;
+	margin-top: 5px;
+}
