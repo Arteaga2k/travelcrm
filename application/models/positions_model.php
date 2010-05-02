@@ -95,5 +95,15 @@ class Positions_model extends Crmmodel{
     		return $this->ci->input->post('rid');
 		}		
 	}
+	
+	public function get_name_byrid($rid){
+		$this->db->select('*');
+		$this->db->from('_positions');
+		$this->db->where(array('rid'=>$rid));
+		$this->db->order_by('_positions.name');
+		$query = $this->db->get();
+		return $query->num_rows()?$query->row()->name:null; 
+
+	}	
 	}
 ?>

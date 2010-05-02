@@ -9,26 +9,6 @@
 
 <fieldset>
 <legend><?=lang('FINANCIAL_INFO')?></legend>
-<div class="column span-4">
-	<?=form_label(lang('ORDER_SUM'), 'order_sum')?>
-</div>
-<div class="column span-20 last">
-	<?=form_input('order_sum', set_value('order_sum', $ds->order_sum), 'id="order_sum" class="text part" readonly="readonly"')?>
-</div>	
-
-<div class="column span-4">
-	<?=form_label(lang('ORDER_NUM'), 'order_num')?>
-</div>
-<div class="column span-20 last">
-	<?=form_input('order_num', set_value('order_num', $ds->order_num), 'id="order_num" class="text part-3" readonly="readonly"')?>
-</div>	
-
-<div class="column span-4">
-	<?=form_label(lang('ORDER_DATE'), 'order_date')?>
-</div>
-<div class="column span-20 last">
-	<?=form_input('order_date', date_conv(set_value('order_date', $ds->order_date)), 'id="order_date" class="text date-entry" readonly="readonly"')?>
-</div>	
 	<?=get_doc_balance($ds->rid)?>
 	<?=anchor_popup(site_url('finjournal/journal/'.$ds->rid), lang('SHOW_FIN_OPERS'), array('title'=>lang('SHOW_FIN_OPERS'), 'id'=>"sbtn_cities_rid",  'name'=>"sbtn_clients_rid",  'width'=>'950', 'height'=>'600'))?>
 </fieldset>

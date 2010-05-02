@@ -75,7 +75,7 @@
 <div id="new-task" >
 	<h3><?=lang('NEW_TASK')?></h3>
 	<?if(validation_errors() && isset($tasks_action) && $tasks_action){?>
-	<div class="container error">
+	<div class="clear error">
 		<?=validation_errors('<div>', '</div>');?>
 	</div>	
 	<?}?>
@@ -125,7 +125,6 @@ $(document).ready(function(){
 		$('#cont-attach-to-obj').remove();
 		remove_option('3');
 	} 	
-	
 	$('#tasks-pagination > a').click(function(){
 		$.ajax({
 			type:'GET',

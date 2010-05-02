@@ -30,7 +30,6 @@
 </div>
 <div class="column span-8 last">
 	<?=get_modules_vp(set_value('_modules_rid', $ds->_modules_rid))?>
-	<?#=form_dropdown('_modules_rid', get_modules_list(), set_value('_modules_rid', $ds->_modules_rid), 'id="_modules_rid" class="text pzrt-5"')?>
 </div>
 
 <div class="column span-4">
@@ -75,3 +74,18 @@
 <?= form_close(); ?>
 
 </div>
+<script type="text/javascript" >
+	$(document).ready(function(){
+		$('#_positions_rid').change(function(){
+				var prid = $('#_positions_rid').val(); 
+				$.ajax({
+					type: 'POST',
+					data: ({prid : prid}),
+					url: "<?=site_url(get_currcontroller().'/mlist/go/') ?>",
+					 success: function(content){
+							    $("#menu_tree").html(content);
+							  }
+				});
+			});
+	})
+</script>

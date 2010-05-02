@@ -22,8 +22,22 @@
 <div class="column span-4">
 	<?=form_label(lang('NEW_OWNER'), '_employeers_rid')?>
 </div>
-<div class="column span-20">
+<div class="column span-20 last">
 	<?=get_employeers_vp(set_value('_employeers_rid', get_emprid_byurid($ds->owner_users_rid)))?>
+</div>
+
+<div class="column span-4">
+	<?=form_label(lang('CURRENT_FILIAL').':', '_employeers_rid')?>
+</div>
+<div class="column span-20 last">
+	<?=get_filial_name_byrid(get_emp_filial(get_emprid_byurid($ds->owner_users_rid)))?>
+</div>
+
+<div class="column span-4">
+	<?=form_label(lang('CURRENT_POSITION'), '_employeers_rid')?>
+</div>
+<div class="column span-20 last">
+	<?=get_position_name_byrid(get_emp_position(get_emprid_byurid($ds->owner_users_rid)))?>
 </div>
 </div>
 

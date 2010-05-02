@@ -144,7 +144,7 @@ class Food extends Crmcontroller {
 			else $data['success'] = false;
 			$data['ds'] = $this->food_model->get_edit($rid);
 		}
-		$data['content'] = $this->load->view('food/move', $data, True);
+		$data['content'] = $this->load->view('standart/move', $data, True);
 		return $this->load->view('layouts/main_layout', $data);
 	}
 	

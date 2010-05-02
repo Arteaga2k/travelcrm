@@ -162,5 +162,32 @@ class Employeers_model extends Crmmodel{
 		}		
 	}
 	
+	public function get_emp_filial($rid, $date = null){
+		$this->db->select('_emp_to_positions_rows._filials_rid');
+		$this->db->from('_emp_to_positions_rows');
+		$this->db->join('_emp_to_positions_headers', '_emp_to_positions_rows._emp_to_positions_headers_rid = _emp_to_positions_headers.rid');
+		$this->db->join('_documents', '_emp_to_positions_headers._documents_rid = _documents.rid');
+		$this->db->where(array('_emp_to_positions_rows._employeers_rid'=>$rid));
+		if(!$date) $date = date('Y-m-d');
+		$this->db->where(array('_emp_to_positions_rows.bdate <= '=>$date));
+		$this->db->order_by('_emp_to_positions_rows.bdate', 'desc');
+		$this->db->limit('1');
+		$query = $this->db->get();
+		return $query->num_rows()?$query->row()->_filials_rid:null; 
+	}
+
+	public function get_emp_position($rid, $date = null){
+		$this->db->select('_emp_to_positions_rows._positions_rid');
+		$this->db->from('_emp_to_positions_rows');
+		$this->db->join('_emp_to_positions_headers', '_emp_to_positions_rows._emp_to_positions_headers_rid = _emp_to_positions_headers.rid');
+		$this->db->join('_documents', '_emp_to_positions_headers._documents_rid = _documents.rid');
+		$this->db->where(array('_emp_to_positions_rows._employeers_rid'=>$rid));
+		if(!$date) $date = date('Y-m-d');
+		$this->db->where(array('_emp_to_positions_rows.bdate <= '=>$date));
+		$this->db->order_by('_emp_to_positions_rows.bdate', 'desc');
+		$this->db->limit('1');
+		$query = $this->db->get();
+		return $query->num_rows()?$query->row()->_positions_rid:null; 
+	}
 	
 }

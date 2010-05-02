@@ -166,7 +166,7 @@ class Countries extends Crmcontroller {
 			else $data['success'] = false;
 			$data['ds'] = $this->countries_model->get_edit($rid);
 		}
-		$data['content'] = $this->load->view('countries/move', $data, True);
+		$data['content'] = $this->load->view('standart/move', $data, True);
 		return $this->load->view('layouts/main_layout', $data);
 	}
 	

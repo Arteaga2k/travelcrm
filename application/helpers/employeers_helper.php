@@ -5,6 +5,26 @@ function get_emp_fullname_byrid($rid){
 	return $ci->employeers_model->get_emp_fullname_byrid($rid);
 }
 
+/** 
+ * Получить rid филиала сотрудника на дату
+ * @param $rid - сотрудник
+ */
+function get_emp_filial($rid, $date = null){
+	$ci = &get_instance();
+	$ci->load->model('employeers_model');
+	return $ci->employeers_model->get_emp_filial($rid, $date);
+}
+
+/** 
+ * Получить rid должности по rid сотрудника на дату
+ * @param $rid
+ */
+function get_emp_position($rid, $date = null){
+	$ci = &get_instance();
+	$ci->load->model('employeers_model');
+	return $ci->employeers_model->get_emp_position($rid, $date);
+}
+
 /**
  * Получить value_picker для Employeers
  * 

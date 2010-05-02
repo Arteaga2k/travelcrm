@@ -159,7 +159,7 @@ class Aircalls extends Doccontroller {
 			if($this->aircalls_model->move_record()) $data['success'] = true;
 			else $data['success'] = false;
 		}
-		$data['content'] = $this->load->view('aircalls/move', $data, True);
+		$data['content'] = $this->load->view('standart/move', $data, True);
 		return $this->load->view('layouts/main_layout', $data);
 	}
 	
@@ -303,7 +303,7 @@ class Aircalls extends Doccontroller {
 			if($this->aircalls_model->move_record()) $data['success'] = true;
 			else $data['success'] = false;
 		}
-		$data['content'] = $this->load->view('aircalls/vmove', $data, True);
+		$data['content'] = $this->load->view('standart/vmove', $data, True);
 		return $this->load->view('layouts/valuepicker_layout', $data);
 	}
 	

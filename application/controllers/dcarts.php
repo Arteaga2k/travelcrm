@@ -142,7 +142,7 @@ class Dcarts extends Crmcontroller {
 			else $data['success'] = false;
 			$data['ds'] = $this->dcarts_model->get_edit($rid);
 		}
-		$data['content'] = $this->load->view('dcarts/move', $data, True);
+		$data['content'] = $this->load->view('standart/move', $data, True);
 		return $this->load->view('layouts/main_layout', $data);
 	}
 	
@@ -254,7 +254,7 @@ class Dcarts extends Crmcontroller {
 			else $data['success'] = false;
 			$data['ds'] = $this->dcarts_model->get_edit($rid);
 		}
-		$data['content'] = $this->load->view('dcarts/vmove', $data, True);
+		$data['content'] = $this->load->view('standart/vmove', $data, True);
 		return $this->load->view('layouts/valuepicker_layout', $data);
 	}
 	

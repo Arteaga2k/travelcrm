@@ -173,7 +173,7 @@ class Clients extends Crmcontroller {
 			else $data['success'] = false;
 			$data['ds'] = $this->clients_model->get_edit($rid);
 		}
-		$data['content'] = $this->load->view('clients/move', $data, True);
+		$data['content'] = $this->load->view('standart/move', $data, True);
 		return $this->load->view('layouts/main_layout', $data);
 	}
 	
@@ -301,7 +301,7 @@ class Clients extends Crmcontroller {
 			else $data['success'] = false;
 			$data['ds'] = $this->clients_model->get_edit($rid);
 		}
-		$data['content'] = $this->load->view('clients/vmove', $data, True);
+		$data['content'] = $this->load->view('standart/vmove', $data, True);
 		return $this->load->view('layouts/valuepicker_layout', $data);
 	}
 	

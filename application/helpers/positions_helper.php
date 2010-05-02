@@ -15,4 +15,9 @@ function get_areas(){
 	return $res;
 }
 
+function get_position_name_byrid($rid){
+	$ci = &get_instance();
+	$ci->load->model('positions_model');
+	return $ci->positions_model->get_name_byrid($rid);
+}
 ?>

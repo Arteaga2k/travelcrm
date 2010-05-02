@@ -34,6 +34,14 @@
 	<div class="crmpage">
 		<?=$this->load->view('common/logoheader', null, true);?>
 		<?=get_menu()?>	
+		<div class="container">
+			<div class="column span-5" id="tasks">
+				<?=get_tasks_js().get_tasks()?>
+			</div>
+			<div class="column span-19 last" style="width: 80%;">
+				<?=$content?>
+			</div>
+		</div>		
 		<?=$this->load->view('common/footer', null, true);?>
 	</div>
 </body>
