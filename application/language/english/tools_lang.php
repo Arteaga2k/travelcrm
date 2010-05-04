@@ -1,11 +1,10 @@
-﻿<?php
+<?php
 /**
  * Language file for module Tools
  * 
  * @author Andrey Elkin
  * @package Extenders
  */
-
 $lang['COPY'] = 'Copy';
 $lang['NEW'] = 'New';
 $lang['FIND'] = 'Search';

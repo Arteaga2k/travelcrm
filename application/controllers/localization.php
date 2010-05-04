@@ -1,0 +1,3 @@
+<?php/** * TravelCRM * * An open source CRM system for travel agencies * * @author		Mazvv (vitalii.mazur@gmail.com) * @copyright   2009 Vitalii Mazur (vitalii.mazur@gmail.com) * @license		GNU GPLv3 (http://gplv3.fsf.org)  * @link		http://www.travelcrm.org.ua */include_once APPPATH."libraries/core/Crmcontroller.php";class Localization extends Crmcontroller {
+	public function __construct(){		parent::__construct();	}	public function set($language = null){		if($language){			$this->session->set_userdata('LANGUAGE', $language);		}		redirect('welcome');			return;	}}
+?>

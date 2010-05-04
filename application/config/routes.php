@@ -43,6 +43,8 @@
 $route['default_controller'] = "login";
 $route['scaffolding_trigger'] = "";
 
+$route['language/(:any)'] = "localization/set/$1";
+
 
 /* End of file routes.php */
 /* Location: ./system/application/config/routes.php */

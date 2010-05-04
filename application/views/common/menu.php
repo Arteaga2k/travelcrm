@@ -19,6 +19,13 @@
 	<ul>
 		<li><?=anchor('welcome', lang('HOME'), 'title="'.lang('HOME').'"');?></li>
 		<?menu_build($items)?>
+		<li>
+			<?=anchor('', lang('HELP').' »', 'title="'.lang('HELP').'" onclick="javascript: return false;"');?>
+			<ul>
+				<li><?=anchor('http://forum.travelcrm.org.ua', lang('FORUM'), 'title="'.lang('FORUM').'" target="_blank"');?></li>
+				<li><?=safe_mailto($this->config->item('crm_support_email'), lang('DEV_EMAIL'))?></li>
+			</ul>
+		</li>
 	</ul>
 	<div class="clear"></div>
 </div>

@@ -1,8 +1,8 @@
 <?=doctype('html4-trans')?>
 <html>
 <head>
-    <title>TravelCRM - <?=$title?></title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>TravelCRM</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<?=link_tag('public/css/blueprint/src/reset.css');?>
 	<?=link_tag('public/css/blueprint/src/liquid.css');?>
 	<?=link_tag('public/css/blueprint/src/typography.css');?>
@@ -10,6 +10,7 @@
 	<?=link_tag('public/css/blueprint/plugins/tabs/screen.css');?>
 	
 	<?=link_tag('public/css/modules/common.css');?>
+	<?=link_tag('public/css/modules/welcome.css');?>
 	<?=link_tag('public/css/modules/editform.css');?>
 	<?=link_tag('public/css/modules/grid.css');?>
 	<?=link_tag('public/css/modules/paging.css');?>
@@ -39,7 +40,7 @@
 				<?=get_tasks_js().get_tasks()?>
 			</div>
 			<div class="column span-19 last" style="width: 80%;">
-				<?=$content?>
+				<?=get_rss()?>
 			</div>
 		</div>		
 		<?=$this->load->view('common/footer', null, true);?>

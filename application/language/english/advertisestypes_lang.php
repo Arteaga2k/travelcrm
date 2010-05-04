@@ -13,4 +13,4 @@ $lang['ADVERTISESTYPES_TITLE_FIND'] = 'Marketing : Advertising Source Types : Se
 $lang['ADVERTISESTYPES_TITLE_MOVE'] = 'Marketing : Advertising Source Types : Change data owner';
 $lang['TYPE'] = 'Name';
 $lang['ADVERTISESTYPES_NAME_NOTUNIQUE'] = 'Entered <b>name</b> already exists. <b>Advertising source type name</b> must be unique.';
-?>
+

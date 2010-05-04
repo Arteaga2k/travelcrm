@@ -44,5 +44,3 @@ $lang['SHOW_FIN_OPERS'] = 'Show financial operations';
 $lang['ORDER_SUM'] = 'Bill amount';
 $lang['ORDER_DATE'] = 'Bill date';
 $lang['ORDER_NUM'] = 'Bill number';
-
-?>

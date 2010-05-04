@@ -1,10 +1,11 @@
-﻿<?php
+<?php
 /**
  * Language file for module Touroperators
  * 
  * @author Andrey Elkin
  * @package Touroperators
  */
+
 $lang['TOUROPERATORS_TITLE'] = 'Sales : Tour operators';
 $lang['TOUROPERATORS_TITLE_CREATE'] = 'Sales : Tour operators : Add new tour operator';
 $lang['TOUROPERATORS_TITLE_EDIT'] = 'Sales : Tour operators : Edit tour operator';
@@ -35,5 +36,4 @@ $lang['CAT_3'] = 'Not recommended';
 $lang['CAT_4'] = 'Forbidden';
 $lang['TOUROPERATORS_NAME_NOTUNIQUE'] = 'Entered <b>name</b> already exists. <b>Touroperator name</b> must be unique.';
 $lang['TOUROPERATORS_SNAME_NOTUNIQUE'] = 'Entered <b>short name</b> already exists. <b>Touroperator short name</b> must be unique.';
-
 ?>

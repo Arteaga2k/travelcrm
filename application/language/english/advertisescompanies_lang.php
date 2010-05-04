@@ -17,5 +17,3 @@ $lang['TYPE_TRAVEL'] = 'Travel';
 $lang['TYPE_AVIA'] = 'Flights';
 $lang['TYPE_TRAVEL_VAL'] = 'TRAVEL';
 $lang['TYPE_AVIA_VAL'] = 'FLIGHTS';
-
-?>

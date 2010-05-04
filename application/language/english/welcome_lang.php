@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Language file for module Welcome  
  * 

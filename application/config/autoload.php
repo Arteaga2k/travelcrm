@@ -55,7 +55,7 @@ $autoload['libraries'] = array('database', 'validation', 'session', 'form_valida
 $autoload['helper'] = array('form', 'url', 'others', 'html', 'language', 'array', 'date', 'text',
 								'user', 'menu', 'tools', 'fields', 'countries', 'positions', 'employeers', 'contrahens',
 								'cities', 'touroperators', 'filials', 'users', 'tasks', 'chat',
-								'constants', 'string', 'helps');
+								'constants', 'string', 'helps', 'rss');
 
 
 /*

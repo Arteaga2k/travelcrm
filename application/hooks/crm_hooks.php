@@ -42,7 +42,7 @@ function hook_init_menu(){
 function hook_check_security(){
 	$ci = &get_instance();
 	// исключаем welcome, login, logout, tasks
-	$free_controllers = array('', 'login', 'logout', 'welcome', 'tasks');
+	$free_controllers = array('', 'login', 'logout', 'welcome', 'tasks', 'language');
 	if(in_array($ci->menu->get_currcontroller(), $free_controllers)) return;
 	$permissions = $ci->menu->get_rights();
 	if(!element('viewed_space', $permissions, null)) return show_error(lang('MENU_SECURITY_ERROR'));

@@ -15,4 +15,3 @@ $lang['ADVERTISESSOURCES_NAME_NOTUNIQUE'] = 'Entered <b>name</b> already exists.
 $lang['TYPE'] = 'Type';
 $lang['SOURCE'] = 'Name';
 $lang['COMPANY'] = 'Campaign';
-?>

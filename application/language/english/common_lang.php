@@ -70,4 +70,3 @@ $lang['HELP'] = 'Help';
 $lang['PAGER_SHOW'] = 'Show ';
 $lang['ALL'] = 'all';
 $lang['NO_HELP'] = 'Help is under development';
-?>

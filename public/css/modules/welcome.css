@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+div.rss div.item p, div.rss div.description p {
+	margin: 0px;
+}
+
+div.rss h5{
+	margin-bottom: 0.5em;
+}
+
+div.rss div.item{
+	text-align: justify;
+	margin-bottom: 1.5em;
+	padding-bottom: 0.5em;
+	border-bottom: 1px dashed #cccccc;
+}
+
