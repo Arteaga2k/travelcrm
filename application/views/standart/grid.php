@@ -36,11 +36,11 @@
 		</td>
 	</tr>
 	<tr>
+		<?if(element('delete_allow', $tools, null)) { ?>
 		<td class="gridHeader" style="padding-left: 2px; white-space: nowrap;">
-			<?if(element('delete_allow', $tools, null)) { ?>
 				<input type="checkbox" name="all" id="call" value="1">
-			<? } ?> 
 		</td>
+		<? } ?>
 		<?foreach($fields as $key=>$field) { ?>
 		<td class="gridHeader" width="<?=element('colwidth', $field, '')?>" style="white-space: nowrap;">
 			<? if($field['sort']) { ?>
@@ -66,11 +66,11 @@
 	</tr>
 	<?foreach($ds as $record) { ?>
 	<tr class="dataRow" ondblclick="javascript:window.location = '<?if(element('edit_allow', $tools, null)) { ?><?=site_url(get_currcontroller().'/edit/'.$record->rid)?><?}else{?><?=site_url(get_currcontroller().'/details/'.$record->rid)?><?}?>';">
+		<?if(element('delete_allow', $tools, null)) { ?>
 		<td>
-			<?if(element('delete_allow', $tools, null)) { ?>
-				<input type="checkbox" name="row[]" value="<?=$record->rid?>" id="crow_<?=$record->rid?>">
-			<? } ?> 
+			<input type="checkbox" name="row[]" value="<?=$record->rid?>" id="crow_<?=$record->rid?>">
 		</td>
+		<? } ?>
 		<?foreach($fields as $key=>$field) {?>
 		<td style="<?=element('style', $field, '')?>">
 			<?=get_valtype($record->$key, element('type', $field, ''))?> 
@@ -91,7 +91,7 @@
 	</tr>
 	<?}?>
 	<tr>
-		<td colspan="<?=count($fields)+2?>" class="tr tools" id="paging">
+		<td colspan="<?=count($fields)+2?>" class="tr tools" id="paging" width="1%">
 			<?=$paging?>
 		</td>
 	</tr>

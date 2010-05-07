@@ -29,11 +29,11 @@
 		</td>
 	</tr>
 	<tr>
+		<?if(element('delete_allow', $tools, null)) { ?>
 		<td class="gridHeader" style="padding-left: 2px; white-space: nowrap;">
-			<?if(element('delete_allow', $tools, null)) { ?>
 				<input type="checkbox" name="all" id="call" value="1">
-			<? } ?> 
 		</td>
+		<? } ?> 
 		<?foreach($fields as $key=>$field) { ?>
 		<td class="gridHeader" width="<?=element('colwidth', $field, '')?>" style="white-space: nowrap;">
 			<? if($field['sort']) { ?>
@@ -59,17 +59,17 @@
 	</tr>
 	<?foreach($ds as $record) { ?>
 	<tr class="dataRow" ondblclick="joinToParent('<?=$record->$jtp['val']?>', '<?=$record->$jtp['scr']?>')">
+		<?if(element('delete_allow', $tools, null)) { ?>
 		<td>
-			<?if(element('delete_allow', $tools, null)) { ?>
 				<input type="checkbox" name="row[]" value="<?=$record->rid?>" id="crow_<?=$record->rid?>">
-			<? } ?> 
 		</td>
+		<? } ?>
 		<?foreach($fields as $key=>$field) {?>
 		<td style="<?=element('style', $field, '')?>">
 			<?=get_valtype($record->$key, element('type', $field, ''))?> 
 		</td>
 		<?}?>
-		<td nowrap="nowrap">
+		<td nowrap="nowrap" width="1%">
 			
 			<?
 				foreach($tools as $key=>$val) {
