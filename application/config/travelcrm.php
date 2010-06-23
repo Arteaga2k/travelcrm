@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$config['crm_version']	= 'v0.4.9a';
+$config['crm_version']	= 'v0.4.9a1';
 $config['crm_support_email']	= 'support@travelcrm.org.ua';
 $config['crm_profile_on']	= False;
 $config['crm_chpass_period']	= 90; /*период смены пароля в днях*/
