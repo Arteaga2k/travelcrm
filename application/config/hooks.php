@@ -12,6 +12,14 @@
 
 $hook['post_controller_constructor'][] = array(
                                 'class'    => '',
+                                'function' => 'hook_ssl_on',
+                                'filename' => 'crm_hooks.php',
+                                'filepath' => 'hooks',
+                                'params'   => array()
+                                );
+
+$hook['post_controller_constructor'][] = array(
+                                'class'    => '',
                                 'function' => 'hook_profile_on',
                                 'filename' => 'crm_hooks.php',
                                 'filepath' => 'hooks',

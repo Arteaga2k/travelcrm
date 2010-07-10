@@ -1,5 +1,14 @@
 <?php
 /**
+ * Вкл/выкл SSL
+ * @return unknown_type
+ */
+function hook_ssl_on(){
+	$ci = &get_instance();
+	return $ci->config->item('crm_ssl_on')?force_ssl():remove_ssl();
+}
+
+/**
  * Вкл/выкл отладчик
  * @return unknown_type
  */

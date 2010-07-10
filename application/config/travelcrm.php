@@ -3,6 +3,7 @@
 $config['crm_version']	= 'v0.4.9a1';
 $config['crm_support_email']	= 'support@travelcrm.org.ua';
 $config['crm_profile_on']	= False;
+$config['crm_ssl_on']	= True;
 $config['crm_chpass_period']	= 90; /*период смены пароля в днях*/
 $config['crm_grid_limit']	= 25;
 $config['crm_dropdown_empty']	= '--None--'; /*пустышка в выпадающем списке*/
