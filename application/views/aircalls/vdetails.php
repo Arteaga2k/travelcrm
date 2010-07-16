@@ -50,7 +50,12 @@
 <div class="column span-20 last">
 	<?=form_input('s_name', set_value('s_name', $ds->s_name), 'id="s_name" readonly="readonly" class="text part-5"')?>
 </div>
-
+<div class="column span-4">
+	<?=form_label(lang('CLIENT'), '_clients_rid')?>
+</div>
+<div class="column span-20 last">
+	<?=form_input('client_name', get_clientname_byrid(set_value('_clients_rid', $ds->_clients_rid)), 'id="client_name" class="text part-5" readonly="readonly"')?>
+</div>
 <div class="column span-4">
 	<?=form_label(lang('PHONES'), 'phones')?>
 </div>
@@ -94,21 +99,15 @@
 </div>
 
 <div class="column span-4">
-	<?=form_label(lang('SUM_FROM'), 'sum_wanted_from')?>
-</div>
-<div class="column span-20 last">
-	<?=form_input('sum_wanted_from', set_value('sum_wanted_from', $ds->sum_wanted_from), 'id="sum_wanted_from" readonly="readonly" class="text part-2"')?>
-</div>	
-<div class="column span-4">
 	<?=form_label(lang('SUM_TO'), 'sum_wanted_to')?>
 </div>
-<div class="column span-20 last">
+<div class="column span-8">
 	<?=form_input('sum_wanted_to', set_value('sum_wanted_to', $ds->sum_wanted_to), 'id="sum_wanted_to" readonly="readonly" class="text part-2"')?>
 </div>
 <div class="column span-4">
 	<?=form_label(lang('CURRENCY'), '_currencies_rid')?>
 </div>
-<div class="column span-20 last">
+<div class="column span-8 last">
 	<?=form_dropdown('_currencies_rid', get_currencies(), set_value('_currencies_rid', $ds->_currencies_rid), 'id="_currencies_rid" readonly="readonly" class="text" ')?>
 </div>
 

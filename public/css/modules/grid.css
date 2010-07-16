@@ -32,6 +32,14 @@ div.grid table tr td{
 	height: 1.8em;
 }
 
+div.grid table tr.dataRow td{
+	border-bottom: 1px dashed #c0c0c0;
+}
+
+div.grid table tr.last_row td{
+	border-bottom: 1px dashed transparent;
+}
+
 div.grid table tr.odd{
 	background-color: #f0f5fe;
 }

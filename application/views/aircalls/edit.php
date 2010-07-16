@@ -65,7 +65,7 @@
 	<?=form_input('l_name', set_value('l_name', $ds->l_name), 'id="l_name" class="text part-5"')?>
 </div>
 <div class="column span-4">
-	<?=form_label(lang('F_NAME').required_field(), 'f_name')?> 
+	<?=form_label(lang('F_NAME').get_field_help('aircalls', 'CLIENT'), 'f_name')?> 
 </div>
 <div class="column span-20 last">
 	<?=form_input('f_name', set_value('f_name', $ds->f_name), 'id="f_name" class="text part-5"')?>
@@ -75,6 +75,13 @@
 </div>
 <div class="column span-20 last">
 	<?=form_input('s_name', set_value('s_name', $ds->s_name), 'id="s_name" class="text part-5"')?>
+</div>
+
+<div class="column span-4">
+	<?=form_label(lang('CLIENT').get_field_help('aircalls', 'CLIENT'), '_clients_rid')?>
+</div>
+<div class="column span-20 last">
+	<?=get_clients_vp(set_value('_clients_rid', $ds->_clients_rid))?>
 </div>
 
 <div class="column span-4">
@@ -126,21 +133,15 @@
 </div>
 
 <div class="column span-4">
-	<?=form_label(lang('SUM_FROM'), 'sum_wanted_from')?>
-</div>
-<div class="column span-20 last">
-	<?=form_input('sum_wanted_from', set_value('sum_wanted_from', $ds->sum_wanted_from), 'id="sum_wanted_from" class="text part-2"')?>
-</div>	
-<div class="column span-4">
 	<?=form_label(lang('SUM_TO').required_field(), 'sum_wanted_to')?> 
 </div>
-<div class="column span-20 last">
+<div class="column span-8">
 	<?=form_input('sum_wanted_to', set_value('sum_wanted_to', $ds->sum_wanted_to), 'id="sum_wanted_to" class="text part-2"')?>
 </div>
 <div class="column span-4">
 	<?=form_label(lang('CURRENCY').required_field(), '_currencies_rid')?> 
 </div>
-<div class="column span-20 last">
+<div class="column span-8 last">
 	<?=form_dropdown('_currencies_rid', get_currencies(), set_value('_currencies_rid', $ds->_currencies_rid), 'id="_currencies_rid" class="text" ')?>
 </div>
 

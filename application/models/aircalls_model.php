@@ -12,8 +12,8 @@ class Aircalls_model extends Docmodel{
 							_countries.country_name as country_name,
 							_aircalls_rows._advertisessources_rid as _advertisessources_rid,
 							_advertisessources.source_name as source_name,
-							_aircalls_rows.f_name as f_name,
-							_aircalls_rows.l_name as l_name,
+							if(_aircalls_rows._clients_rid, _clients.f_name, _aircalls_rows.f_name) as f_name,
+							if(_aircalls_rows._clients_rid, _clients.l_name, _aircalls_rows.l_name) as l_name,
 							(select _filials.rid 
 								FROM _emp_to_positions_rows 
 								JOIN _emp_to_positions_headers ON _emp_to_positions_rows._emp_to_positions_headers_rid=_emp_to_positions_headers.rid
@@ -30,6 +30,7 @@ class Aircalls_model extends Docmodel{
 		$this->db->join('_countries', '_aircalls_rows._countries_rid = _countries.rid', 'LEFT');
 		$this->db->join('_advertisessources', '_aircalls_rows._advertisessources_rid = _advertisessources.rid');
 		$this->db->join('_currencies', '_aircalls_rows._currencies_rid = _currencies.rid');
+		$this->db->join('_clients', '_aircalls_rows._clients_rid = _clients.rid', 'LEFT');
 		$this->db->join('_users', '_documents.owner_users_rid = _users.rid');
 		$this->db->join('_employeers', '_employeers.rid = _users._employeers_rid');
 		$this->db->group_by('_documents.rid');
@@ -48,6 +49,7 @@ class Aircalls_model extends Docmodel{
 							_documents.rid,
 							_documents.owner_users_rid,
 							_aircalls_headers.rid as _aircalls_headers_rid,
+							_aircalls_rows._clients_rid as _clients_rid,
 							_aircalls_rows._countries_rid as _countries_rid,
 							_aircalls_rows.air_class as air_class,
 							_aircalls_rows._advertisessources_rid as _advertisessources_rid,
@@ -57,7 +59,6 @@ class Aircalls_model extends Docmodel{
 							_aircalls_rows.l_name as l_name,
 							DATE_FORMAT(_aircalls_rows.date_from, \'%d.%m.%Y\') as date_from,
 							DATE_FORMAT(_aircalls_rows.date_to, \'%d.%m.%Y\') as date_to,
-							_aircalls_rows.sum_wanted_from as sum_wanted_from,
 							_aircalls_rows.sum_wanted_to as sum_wanted_to,
 							_aircalls_rows.tourists_quan as tourists_quan,
 							_aircalls_rows.phones as phones,
@@ -96,6 +97,7 @@ class Aircalls_model extends Docmodel{
 		$this->db->insert('_aircalls_headers', $ins_h);
 		$h_rid = $this->db->insert_id();
 		$ins_r = array('_aircalls_headers_rid'=>$h_rid,
+							'_clients_rid'=>$this->ci->input->post('_clients_rid')?$this->ci->input->post('_clients_rid'):null,
 							'_countries_rid'=>$this->ci->input->post('_countries_rid'),
 							'_advertisessources_rid'=>$this->ci->input->post('_advertisessources_rid'),
 							'_currencies_rid'=>$this->ci->input->post('_currencies_rid'),
@@ -105,7 +107,6 @@ class Aircalls_model extends Docmodel{
 							'l_name'=>$this->ci->input->post('l_name'),
 							'date_from'=>date('Y-m-d', strtotime($this->ci->input->post('date_from'))),
 							'date_to'=>date('Y-m-d', strtotime($this->ci->input->post('date_to'))),
-							/*'sum_wanted_from'=>$this->ci->input->post('sum_wanted_from'),*/
 							'sum_wanted_to'=>$this->ci->input->post('sum_wanted_to'),
 							'tourists_quan'=>$this->ci->input->post('tourists_quan'),
 							'phones'=>$this->ci->input->post('phones'),
@@ -144,6 +145,7 @@ class Aircalls_model extends Docmodel{
 		}
 		$h_rid = $query->row()->rid;
 		$update_r = array('_aircalls_headers_rid'=>$h_rid,
+							'_clients_rid'=>$this->ci->input->post('_clients_rid')?$this->ci->input->post('_clients_rid'):null,
 							'_countries_rid'=>$this->ci->input->post('_countries_rid'),
 							'_advertisessources_rid'=>$this->ci->input->post('_advertisessources_rid'),
 							'_currencies_rid'=>$this->ci->input->post('_currencies_rid'),
@@ -153,7 +155,6 @@ class Aircalls_model extends Docmodel{
 							'l_name'=>$this->ci->input->post('l_name'),
 							'date_from'=>date('Y-m-d', strtotime($this->ci->input->post('date_from'))),
 							'date_to'=>date('Y-m-d', strtotime($this->ci->input->post('date_to'))),
-							/*'sum_wanted_from'=>$this->ci->input->post('sum_wanted_from'),*/
 							'sum_wanted_to'=>$this->ci->input->post('sum_wanted_to'),
 							'tourists_quan'=>$this->ci->input->post('tourists_quan'),
 							'phones'=>$this->ci->input->post('phones'),

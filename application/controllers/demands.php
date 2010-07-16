@@ -189,9 +189,11 @@ class Demands extends Doccontroller {
 		$this->form_validation->set_rules('_countries_rid', lang('COUNTRY'), 'trim');
 		$this->form_validation->set_rules('_curourts_rid', lang('CUROURT'), 'trim');
 		$this->form_validation->set_rules('_hotels_rid', lang('HOTEL'), 'trim');
-		$this->form_validation->set_rules('client_name', lang('CLIENT_L_NAME'), 'trim');
+		$this->form_validation->set_rules('_clients_rid', lang('CLIENT_L_NAME'), 'trim');
 		$this->form_validation->set_rules('tour_num', lang('TOUR_NUM'), 'trim');
-		$this->form_validation->set_rules('_touroperators_rid', lang('TOUROPERATOR'), 'trim');			
+		$this->form_validation->set_rules('_touroperators_rid', lang('TOUROPERATOR'), 'trim');
+		$this->form_validation->set_rules('archive', lang('HIDE_ARCHIVE'), 'trim');
+					
 		if ($this->form_validation->run() == True){
 			$search_rule = array();
 			if($this->input->post('rid')) $search_rule['where']['_documents.rid'] = $this->input->post('rid');
@@ -202,9 +204,10 @@ class Demands extends Doccontroller {
 			if($this->input->post('_countries_rid')) $search_rule['where']['_tours._countries_rid'] = $this->input->post('_countries_rid');
 			if($this->input->post('_curourts_rid')) $search_rule['where']['_tours._curourts_rid'] = $this->input->post('_curourts_rid');
 			if($this->input->post('_hotels_rid')) $search_rule['where']['_tours._hotels_rid'] = $this->input->post('_hotels_rid');
-			if($this->input->post('client_name')) $search_rule['like']['_clients.l_name'] = $this->input->post('client_name');
+			if($this->input->post('_clients_rid')) $search_rule['like']['_clients.rid'] = $this->input->post('_clients_rid');
 			if($this->input->post('tour_num')) $search_rule['where']['_demands_headers.tour_num'] = $this->input->post('tour_num');
 			if($this->input->post('_touroperators_rid')) $search_rule['where']['_tours._touroperators_rid'] = $this->input->post('_touroperators_rid');
+			if($this->input->post('archive')==0) $search_rule['where']['_documents.archive'] = $this->input->post('archive');
 			$this->set_searchrule($search_rule);
 		}
 		$search = $this->get_session('searchrule');

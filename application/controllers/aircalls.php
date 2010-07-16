@@ -19,6 +19,7 @@ class Aircalls extends Doccontroller {
 		$this->load->helper('advertisessources');
 		$this->load->helper('curourts');
 		$this->load->helper('hotelscats');
+		$this->load->helper('clients');
 		
 		# Overwrite jtp mapper if need 
 		# It's very usable if form has some value_pickers with one type
@@ -128,7 +129,9 @@ class Aircalls extends Doccontroller {
 		$this->form_validation->set_rules('doc_to', lang('DOC_TO'), 'trim');
 		$this->form_validation->set_rules('_filials_rid', lang('FILIAL'), 'trim');
 		$this->form_validation->set_rules('_employeers_rid', lang('EMPLOYEER'), 'trim');
-		$this->form_validation->set_rules('_countries_rid', lang('COUNTRY'), 'trim');			
+		$this->form_validation->set_rules('_countries_rid', lang('COUNTRY'), 'trim');
+		$this->form_validation->set_rules('_clients_rid', lang('CLIENT'), 'trim');	
+		$this->form_validation->set_rules('archive', lang('HIDE_ARCHIVE'), 'trim');		
 		if ($this->form_validation->run() == True){
 			$search_rule = array();
 			if($this->input->post('rid')) $search_rule['where']['_documents.rid'] = $this->input->post('rid');
@@ -137,6 +140,8 @@ class Aircalls extends Doccontroller {
 			if($this->input->post('_filials_rid')) $search_rule['having']['_filials_rid'] = $this->input->post('_filials_rid');
 			if($this->input->post('_employeers_rid')) $search_rule['where']['_employeers.rid'] = $this->input->post('_employeers_rid');
 			if($this->input->post('_countries_rid')) $search_rule['where']['_countries.rid'] = $this->input->post('_countries_rid');
+			if($this->input->post('_clients_rid')) $search_rule['where']['_aircalls_rows._clients_rid'] = $this->input->post('_clients_rid');
+			if($this->input->post('archive')==0) $search_rule['where']['_documents.archive'] = $this->input->post('archive');
 			$this->set_searchrule($search_rule);
 		}
 		$search = $this->get_session('searchrule');
@@ -170,9 +175,10 @@ class Aircalls extends Doccontroller {
 		$this->form_validation->set_rules('_advertisessources_rid', lang('ADVERTISE_SHORT'), 'required');
 		$this->form_validation->set_rules('date_from', lang('DATE_FROM'), 'required');
 		$this->form_validation->set_rules('date_to', lang('DATE_TO'), 'required');
-		$this->form_validation->set_rules('f_name', lang('F_NAME'), 'trim|required');
-		$this->form_validation->set_rules('l_name', lang('F_NAME'), 'trim');
-		$this->form_validation->set_rules('s_name', lang('F_NAME'), 'trim');
+		$this->form_validation->set_rules('_clients_rid', lang('CLIENT'), 'trim');
+		$this->form_validation->set_rules('f_name', lang('F_NAME'), 'trim|callback_check_client');
+		$this->form_validation->set_rules('l_name', lang('L_NAME'), 'trim');
+		$this->form_validation->set_rules('s_name', lang('S_NAME'), 'trim');
 		$this->form_validation->set_rules('phones', lang('PHONES'), 'trim|required');
 		$this->form_validation->set_rules('email', lang('EMAIL'), 'trim|valid_email');
 		$this->form_validation->set_rules('_countries_rid', lang('COUNTRY'), 'required');
@@ -184,6 +190,14 @@ class Aircalls extends Doccontroller {
 		$this->form_validation->set_rules('descr', lang('DESCR'), 'trim|max_length[512]');
 		$this->form_validation->set_rules('archive', lang('ARCHIVE'), 'trim');
 		return;		
+	}
+	
+	public function check_client($client_fname){
+		if(!$client_fname and !$this->input->post('_clients_rid')){
+			$this->form_validation->set_message('check_client', lang('AIRCALLS_CLIENT_ERROR'));
+			return False;
+		}
+		return True;
 	}
 	
 	public function vjournal(){
@@ -272,7 +286,9 @@ class Aircalls extends Doccontroller {
 		$this->form_validation->set_rules('doc_to', lang('DOC_TO'), 'trim');
 		$this->form_validation->set_rules('_filials_rid', lang('FILIAL'), 'trim');
 		$this->form_validation->set_rules('_employeers_rid', lang('EMPLOYEER'), 'trim');
-		$this->form_validation->set_rules('_countries_rid', lang('COUNTRY'), 'trim');			
+		$this->form_validation->set_rules('_countries_rid', lang('COUNTRY'), 'trim');
+		$this->form_validation->set_rules('_clients_rid', lang('CLIENT'), 'trim');	
+		$this->form_validation->set_rules('archive', lang('HIDE_ARCHIVE'), 'trim');			
 		if ($this->form_validation->run() == True){
 			$search_rule = array();
 			if($this->input->post('rid')) $search_rule['where']['_documents.rid'] = $this->input->post('rid');
@@ -281,6 +297,8 @@ class Aircalls extends Doccontroller {
 			if($this->input->post('_filials_rid')) $search_rule['having']['_filials_rid'] = $this->input->post('_filials_rid');
 			if($this->input->post('_employeers_rid')) $search_rule['where']['_employeers.rid'] = $this->input->post('_employeers_rid');
 			if($this->input->post('_countries_rid')) $search_rule['where']['_countries.rid'] = $this->input->post('_countries_rid');
+			if($this->input->post('_clients_rid')) $search_rule['where']['_aircalls_rows._clients_rid'] = $this->input->post('_clients_rid');
+			if($this->input->post('archive')==0) $search_rule['where']['_documents.archive'] = $this->input->post('archive');
 			$this->set_searchrule($search_rule);
 		}
 		$search = $this->get_session('searchrule');

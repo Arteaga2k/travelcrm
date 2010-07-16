@@ -12,7 +12,8 @@ class Constants_model extends Crmmodel{
 							DATE_FORMAT(_constants.modifyDT, \'%d.%m.%Y\') as modifyDT,
 							_constants.descr as descr, _constants.archive', False);
 		$this->db->from('_constants');
-		if($searchRule = $this->ci->get_session('searchrule')) $this->db->like($searchRule);
+		if($searchRule = element('like', $this->ci->get_session('searchrule'), null)) $this->db->like($searchRule);
+		if($searchRule = element('where', $this->ci->get_session('searchrule'), null)) $this->db->where($searchRule);
 		if($sort = $this->ci->get_session('sort'))	$this->db->orderby($sort['c'], $sort['r']);
 		$this->db->limit($this->ci->config->item('crm_grid_limit'), element('p', $this->ci->a_uri_assoc, null));
 		$query = $this->db_get('_constants');

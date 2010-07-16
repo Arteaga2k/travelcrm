@@ -64,8 +64,8 @@
 			&nbsp;
 		</td>
 	</tr>
-	<?foreach($ds as $record) { ?>
-	<tr class="dataRow" ondblclick="javascript:window.location = '<?if(element('edit_allow', $tools, null)) { ?><?=site_url(get_currcontroller().'/edit/'.$record->rid)?><?}else{?><?=site_url(get_currcontroller().'/details/'.$record->rid)?><?}?>';">
+	<?$num_records = count($ds); $counter = 0; foreach($ds as $record) { $counter++;?>
+	<tr class="dataRow<?=($counter == $num_records)?' last_row':''?>" ondblclick="javascript:window.location = '<?if(element('edit_allow', $tools, null)) { ?><?=site_url(get_currcontroller().'/edit/'.$record->rid)?><?}else{?><?=site_url(get_currcontroller().'/details/'.$record->rid)?><?}?>';">
 		<?if(element('delete_allow', $tools, null)) { ?>
 		<td>
 			<input type="checkbox" name="row[]" value="<?=$record->rid?>" id="crow_<?=$record->rid?>">

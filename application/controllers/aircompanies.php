@@ -170,7 +170,7 @@ class Aircompanies extends Crmcontroller {
 	public function check_unique_name_lat($code){
 		$rid = $this->input->post('rid'); # для случая если проверка идет при редактировании
 		if($this->aircompanies_model->check_unique($code, 'name_lat', $rid)){
-			$this->form_validation->set_message('check_unique_name_lat', lang('aircompanies_NAME_LAT_NOTUNIQUE'));
+			$this->form_validation->set_message('check_unique_name_lat', lang('AIRCOMPANIES_NAME_LAT_NOTUNIQUE'));
 			return False;
 		}
 		return True;

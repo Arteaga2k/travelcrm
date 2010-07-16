@@ -104,10 +104,12 @@ class Users extends Crmcontroller {
 		$data['orid'] = $this->get_orid();
 		$this->form_validation->set_rules('_employeers_rid', lang('EMPLOYEER'), 'trim');
 		$this->form_validation->set_rules('user_login', lang('USER_LOGIN'), 'trim');
+		$this->form_validation->set_rules('archive', lang('HIDE_ARCHIVE'), 'trim');
 		if ($this->form_validation->run() == True){
 			$search_rule = array();
 			if($this->input->post('_employeers_rid')) $search_rule['where']['_employeers.rid'] = $this->input->post('_employeers_rid');
-			if($this->input->post('user_login')) $search_rule['like']['_users.user_login'] = $this->input->post('user_login');			
+			if($this->input->post('user_login')) $search_rule['like']['_users.user_login'] = $this->input->post('user_login');
+			if($this->input->post('archive')==0) $search_rule['where']['_users.archive'] = $this->input->post('archive');			
 			$this->set_searchrule($search_rule);
 		}
 		$search = $this->get_session('searchrule');
