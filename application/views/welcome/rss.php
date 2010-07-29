@@ -6,7 +6,7 @@
 			<div class="clear item">
 				<h5><?=anchor($item['link'], $item['title'])?> | <?=$item['pubDate']?></h5>
 				<div class="clear description">
-					<?=word_limiter($item['description'], 50)?>
+					<?=word_limiter(strip_tags($item['description']), 50)?>
 				</div>
 			</div>
 		<?}?>
