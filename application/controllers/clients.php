@@ -145,11 +145,13 @@ class Clients extends Crmcontroller {
 		$this->form_validation->set_rules('f_name', lang('F_NAME'), 'trim');
 		$this->form_validation->set_rules('l_name', lang('L_NAME'), 'trim');
 		$this->form_validation->set_rules('f_pass_num', lang('FPASSP_NUM'), 'trim');
+		$this->form_validation->set_rules('archive', lang('HIDE_ARCHIVE'), 'trim');
 		if ($this->form_validation->run() == True){
 			$search_rule = array();
 			if($this->input->post('f_name')) $search_rule['like']['_clients.f_name'] = $this->input->post('f_name');
 			if($this->input->post('l_name')) $search_rule['like']['_clients.l_name'] = $this->input->post('l_name');
 			if($this->input->post('f_pass_num')) $search_rule['like']['_clients.f_pass_num'] = $this->input->post('f_pass_num');
+			if($this->input->post('archive')==0) $search_rule['where']['_clients.archive'] = $this->input->post('archive');
 			$this->set_searchrule($search_rule);
 		}
 		$search = $this->get_session('searchrule');
@@ -273,11 +275,13 @@ class Clients extends Crmcontroller {
 		$this->form_validation->set_rules('f_name', lang('F_NAME'), 'trim');
 		$this->form_validation->set_rules('l_name', lang('L_NAME'), 'trim');
 		$this->form_validation->set_rules('f_pass_num', lang('FPASSP_NUM'), 'trim');
+		$this->form_validation->set_rules('archive', lang('HIDE_ARCHIVE'), 'trim');
 		if ($this->form_validation->run() == True){
 			$search_rule = array();
 			if($this->input->post('f_name')) $search_rule['like']['_clients.f_name'] = $this->input->post('f_name');
 			if($this->input->post('l_name')) $search_rule['like']['_clients.l_name'] = $this->input->post('l_name');
 			if($this->input->post('f_pass_num')) $search_rule['like']['_clients.f_pass_num'] = $this->input->post('f_pass_num');
+			if($this->input->post('archive')==0) $search_rule['where']['_clients.archive'] = $this->input->post('archive');
 			$this->set_searchrule($search_rule);
 		}
 		$search = $this->get_session('searchrule');

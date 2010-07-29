@@ -14,13 +14,13 @@ class Employeers_model extends Crmmodel{
 						JOIN _emp_to_positions_headers ON _emp_to_positions_rows._emp_to_positions_headers_rid=_emp_to_positions_headers.rid
 						JOIN _filials ON _emp_to_positions_rows._filials_rid=_filials.rid
 						WHERE _emp_to_positions_rows._employeers_rid = _employeers.rid AND _emp_to_positions_headers.date_doc < now() 
-						ORDER BY  _emp_to_positions_headers.date_doc ASC LIMIT 1) as filial_name,  
+						ORDER BY  _emp_to_positions_headers.date_doc DESC LIMIT 1) as filial_name,  
 						(select _filials.rid 
 						FROM _emp_to_positions_rows 
 						JOIN _emp_to_positions_headers ON _emp_to_positions_rows._emp_to_positions_headers_rid=_emp_to_positions_headers.rid
 						JOIN _filials ON _emp_to_positions_rows._filials_rid=_filials.rid
 						WHERE _emp_to_positions_rows._employeers_rid = _employeers.rid AND _emp_to_positions_headers.date_doc < now() 
-						ORDER BY  _emp_to_positions_headers.date_doc ASC LIMIT 1) as _filials_rid,						
+						ORDER BY  _emp_to_positions_headers.date_doc DESC LIMIT 1) as _filials_rid,						
 						DATE_FORMAT(_employeers.birthday, \'%d.%m.%Y\') as birthday,
 						DATE_FORMAT(_employeers.bdate,  \'%d.%m.%Y\') as bdate,
 						DATE_FORMAT(_employeers.edate,  \'%d.%m.%Y\') as edate,

@@ -18,4 +18,5 @@ $lang['ADV_COST'] = 'Стоимость';
 $lang['ADV_CALLS_QUAN'] = 'К-во контактов';
 $lang['ADV_DEMANDS_QUAN'] = 'К-во продаж';
 $lang['ADV_DOXOD'] = 'Доход';
+$lang['ADV_CONVERSION'] = 'Конверсия';
 ?>

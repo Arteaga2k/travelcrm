@@ -105,7 +105,18 @@ $(document).ready(function (){
            $(this).attr('checked', !$(this).attr('checked'));
        });
 	});
+	
 	$('#delete_btn_<?=$orid?>').click(function(){
+
+	    var is_any_checked = false;
+	    $("[name='row[]']").each( function() {
+           if($(this).attr('checked')) is_any_checked = true;
+        });
+		if(!is_any_checked) {
+			alert('<?=lang('NO_ROWS_CHECKED');?>');
+			return false;
+		}		
+		
 		if(confirm('<?=lang('CONFIRM_DEL')?>')){
 			$('#grid_<?=$orid?>').submit();
 			return true;	

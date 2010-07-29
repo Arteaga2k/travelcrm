@@ -121,14 +121,17 @@ class Countries extends Crmcontroller {
 		$this->form_validation->set_rules('country_code', lang('CODE'), 'trim');
 		$this->form_validation->set_rules('country_name', lang('NAME'), 'trim');
 		$this->form_validation->set_rules('country_name_lat', lang('NAME_LAT'), 'trim');
+		$this->form_validation->set_rules('archive', lang('HIDE_ARCHIVE'), 'trim');
 		if ($this->form_validation->run() == True){
 			$search_rule = array();
-			if($this->input->post('country_code')) $search_rule['_countries.country_code'] = $this->input->post('country_code');
-			if($this->input->post('country_name')) $search_rule['_countries.country_name'] = $this->input->post('country_name');
-			if($this->input->post('country_name_lat')) $search_rule['_countries.country_name_lat'] = $this->input->post('country_name_lat');			
+			if($this->input->post('country_code')) $search_rule['like']['_countries.country_code'] = $this->input->post('country_code');
+			if($this->input->post('country_name')) $search_rule['like']['_countries.country_name'] = $this->input->post('country_name');
+			if($this->input->post('country_name_lat')) $search_rule['like']['_countries.country_name_lat'] = $this->input->post('country_name_lat');
+			if($this->input->post('archive')==0) $search_rule['where']['_countries.archive'] = $this->input->post('archive');			
 			$this->set_searchrule($search_rule);
 		}
-		$data['search'] = $this->get_session('searchrule');
+		$search = $this->get_session('searchrule');
+		$data['search'] = array_merge(element('like', $search, array()), element('where', $search, array()), element('having', $search, array()));
 		return $this->load->view('countries/find', $data, True);
 	}
 	

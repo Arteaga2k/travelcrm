@@ -154,7 +154,7 @@ class Airsell extends Doccontroller {
 		$this->form_validation->set_rules('_employeers_rid', lang('EMPLOYEER'), 'trim');
 		$this->form_validation->set_rules('bill_num', lang('bill_num'), 'trim');
 		$this->form_validation->set_rules('bill_code', lang('bill_num'), 'trim');
-		$this->form_validation->set_rules('client_name', lang('CLIENT_L_NAME'), 'trim');
+		$this->form_validation->set_rules('_clients_rid', lang('CLIENT_L_NAME'), 'trim');
 		$this->form_validation->set_rules('archive', lang('HIDE_ARCHIVE'), 'trim');
 		if ($this->form_validation->run() == True){
 			$search_rule = array();
@@ -165,7 +165,7 @@ class Airsell extends Doccontroller {
 			if($this->input->post('_employeers_rid')) $search_rule['where']['_employeers.rid'] = $this->input->post('_employeers_rid');
 			if($this->input->post('bill_code')) $search_rule['where']['_airsell_headers.bill_code'] = $this->input->post('bill_code');
 			if($this->input->post('bill_num')) $search_rule['where']['_airsell_headers.bill_num'] = $this->input->post('bill_num');
-			if($this->input->post('client_name')) $search_rule['like']['_clients.l_name'] = $this->input->post('client_name');
+			if($this->input->post('_clients_rid')) $search_rule['where']['_clients.rid'] = $this->input->post('_clients_rid');
 			if($this->input->post('archive')==0) $search_rule['where']['_documents.archive'] = $this->input->post('archive');
 			$this->set_searchrule($search_rule);
 		}

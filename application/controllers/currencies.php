@@ -125,15 +125,18 @@ class Currencies extends Crmcontroller {
 		$this->form_validation->set_rules('currency_name', lang('NAME'), 'trim');
 		$this->form_validation->set_rules('left_word', lang('LEFT_WORD'), 'trim');
 		$this->form_validation->set_rules('right_word', lang('RIGHT_WORD'), 'trim');
+		$this->form_validation->set_rules('archive', lang('HIDE_ARCHIVE'), 'trim');
 		if ($this->form_validation->run() == True){
 			$search_rule = array();
-			if($this->input->post('code')) $search_rule['_currencies.code'] = $this->input->post('code');
-			if($this->input->post('currency_name')) $search_rule['_currencies.currency_name'] = $this->input->post('currency_name');
-			if($this->input->post('left_word')) $search_rule['_currencies.left_word'] = $this->input->post('left_word');
-			if($this->input->post('right_word')) $search_rule['_currencies.right_word'] = $this->input->post('right_word');			
+			if($this->input->post('code')) $search_rule['where']['_currencies.code'] = $this->input->post('code');
+			if($this->input->post('currency_name')) $search_rule['like']['_currencies.currency_name'] = $this->input->post('currency_name');
+			if($this->input->post('left_word')) $search_rule['where']['_currencies.left_word'] = $this->input->post('left_word');
+			if($this->input->post('right_word')) $search_rule['where']['_currencies.right_word'] = $this->input->post('right_word');
+			if($this->input->post('archive')==0) $search_rule['where']['_currencies.archive'] = $this->input->post('archive');			
 			$this->set_searchrule($search_rule);
 		}
-		$data['search'] = $this->get_session('searchrule');
+		$search = $this->get_session('searchrule');
+		$data['search'] = array_merge(element('like', $search, array()), element('where', $search, array()), element('having', $search, array()));
 		return $this->load->view('currencies/find', $data, True);
 	}
 	

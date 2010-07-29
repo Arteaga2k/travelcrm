@@ -64,6 +64,9 @@
 					<?=lang('ADV_DEMANDS_QUAN')?>
 				</th>
 				<th>
+					<?=lang('ADV_CONVERSION')?>,%
+				</th>
+				<th>
 					<?=lang('ADV_DOXOD')?>
 				</th>
 			</tr>
@@ -89,6 +92,9 @@
 				<?=$r['demands_quan']?>
 			</td>
 			<td>
+				<?=intval($r['calls_quan'])?(ROUND(intval($r['demands_quan'])/intval($r['calls_quan']), 2)*100):0?>
+			</td>
+			<td>
 				<?=$r['doxod']?>
 			</td>
 		</tr>
@@ -105,6 +111,9 @@
 			</td>
 			<td style="font-weight: bold; background-color: #CCCCCC;">
 				<?=$total_demands?>
+			</td>
+			<td style="font-weight: bold; background-color: #CCCCCC;">
+				<?=$total_calls?(ROUND(intval($total_demands)/intval($total_calls), 2)):0?>
 			</td>
 			<td style="font-weight: bold; background-color: #CCCCCC;">
 				<?=$total_doxod?>

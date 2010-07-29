@@ -30,6 +30,7 @@ $lang['REMOVE_SYSTEM_SUCCESS'] = 'Данные успешно удалены.';
 $lang['PAGING'] = 'Всего записей: <b>%s</b>';
 $lang['BACK_TO_LIST'] = 'Назад к списку';
 $lang['CONFIRM_DEL'] = 'Действительно хотите удалить выделенные строки?';
+$lang['NO_ROWS_CHECKED'] = 'Не выбрано ни одной строки!';
 $lang['SELECT_BTN'] = 'Выбрать';
 $lang['CLEAR_BTN'] = 'Очистить';
 $lang['DETAILS_BTN'] = 'Подробнее...';

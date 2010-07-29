@@ -15,7 +15,9 @@ class Currencies_model extends Crmmodel{
 							_currencies.owner_users_rid,
 							_currencies.descr as descr, _currencies.archive', False);
 		$this->db->from('_currencies');
-		if($searchRule = $this->ci->get_session('searchrule')) $this->db->like($searchRule);
+		if($searchRule = element('like', $this->ci->get_session('searchrule'), null)) $this->db->like($searchRule);
+		if($searchRule = element('where', $this->ci->get_session('searchrule'), null)) $this->db->where($searchRule);
+		if($searchRule = element('having', $this->ci->get_session('searchrule'), null)) $this->db->having($searchRule);
 		if($sort = $this->ci->get_session('sort'))	$this->db->orderby($sort['c'], $sort['r']);
 		$this->db->limit($this->ci->config->item('crm_grid_limit'), element('p', $this->ci->a_uri_assoc, null));
 		$query = $this->db_get('_currencies');

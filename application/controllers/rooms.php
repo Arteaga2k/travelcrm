@@ -118,13 +118,16 @@ class Rooms extends Crmcontroller {
 		$data['orid'] = $this->get_orid();
 		$this->form_validation->set_rules('code', lang('CODE'), 'trim');
 		$this->form_validation->set_rules('room_name', lang('NAME'), 'trim');
+		$this->form_validation->set_rules('archive', lang('HIDE_ARCHIVE'), 'trim');
 		if ($this->form_validation->run() == True){
 			$search_rule = array();
-			if($this->input->post('code')) $search_rule['_rooms.code'] = $this->input->post('code');
-			if($this->input->post('room_name')) $search_rule['_rooms.room_name'] = $this->input->post('room_name');			
+			if($this->input->post('code')) $search_rule['like']['_rooms.code'] = $this->input->post('code');
+			if($this->input->post('room_name')) $search_rule['like']['_rooms.room_name'] = $this->input->post('room_name');	
+			if($this->input->post('archive')==0) $search_rule['where']['_rooms.archive'] = $this->input->post('archive');		
 			$this->set_searchrule($search_rule);
 		}
-		$data['search'] = $this->get_session('searchrule');
+		$search = $this->get_session('searchrule');
+		$data['search'] = array_merge(element('like', $search, array()), element('where', $search, array()), element('having', $search, array()));
 		return $this->load->view('rooms/find', $data, True);
 	}
 	
