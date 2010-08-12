@@ -73,7 +73,7 @@
 	<?=get_advertisessources_vp(set_value('_advertisessources_rid', $ds->_advertisessources_rid))?>
 </div>
 <div class="column span-4">
-	<?=form_label(lang('CALL'), 'call_rid')?>
+	<?=form_label(lang('CALL').required_field(), 'call_rid')?>
 </div>
 <div class="column span-8 last">
 	<?=get_calls_vp(set_value('_calls_documents_rid', $ds->_calls_documents_rid))?>
@@ -378,6 +378,11 @@ $(document).ready(
 			});
 			$('#recalc').click(function(){
 				// пересчет суммы тура на стороне сервера
+				$('#sum_tour').val($('#sum_tour').val().replace(',','.'));
+				$('#cource').val($('#cource').val().replace(',','.'));
+				$('#to_koeff').val($('#to_koeff').val().replace(',','.'));
+				$('#discount_per').val($('#discount_per').val().replace(',','.'));
+				$('#discount_fix').val($('#discount_fix').val().replace(',','.'));
 				var query_string = 'sum_tour='+$('#sum_tour').val()+'&'+
 									'cource='+$('#cource').val()+'&'+
 									'to_koeff='+$('#to_koeff').val()+'&'+

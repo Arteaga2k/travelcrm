@@ -59,8 +59,9 @@ class Demands extends Doccontroller {
 		$data['fields']['client_name'] =  array('label'=>lang('CLIENT_L_NAME'), 'colwidth'=>'10%', 'sort'=>True);
 		$data['fields']['country_name'] =  array('label'=>lang('COUNTRY'), 'colwidth'=>'10%', 'sort'=>True);
 		$data['fields']['sum'] =  array('label'=>lang('SUM'), 'colwidth'=>'10%', 'sort'=>True);
-		$data['fields']['date_from'] =  array('label'=>lang('DATE_FROM'), 'colwidth'=>'15%', 'sort'=>True);
-		$data['fields']['emp_name'] =  array('label'=>lang('OWNER'), 'colwidth'=>'15%', 'sort'=>True);
+		$data['fields']['date_from'] =  array('label'=>lang('DATE_FROM'), 'colwidth'=>'10%', 'sort'=>True);
+		$data['fields']['emp_name'] =  array('label'=>lang('OWNER'), 'colwidth'=>'10%', 'sort'=>True);
+		$data['fields']['approve'] =  array('label'=>lang('APPROVE_TOUR'), 'colwidth'=>'10%', 'sort'=>True, 'type'=>'yes_no');
 		$data['fields']['anulated'] = array('label'=>lang('ANULATED'), 'colwidth'=>'5%', 'sort'=>True, 'type'=>'yes_no');
 		$data['fields']['archive'] = array('label'=>lang('ARCHIVE'), 'colwidth'=>'5%', 'sort'=>True, 'type'=>'yes_no');  
 		$data['fields']['modifyDT'] = array('label'=>lang('MODIFYDT'), 'colwidth'=>'20%', 'sort'=>True); 
@@ -199,6 +200,8 @@ class Demands extends Doccontroller {
 			if($this->input->post('rid')) $search_rule['where']['_documents.rid'] = $this->input->post('rid');
 			if($this->input->post('doc_from')) $search_rule['where']['_demands_headers.date_doc >='] = date('Y-m-d', strtotime($this->input->post('doc_from')));
 			if($this->input->post('doc_to')) $search_rule['where']['_demands_headers.date_doc <='] = date('Y-m-d', strtotime($this->input->post('doc_to')));
+			if($this->input->post('date_from')) $search_rule['where']['_tours.date_from >='] = date('Y-m-d', strtotime($this->input->post('date_from')));
+			if($this->input->post('date_to')) $search_rule['where']['_tours.date_to <='] = date('Y-m-d', strtotime($this->input->post('date_to')));
 			if($this->input->post('_filials_rid')) $search_rule['having']['_filials_rid'] = $this->input->post('_filials_rid');
 			if($this->input->post('_employeers_rid')) $search_rule['where']['_employeers.rid'] = $this->input->post('_employeers_rid');
 			if($this->input->post('_countries_rid')) $search_rule['where']['_tours._countries_rid'] = $this->input->post('_countries_rid');
@@ -218,7 +221,7 @@ class Demands extends Doccontroller {
 	
 	private function set_validation(){
 		$this->form_validation->set_rules('_advertisessources_rid', lang('ADVERTISE'), 'trim|required');
-		$this->form_validation->set_rules('_calls_documents_rid', lang('CALL'), 'trim');
+		$this->form_validation->set_rules('_calls_documents_rid', lang('CALL'), 'trim|required');
 		$this->form_validation->set_rules('_touroperators_rid', lang('TOUROPERATOR'), 'trim|required');
 		$this->form_validation->set_rules('route', lang('ROUTE'), 'trim|required|max_length[255]');
 		$this->form_validation->set_rules('date_from', lang('DATE_FROM'), 'trim|required');
@@ -238,12 +241,11 @@ class Demands extends Doccontroller {
 		$this->form_validation->set_rules('demander', lang('CL_ZT'), 'trim|required|callback_check_zt');
 		$this->form_validation->set_rules('sum_tour', lang('SUM_TOUR'), 'trim|floatval|required');
 		$this->form_validation->set_rules('cource', lang('SUM_TOUR'), 'trim|floatval|required');
-		$this->form_validation->set_rules('to_koeff', lang('TO_KOEFF'), 'trim|floatval|required');
+		$this->form_validation->set_rules('to_koeff', lang('OPERATOR_KOEFF'), 'trim|floatval|required');
 		$this->form_validation->set_rules('discount_per', lang('DISCOUNT_PER'), 'trim|floatval');
-		$this->form_validation->set_rules('discount_fix', lang('DISCOUNT_PER'), 'trim|floatval');
+		$this->form_validation->set_rules('discount_fix', lang('DISCOUNT_FIX'), 'trim|floatval');
 		$this->form_validation->set_rules('_currencies_rid', lang('CURRENCY'), 'trim|required');
 		$this->form_validation->set_rules('sum', lang('SUM'), 'trim|floatval|required');
-		$this->form_validation->set_rules('_calls_documents_rid', lang(''), 'trim');
 		$this->form_validation->set_rules('descr', lang('DESCR'), 'trim|max_length[512]');
 		$this->form_validation->set_rules('archive', lang('ARCHIVE'), 'trim');
 		return;		

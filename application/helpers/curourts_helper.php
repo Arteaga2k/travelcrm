@@ -5,6 +5,12 @@ function get_curourtname_byrid($rid){
 	return $ci->curourts_model->get_curourtname_byrid($rid);
 }
 
+function get_curourtcountry_byrid($rid){
+	$ci = &get_instance();
+	$ci->load->model('curourts_model');
+	return $ci->curourts_model->get_curourtcountry_byrid($rid);
+}
+
 /**
  * Получить value_picker для Curourts
  * 

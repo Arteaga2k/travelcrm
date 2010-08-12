@@ -171,3 +171,6 @@ sup{
 .fr{
 	float: right;
 }
+input[type="checkbox"]{
+	margin-left: 0px;
+}
