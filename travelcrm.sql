@@ -26,19 +26,19 @@ CREATE TABLE `_account_states` (
   `state_name` varchar(255) DEFAULT NULL,
   `koef` tinyint(1) DEFAULT '1',
   `descr` varchar(512) DEFAULT NULL,
-  `owner_users_rid` int(12) DEFAULT NULL,
+  `owner_users_rid` int(11) DEFAULT NULL,
   `createDT` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `modifyDT` timestamp NULL DEFAULT NULL,
-  `modifier_users_rid` int(12) DEFAULT NULL,
-  `archive` tinyint(1) DEFAULT '0',
+  `modifier_users_rid` int(11) DEFAULT NULL,
+  `archive` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`rid`),
   UNIQUE KEY `code` (`code`),
   UNIQUE KEY `state_name` (`state_name`),
-  KEY `FK__account_states` (`modifier_users_rid`),
-  KEY `FK__account_states1` (`owner_users_rid`),
-  CONSTRAINT `FK__account_states` FOREIGN KEY (`modifier_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE,
-  CONSTRAINT `FK__account_states1` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  KEY `FK__account_states_1` (`modifier_users_rid`),
+  KEY `FK__account_states` (`owner_users_rid`),
+  CONSTRAINT `FK__account_states` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `FK__account_states_1` FOREIGN KEY (`modifier_users_rid`) REFERENCES `_users` (`rid`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `_account_states`
@@ -46,7 +46,7 @@ CREATE TABLE `_account_states` (
 
 LOCK TABLES `_account_states` WRITE;
 /*!40000 ALTER TABLE `_account_states` DISABLE KEYS */;
-INSERT INTO `_account_states` VALUES (2,'00001','Расходы на аренду',-1,'Расходы на аренду',1,'2007-12-08 18:20:34','2010-05-01 17:37:44',1,0),(3,'00002','Расходы на рекламу',-1,'Расходы на рекламные кампании',1,'2007-12-25 08:26:29','2009-06-15 09:09:33',1,0),(4,'00003','Предоплата за тур',1,'Предоплата за тур от клиентов на счет ЦО',1,'2007-12-28 12:28:46','2009-06-15 09:09:40',1,0),(5,'00004','Доплата за тур',1,'',1,'2007-12-28 12:29:15','2009-06-15 09:09:47',1,0),(6,'00005','Расходы на связь',-1,'',1,'2008-02-04 12:04:41','2009-06-15 09:11:01',1,0),(7,'00006','Расходы на Tury.in.ua',-1,'',1,'2008-02-04 12:05:18','2009-06-15 09:11:11',1,0),(8,'00007','Расходы прочие',-1,'',1,'2008-02-04 12:05:51','2009-06-15 09:11:41',1,0),(9,'00008','Расходы на вывески и навигацию',-1,'',1,'2008-02-05 07:51:42','2009-06-15 09:11:50',1,0),(10,'00009','Налоговые расходы по ЗП',-1,'',1,'2008-02-20 14:37:10','2009-06-15 09:12:15',1,0),(11,'00010','Коммунальные услуги',-1,'Затраты на коммунальные услуги',1,'2008-02-28 14:11:39','2009-06-15 09:12:38',1,0),(12,'00011','Расходы на Интернет',-1,'Затраты на интернет',1,'2008-02-28 14:13:18','2009-06-15 09:12:48',1,0),(13,'00012','Расходы на открытие филиалов',-1,'Расходы на открытие филиалов',1,'2008-02-28 14:14:55','2009-06-15 09:13:04',1,0),(14,'00013','Приобретение ОС',-1,'Приобретение ОС',1,'2008-02-28 14:15:42','2009-06-15 09:13:13',1,0),(15,'00014','Коммандировочные расходы',-1,'Расходы на коммандировки',1,'2008-02-28 14:17:36','2009-06-15 09:13:22',1,0),(16,'00015','РКО',-1,'Расходно кассовые ордера',1,'2008-02-28 14:22:02','2010-03-31 18:56:42',1,0),(18,'00017','Премия',-1,'ПРемия сотрудникам',1,'2008-03-06 14:35:57','2009-06-15 09:13:58',1,0),(19,'00018','Штраф',1,'Удержание сотрудника',1,'2008-03-06 14:36:48','2009-06-15 09:14:07',1,0),(20,'00019','Расчеты с туроператорами',-1,'',1,'2009-07-22 21:15:28','2009-07-22 21:15:28',1,0);
+INSERT INTO `_account_states` VALUES (2,'00001','Расходы на аренду',-1,'Расходы на аренду',1,'2010-04-15 21:00:00','2010-08-20 15:13:14',1,0),(3,'00002','Расходы на рекламу',-1,'Расходы на рекламные кампании',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0),(4,'00003','Предоплата за тур',1,'Предоплата за тур от клиентов на счет ЦО',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0),(5,'00004','Доплата за тур',1,'',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0),(6,'00005','Расходы на связь',-1,'',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0),(7,'00006','Расходы на Tury.in.ua',-1,'',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0),(8,'00007','Расходы прочие',-1,'',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0),(9,'00008','Расходы на вывески и навигацию',-1,'',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0),(10,'00009','Налоговые расходы по ЗП',-1,'',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0),(11,'00010','Коммунальные услуги',-1,'Затраты на коммунальные услуги',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0),(12,'00011','Расходы на Интернет',-1,'Затраты на интернет',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0),(13,'00012','Расходы на открытие филиалов',-1,'Расходы на открытие филиалов',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0),(14,'00013','Приобретение ОС',-1,'Приобретение ОС',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0),(15,'00014','Коммандировочные расходы',-1,'Расходы на коммандировки',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0),(20,'00019','Расчеты с туроператорами',-1,'',1,'2010-04-15 21:00:00','2010-04-15 21:00:00',1,0);
 /*!40000 ALTER TABLE `_account_states` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -492,6 +492,84 @@ INSERT INTO `_attaches` VALUES (17,'7486bd6db95634bd012e7e7498b7a8f5.jpg','7486b
 UNLOCK TABLES;
 
 --
+-- Table structure for table `_calls_countries`
+--
+
+DROP TABLE IF EXISTS `_calls_countries`;
+CREATE TABLE `_calls_countries` (
+  `rid` int(12) NOT NULL AUTO_INCREMENT,
+  `_calls_headers_rid` int(12) DEFAULT NULL,
+  `_countries_rid` int(12) DEFAULT NULL,
+  PRIMARY KEY (`rid`),
+  KEY `FK__calls_countries` (`_countries_rid`),
+  KEY `FK__calls_countries_2` (`_calls_headers_rid`),
+  CONSTRAINT `FK__calls_countries_2` FOREIGN KEY (`_calls_headers_rid`) REFERENCES `_calls_headers` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK__calls_countries` FOREIGN KEY (`_countries_rid`) REFERENCES `_countries` (`rid`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `_calls_countries`
+--
+
+LOCK TABLES `_calls_countries` WRITE;
+/*!40000 ALTER TABLE `_calls_countries` DISABLE KEYS */;
+INSERT INTO `_calls_countries` VALUES (25,5331,3),(26,5331,7),(44,5292,3),(45,5333,64),(48,5332,1),(49,5334,64),(52,5335,3),(53,5335,7);
+/*!40000 ALTER TABLE `_calls_countries` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `_calls_curourts`
+--
+
+DROP TABLE IF EXISTS `_calls_curourts`;
+CREATE TABLE `_calls_curourts` (
+  `rid` int(12) NOT NULL AUTO_INCREMENT,
+  `_calls_headers_rid` int(12) DEFAULT NULL,
+  `_curourts_rid` int(12) DEFAULT NULL,
+  PRIMARY KEY (`rid`),
+  KEY `FK__calls_curourts` (`_curourts_rid`),
+  KEY `FK__calls_curourts_2` (`_calls_headers_rid`),
+  CONSTRAINT `FK__calls_curourts_2` FOREIGN KEY (`_calls_headers_rid`) REFERENCES `_calls_headers` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK__calls_curourts` FOREIGN KEY (`_curourts_rid`) REFERENCES `_curourts` (`rid`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `_calls_curourts`
+--
+
+LOCK TABLES `_calls_curourts` WRITE;
+/*!40000 ALTER TABLE `_calls_curourts` DISABLE KEYS */;
+INSERT INTO `_calls_curourts` VALUES (15,5331,1),(16,5331,2),(17,5331,14),(20,5292,2),(23,5332,13);
+/*!40000 ALTER TABLE `_calls_curourts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `_calls_food`
+--
+
+DROP TABLE IF EXISTS `_calls_food`;
+CREATE TABLE `_calls_food` (
+  `rid` int(12) NOT NULL AUTO_INCREMENT,
+  `_calls_headers_rid` int(12) DEFAULT NULL,
+  `_food_rid` int(12) DEFAULT NULL,
+  PRIMARY KEY (`rid`),
+  KEY `FK__calls_food_1` (`_calls_headers_rid`),
+  KEY `FK__calls_food_2` (`_food_rid`),
+  CONSTRAINT `FK__calls_food_2` FOREIGN KEY (`_food_rid`) REFERENCES `_food` (`rid`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `FK__calls_food_1` FOREIGN KEY (`_calls_headers_rid`) REFERENCES `_calls_headers` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `_calls_food`
+--
+
+LOCK TABLES `_calls_food` WRITE;
+/*!40000 ALTER TABLE `_calls_food` DISABLE KEYS */;
+INSERT INTO `_calls_food` VALUES (1,5292,4),(2,5292,5),(3,5333,1),(4,5333,2),(7,5332,1),(8,5334,1),(9,5334,2),(12,5335,4),(13,5335,5);
+/*!40000 ALTER TABLE `_calls_food` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `_calls_hcats`
 --
 
@@ -505,7 +583,7 @@ CREATE TABLE `_calls_hcats` (
   KEY `FK__calls_hcats1` (`_hotelscats_rid`),
   CONSTRAINT `FK__calls_hcats` FOREIGN KEY (`_calls_headers_rid`) REFERENCES `_calls_headers` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK__calls_hcats1` FOREIGN KEY (`_hotelscats_rid`) REFERENCES `_hotelscats` (`rid`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `_calls_hcats`
@@ -513,7 +591,7 @@ CREATE TABLE `_calls_hcats` (
 
 LOCK TABLES `_calls_hcats` WRITE;
 /*!40000 ALTER TABLE `_calls_hcats` DISABLE KEYS */;
-INSERT INTO `_calls_hcats` VALUES (1,5327,4),(4,5319,4),(5,5317,4),(7,5302,4),(8,5296,2),(16,5329,3),(17,5329,4),(18,5328,4),(19,5328,5),(22,5292,5),(23,5303,3),(24,5326,3),(25,5322,3);
+INSERT INTO `_calls_hcats` VALUES (49,5331,5),(82,5292,5),(83,5333,4),(84,5333,5),(89,5332,2),(90,5332,3),(91,5334,3),(92,5334,4),(95,5335,4),(96,5335,5);
 /*!40000 ALTER TABLE `_calls_hcats` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -539,7 +617,7 @@ CREATE TABLE `_calls_headers` (
   CONSTRAINT `FK__calls_headers1` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__calls_headers_2` FOREIGN KEY (`_documents_rid`) REFERENCES `_documents` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK__calls_headers_3` FOREIGN KEY (`modifier_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5330 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5336 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `_calls_headers`
@@ -547,7 +625,7 @@ CREATE TABLE `_calls_headers` (
 
 LOCK TABLES `_calls_headers` WRITE;
 /*!40000 ALTER TABLE `_calls_headers` DISABLE KEYS */;
-INSERT INTO `_calls_headers` VALUES (5099,8243,'2008-08-08 09:00:00',NULL,1,'2008-08-08 02:35:01','2008-08-15 09:45:52',1,0),(5115,8267,'2008-08-08 09:00:00',NULL,1,'2008-08-08 13:25:01','2008-08-14 07:30:00',1,0),(5201,8435,'2008-08-12 09:00:00',NULL,1,'2008-08-12 11:05:01','2008-08-12 16:26:55',1,0),(5224,8472,'2008-08-13 09:00:00',NULL,1,'2008-08-13 09:35:01','2008-08-13 11:41:34',1,0),(5292,8582,'2009-08-14 08:02:00',NULL,1,'2008-08-15 08:17:03','2008-08-15 08:17:03',2,0),(5296,8587,'2008-08-15 09:00:00',NULL,1,'2008-08-15 09:15:18','2008-08-15 09:15:18',1,0),(5302,8595,'2008-08-15 09:00:00',NULL,1,'2008-08-15 11:06:08','2008-08-15 11:06:40',1,0),(5303,8596,'2008-08-15 09:00:00',NULL,1,'2008-08-15 11:21:59','2008-08-16 10:52:50',1,0),(5317,8625,'2008-08-16 09:00:00',NULL,1,'2008-08-16 09:38:23','2008-08-16 09:38:46',1,0),(5319,8628,'2008-08-16 09:00:00',NULL,1,'2008-08-16 10:25:21','2008-08-16 10:25:21',1,0),(5322,8632,'2008-08-16 09:00:00',NULL,1,'2008-08-16 10:42:16','2008-08-16 10:42:16',1,0),(5326,8640,'2008-08-16 09:00:00',NULL,1,'2008-08-16 13:15:45','2008-08-16 13:15:45',1,0),(5327,8641,'2008-08-16 09:00:00',NULL,1,'2008-08-16 13:24:10','2008-08-16 13:24:10',1,0),(5328,14452,'2009-07-19 09:00:00',NULL,1,'2009-07-19 12:02:49','2009-07-19 12:02:49',1,0),(5329,14456,'2009-09-02 12:41:00',NULL,1,'2009-09-02 12:42:27','2009-09-02 12:42:27',1,0);
+INSERT INTO `_calls_headers` VALUES (5292,8582,'2009-08-14 08:02:00',NULL,1,'2008-08-15 08:17:03','2008-08-15 08:17:03',1,0),(5331,14470,'2010-08-15 09:58:00',NULL,1,'2010-08-15 10:03:39','2010-08-15 10:03:39',1,0),(5332,14471,'2010-08-15 10:05:00',NULL,1,'2010-08-15 10:12:18','2010-08-15 10:12:18',1,0),(5333,14473,'2010-08-15 11:26:00',NULL,1,'2010-08-15 11:28:28','2010-08-15 11:28:28',1,0),(5334,14474,'2010-08-19 20:09:00',NULL,1,'2010-08-19 20:11:31','2010-08-19 20:11:31',1,0),(5335,14476,'2010-08-19 20:28:00',NULL,2,'2010-08-19 20:29:55','2010-08-19 20:29:55',2,0);
 /*!40000 ALTER TABLE `_calls_headers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -560,10 +638,8 @@ CREATE TABLE `_calls_rows` (
   `rid` int(12) NOT NULL AUTO_INCREMENT,
   `_calls_headers_rid` int(12) DEFAULT NULL,
   `_clients_rid` int(12) DEFAULT NULL,
-  `_countries_rid` int(12) DEFAULT NULL,
   `_advertisessources_rid` int(12) DEFAULT NULL,
   `_currencies_rid` int(12) DEFAULT NULL,
-  `_curourts_rid` int(12) DEFAULT NULL,
   `f_name` varchar(255) DEFAULT NULL,
   `s_name` varchar(255) DEFAULT NULL,
   `l_name` varchar(255) DEFAULT NULL,
@@ -571,6 +647,7 @@ CREATE TABLE `_calls_rows` (
   `date_to` timestamp NULL DEFAULT NULL,
   `sum_wanted_to` float DEFAULT NULL,
   `tourists_quan` int(12) DEFAULT NULL,
+  `chields_quan` int(11) DEFAULT NULL,
   `tourists_wish` varchar(512) DEFAULT NULL,
   `tourists_offers` varchar(512) DEFAULT NULL,
   `tourists_answers` varchar(512) DEFAULT NULL,
@@ -584,21 +661,17 @@ CREATE TABLE `_calls_rows` (
   `email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`rid`),
   KEY `_calls_headers_rid` (`_calls_headers_rid`),
-  KEY `_countries_rid` (`_countries_rid`),
   KEY `_adverises_rows_rid` (`_advertisessources_rid`),
   KEY `_currencies_rid` (`_currencies_rid`),
   KEY `FK__calls_rows_2` (`modifier_users_rid`),
   KEY `FK__calls_rows1` (`owner_users_rid`),
-  KEY `FK__calls_rows3` (`_curourts_rid`),
   KEY `FK__calls_rows8` (`_clients_rid`),
   CONSTRAINT `FK__calls_rows` FOREIGN KEY (`_calls_headers_rid`) REFERENCES `_calls_headers` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK__calls_rows1` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE,
-  CONSTRAINT `FK__calls_rows2` FOREIGN KEY (`_countries_rid`) REFERENCES `_countries` (`rid`) ON UPDATE CASCADE,
-  CONSTRAINT `FK__calls_rows3` FOREIGN KEY (`_curourts_rid`) REFERENCES `_curourts` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__calls_rows7` FOREIGN KEY (`_currencies_rid`) REFERENCES `_currencies` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__calls_rows8` FOREIGN KEY (`_clients_rid`) REFERENCES `_clients` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__calls_rows_2` FOREIGN KEY (`modifier_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5312 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5318 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `_calls_rows`
@@ -606,7 +679,7 @@ CREATE TABLE `_calls_rows` (
 
 LOCK TABLES `_calls_rows` WRITE;
 /*!40000 ALTER TABLE `_calls_rows` DISABLE KEYS */;
-INSERT INTO `_calls_rows` VALUES (5081,5099,NULL,7,12,2,NULL,'Anna','','','2008-09-08 21:00:00','0000-00-00 00:00:00',1600,3,'Ambiente 4* (Турция / Кемер) Город вылета:Киеве','фэмили','',NULL,1,'2008-08-08 02:35:01','2008-08-15 09:45:52',1,0,'(818)3496331','abushler@hotmail.com'),(5097,5115,NULL,3,12,2,NULL,'Юля','','','2008-10-02 21:00:00','2008-10-03 21:00:00',1200,2,'любой, но чтобы хорошо, еще не были','перезвоню по мере появления новых предложений','',NULL,1,'2008-08-08 13:25:01','2008-08-14 07:30:00',1,0,'2210898','yulia222@ukr.net'),(5183,5201,NULL,7,12,2,NULL,'Сергей','','','2008-08-27 21:00:00','2008-08-27 21:00:00',1500,1,'Sun Star 4* (Турция / Алания) Город вылета:Киеве','Sun Star 4*','не дозвонились',NULL,1,'2008-08-12 11:05:01','2008-08-12 16:26:55',1,0,'+380977495309','s_rysyukov@ukr.net'),(5206,5224,NULL,35,12,4,NULL,'Людмила','','','2008-08-21 21:00:00','2008-08-28 21:00:00',640,4,'Касабланка 4* (Болгария / Обзор) Город вылета:Киеве','Касабланка 4* (Болгария / Обзор) Город вылета:Киеве\nаппартаменты','советуется с семьей',NULL,1,'2008-08-13 09:35:01','2008-08-13 11:41:34',1,0,'8-067-801-39-32','lb@ank.kiev.ua'),(5274,5292,NULL,3,35,2,2,'марина','','','2008-09-26 21:00:00','2008-10-03 21:00:00',2500,2,'Желаемый уровень отеля: 4*\nПожелания по питанию: Все включено\n------------------------------------\nКол. взрослых туристов: 2\nКол. детей: 13; 8','minamark hurghada, coral beach rotana resort','-',NULL,2,'2008-08-15 08:17:03','2010-05-07 08:28:29',2,0,'8-097-998-33-67',''),(5278,5296,NULL,1,35,1,NULL,'Виталий','','','2008-08-16 21:00:00','2008-08-23 21:00:00',7000,2,'крым, отдых с девушкой, активно','Ялта \"Интурист\"','-',NULL,1,'2008-08-15 09:15:18','2009-07-16 20:41:29',1,0,'8097 917 81 82',''),(5284,5302,NULL,8,34,4,NULL,'Ольга','Васильевна','','2008-08-21 21:00:00','2008-08-28 21:00:00',2000,2,'возле моря, на 10 дней, ближайшие даты','нет','-',NULL,1,'2008-08-15 11:06:08','2009-07-16 20:41:10',1,0,'(0642) 343526',''),(5285,5303,NULL,1,34,1,NULL,'Леся','','','2008-09-06 21:00:00','2008-09-16 21:00:00',40000,1,'ЮБК, пляжный отдых','\"Жемчужина\" (Алушта), \"Северная двина\" (Алушта), \"Крымские зори\" (Алушта)','-',NULL,1,'2008-08-15 11:21:59','2010-07-15 18:52:09',1,0,'578 13 64',''),(5299,5317,NULL,7,34,2,NULL,'Лариса','','','2008-08-16 21:00:00','2008-08-19 21:00:00',700,1,'любой отель','от 560 $','-',NULL,1,'2008-08-16 09:38:23','2009-07-16 20:40:42',1,0,'80961206186',''),(5301,5319,NULL,8,34,4,NULL,'Артем','','','2008-09-10 21:00:00','2008-09-10 21:00:00',1600,2,'Forest','Arsinoe','-',NULL,1,'2008-08-16 10:25:21','2009-07-16 20:40:20',1,0,'80951552924',''),(5304,5322,4714,64,34,4,NULL,'Елена','','','2008-08-28 21:00:00','2008-08-28 21:00:00',1700,2,'Avstralia 2','вылет только из Донецка','-',NULL,1,'2008-08-16 10:42:16','2010-07-15 21:01:56',1,0,'4251958',''),(5308,5326,4714,35,35,4,NULL,'','','','2008-08-31 21:00:00','2008-08-09 21:00:00',1500,2,'поближе к пляжу, дешево','пока нет','-',NULL,1,'2008-08-16 13:15:45','2010-07-15 20:57:41',1,0,'518 21 46',''),(5309,5327,NULL,1,35,1,NULL,'Наталья','','','2008-08-30 21:00:00','2008-09-09 21:00:00',2000,1,'\"Приморье\" Коктебель','\"Приморье\" Коктебель','-',NULL,1,'2008-08-16 13:24:10','2009-07-16 20:39:29',1,0,'8093 412 13 99',''),(5310,5328,NULL,3,35,2,2,'Юлия','','','2008-12-28 22:00:00','2009-01-10 22:00:00',1000,2,'Отдых с ребенком,не дорого.','\"Sanny days al palacio\"5*( Хургада), Beach Albatros 4*(Шарм-Эль-шейх) и др.','я подойду',NULL,1,'2009-07-19 12:02:49','2009-09-05 17:12:39',1,0,'8050 930 48 08',''),(5311,5329,NULL,39,126,2,NULL,'Сергей','','','2009-09-29 21:00:00','2009-10-09 21:00:00',5000,2,'впры аправ ав','аправрва','варавп рапрар вар',NULL,1,'2009-09-02 12:42:27','2009-09-02 12:42:27',1,0,'563231','');
+INSERT INTO `_calls_rows` VALUES (5274,5292,NULL,35,2,'марина','','','2008-09-26 21:00:00','2008-10-03 21:00:00',2500,2,0,'Желаемый уровень отеля: 4*\nПожелания по питанию: Все включено\n------------------------------------\nКол. взрослых туристов: 2\nКол. детей: 13; 8','minamark hurghada, coral beach rotana resort','-',NULL,1,'2008-08-15 08:17:03','2010-08-15 15:48:22',1,0,'8-097-998-33-67',''),(5313,5331,NULL,128,2,'Руслан','Валериевич','Остапенко','2010-08-31 21:00:00','2010-09-11 21:00:00',2300,3,NULL,'Пожелания туриста','Предложения туристу','Ответы туриста',NULL,1,'2010-08-15 10:03:39','2010-08-15 11:02:11',1,0,'044 1111111',''),(5314,5332,4733,125,2,'','','','2010-09-12 21:00:00','2010-09-24 21:00:00',750,2,1,'Пожелания туриста','Предложения туристу','Ответы туриста',NULL,1,'2010-08-15 10:12:18','2010-08-15 15:56:15',1,0,'03659851',''),(5315,5333,NULL,35,4,'Сергей','','','2010-08-24 21:00:00','2010-08-29 21:00:00',1350,2,1,'Пожелания туриста *','Предложения туристу *','Ответы туриста *',NULL,1,'2010-08-15 11:28:28','2010-08-15 15:51:25',1,0,'0679995588',''),(5316,5334,NULL,124,4,'Игорь','','','2010-08-31 21:00:00','2010-09-11 21:00:00',1300,2,1,'Пожелания туриста','Предложения туристу','Ответы туриста',NULL,1,'2010-08-19 20:11:31','2010-08-19 20:11:31',1,0,'044 1523112',''),(5317,5335,NULL,125,2,'Элла','','','2010-08-19 21:00:00','2010-08-26 21:00:00',2300,2,2,'--','*---','***---',NULL,2,'2010-08-19 20:29:55','2010-08-19 20:31:08',2,0,'0664561232','');
 /*!40000 ALTER TABLE `_calls_rows` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -721,7 +794,7 @@ CREATE TABLE `_clients` (
   CONSTRAINT `FK__clients1` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__clients2` FOREIGN KEY (`_cities_rid`) REFERENCES `_cities` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__clients_3` FOREIGN KEY (`_dcarts_rid`) REFERENCES `_dcarts` (`rid`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4730 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4738 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `_clients`
@@ -729,7 +802,7 @@ CREATE TABLE `_clients` (
 
 LOCK TABLES `_clients` WRITE;
 /*!40000 ALTER TABLE `_clients` DISABLE KEYS */;
-INSERT INTO `_clients` VALUES (4675,0,'Ярослава','','Нараевская','YAROSLAVA','NARAEVSKA','2007-03-17 00:00:00','',1,'','','','','',NULL,'','',1,'','0509281519','',NULL,'F','',1,'2008-11-21 12:25:27','2009-09-19 19:36:58',1,0),(4714,0,'Елена','','Струкова','OLENA ','STRUKOVA','1976-02-26 00:00:00','',NULL,'','','','','','0000-00-00 00:00:00',NULL,'',1,'','80674025657','',NULL,'0','',1,'2008-11-26 13:46:28','2008-11-26 14:31:41',1,0),(4720,0,'Любовь','','Копытко','LYUBOV','KOPYTKO','2008-11-02 00:00:00','',NULL,'','','','','','0000-00-00 00:00:00',NULL,'',1,'','11111111','',NULL,'0','',1,'2008-11-27 09:20:36','2008-11-27 09:20:36',1,0),(4725,0,'Алла','','Джигомон','ALLA','DZHYGOMON','2008-11-26 00:00:00','',1,'','','','','','0000-00-00 00:00:00',NULL,'',1,'','599 4415, 80934458033','',NULL,'F','',1,'2008-11-28 12:38:13','2009-09-02 09:04:11',1,0),(4726,0,'Андрей','','Козенко','ANDREY','KOZENKO','2008-11-28 00:00:00','',1,'','','','','',NULL,'','',1,'','11111111','',3,'M','',1,'2008-11-28 13:00:56','2010-04-05 18:33:15',1,0),(4727,0,'Татьяна','','Овсиенко','TATYANA','OVCIENKO','1979-09-03 00:00:00',NULL,1,'','','','YY','456123','2019-09-29 21:00:00','','',1,'','12223664','',4,'F','',1,'2009-09-02 10:28:43','2010-07-18 21:30:51',1,0),(4729,0,'Михаил','','Яневский','Michail','Yanevskiy','1972-05-16 00:00:00',NULL,1,'','','','НГ','123456','2012-11-30 22:00:00','','',1,'','044 1111111','',NULL,'M','',2,'2010-05-07 08:03:06','2010-05-16 09:13:07',1,0);
+INSERT INTO `_clients` VALUES (4675,0,'Ярослава','','Нараевская','YAROSLAVA','NARAEVSKA','2007-03-17 00:00:00','',1,'','','','','',NULL,'','',1,'','0509281519','',NULL,'F','',1,'2008-11-21 12:25:27','2010-08-18 20:12:25',1,0),(4714,0,'Елена','','Струкова','OLENA ','STRUKOVA','1976-02-26 00:00:00','',NULL,'','','','','','0000-00-00 00:00:00',NULL,'',1,'','80674025657','',NULL,'0','',1,'2008-11-26 13:46:28','2008-11-26 14:31:41',1,0),(4720,0,'Любовь','','Копытко','LYUBOV','KOPYTKO','2008-11-02 00:00:00','',NULL,'','','','','','0000-00-00 00:00:00',NULL,'',1,'','11111111','',NULL,'0','',1,'2008-11-27 09:20:36','2008-11-27 09:20:36',1,0),(4725,0,'Алла','','Джигомон','ALLA','DZHYGOMON','2008-11-26 00:00:00','',1,'','','','','',NULL,'','',1,'','599 4415, 80934458033','',NULL,'F','',1,'2008-11-28 12:38:13','2010-08-16 17:17:04',1,0),(4726,0,'Андрей','','Козенко','ANDREY','KOZENKO','2008-11-28 00:00:00','',1,'','','','','',NULL,'','',1,'','11111111','',3,'M','',1,'2008-11-28 13:00:56','2010-04-05 18:33:15',1,0),(4727,0,'Татьяна','','Овсиенко','TATYANA','OVCIENKO','1979-09-03 00:00:00',NULL,1,'','','','YY','456123','2019-09-29 21:00:00','','',1,'','12223664','',4,'F','',1,'2009-09-02 10:28:43','2010-07-18 21:30:51',1,0),(4729,0,'Михаил','','Яневский','Michail','Yanevskiy','1972-05-16 00:00:00',NULL,1,'','','','НГ','123456','2012-11-30 22:00:00','','',1,'','044 1111111','',NULL,'M','',2,'2010-05-07 08:03:06','2010-05-16 09:13:07',1,0),(4730,0,'Олег','Олександрович','Погорелов','Oleg','Pogorelov','1970-02-17 00:00:00',NULL,1,'НК','121212','','','',NULL,'','',1,'Киев, ул.Приозерная','044 333-22-11','',NULL,'M','',1,'2010-08-10 21:11:50','2010-08-10 21:11:54',1,0),(4731,0,'Елена','Петровна','Погорелова','Helen','Pogorelova','1970-02-21 00:00:00',NULL,1,'','','','','',NULL,'','',1,'Киев, ул. Приозерная','044 333-22-11','',NULL,'F','',1,'2010-08-10 21:13:37','2010-08-10 21:13:43',1,0),(4732,0,'Александра','Олеговна','Погорелова','Alexandra','Pogorelova','1992-07-01 00:00:00',NULL,1,'','','','','',NULL,'','',1,'','','',NULL,'F','',1,'2010-08-10 21:14:54','2010-08-10 21:14:58',1,0),(4733,0,'Алексей','Сергеевич','Михайлов','Alexey','Mihailov','1979-02-18 00:00:00',NULL,1,'','','','','',NULL,'','',1,'','0683596598','',NULL,'M','',1,'2010-08-15 10:09:42','2010-08-15 10:10:31',1,0),(4734,0,'Элина','','Михайлова','Elina','Mihailova','1978-04-25 00:00:00',NULL,1,'','','','','',NULL,'','',1,'','0445656213','',NULL,'F','',1,'2010-08-15 10:20:04','2010-08-15 10:20:07',1,0),(4735,0,'Ирина','Алексеевна','Михайлова','Irina','Mihailova','2006-01-15 00:00:00',NULL,1,'','','','','',NULL,'','',1,'','044 422423123','',NULL,'F','',1,'2010-08-15 10:21:48','2010-08-15 10:21:53',1,0),(4736,0,'Элла','Леонидовна','Онопко','Ella','Onopko','1978-03-30 00:00:00',NULL,1,'','','','RR','123456',NULL,'','',1,'','456123354','',NULL,'F','',2,'2010-08-19 20:39:04','2010-08-20 07:25:12',2,0),(4737,0,'Анатолий','','Онопко','Anatolii','Onopko','1976-09-03 00:00:00',NULL,1,'','','','','',NULL,'','',1,'','044123456456','',NULL,'M','',2,'2010-08-20 07:37:41','2010-08-20 07:37:47',2,0);
 /*!40000 ALTER TABLE `_clients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -756,6 +829,33 @@ CREATE TABLE `_clients_attaches` (
 LOCK TABLES `_clients_attaches` WRITE;
 /*!40000 ALTER TABLE `_clients_attaches` DISABLE KEYS */;
 /*!40000 ALTER TABLE `_clients_attaches` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `_clients_interests`
+--
+
+DROP TABLE IF EXISTS `_clients_interests`;
+CREATE TABLE `_clients_interests` (
+  `rid` int(11) NOT NULL AUTO_INCREMENT,
+  `_clients_rid` int(11) DEFAULT NULL,
+  `_interests_rid` int(11) DEFAULT NULL,
+  `mark` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`rid`),
+  KEY `FK__clients_interests_1` (`_clients_rid`),
+  KEY `FK__clients_interests_2` (`_interests_rid`),
+  CONSTRAINT `FK__clients_interests_1` FOREIGN KEY (`_clients_rid`) REFERENCES `_clients` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK__clients_interests_2` FOREIGN KEY (`_interests_rid`) REFERENCES `_interests` (`rid`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=271 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `_clients_interests`
+--
+
+LOCK TABLES `_clients_interests` WRITE;
+/*!40000 ALTER TABLE `_clients_interests` DISABLE KEYS */;
+INSERT INTO `_clients_interests` VALUES (1,NULL,5,0),(2,NULL,2,4),(3,NULL,3,0),(4,NULL,8,0),(5,NULL,6,0),(6,NULL,10,0),(7,NULL,1,0),(8,NULL,9,0),(9,NULL,4,0),(10,NULL,7,5),(31,4725,5,0),(32,4725,2,4),(33,4725,3,0),(34,4725,8,2),(35,4725,6,0),(36,4725,10,0),(37,4725,1,0),(38,4725,9,0),(39,4725,4,0),(40,4725,7,5),(201,4675,5,2),(202,4675,2,2),(203,4675,3,0),(204,4675,8,0),(205,4675,6,1),(206,4675,10,0),(207,4675,1,2),(208,4675,9,3),(209,4675,4,0),(210,4675,7,0),(241,4736,5,0),(242,4736,2,0),(243,4736,3,0),(244,4736,8,0),(245,4736,6,0),(246,4736,10,0),(247,4736,1,0),(248,4736,9,0),(249,4736,4,0),(250,4736,7,0),(261,4737,5,0),(262,4737,2,0),(263,4737,3,0),(264,4737,8,0),(265,4737,6,0),(266,4737,10,0),(267,4737,1,0),(268,4737,9,0),(269,4737,4,0),(270,4737,7,0);
+/*!40000 ALTER TABLE `_clients_interests` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1005,7 +1105,7 @@ CREATE TABLE `_demands_headers` (
   CONSTRAINT `FK__demands_headers3` FOREIGN KEY (`_tours_rid`) REFERENCES `_tours` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK__demands_headers6` FOREIGN KEY (`_advertisessources_rid`) REFERENCES `_advertisessources` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__demands_headers7` FOREIGN KEY (`_calls_documents_rid`) REFERENCES `_documents` (`rid`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `_demands_headers`
@@ -1013,7 +1113,7 @@ CREATE TABLE `_demands_headers` (
 
 LOCK TABLES `_demands_headers` WRITE;
 /*!40000 ALTER TABLE `_demands_headers` DISABLE KEYS */;
-INSERT INTO `_demands_headers` VALUES (6,14460,14456,1,126,'2010-03-31 21:00:00','14460-05/04/2010',NULL,1,'2009-09-06 11:15:32','2010-04-05 18:40:14',1,0);
+INSERT INTO `_demands_headers` VALUES (8,14472,14471,3,125,'2010-08-14 21:00:00','14472-15/08/2010',NULL,1,'2010-08-15 10:22:34','2010-08-15 10:34:14',1,0),(9,14475,14474,4,124,'2010-08-18 21:00:00','14475-19/08/2010',NULL,1,'2010-08-19 20:15:35','2010-08-19 20:19:25',1,0),(10,14477,14476,5,125,'2010-08-19 21:00:00','14477-20/08/2010',NULL,2,'2010-08-20 07:28:42','2010-08-20 07:38:07',2,0);
 /*!40000 ALTER TABLE `_demands_headers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1043,7 +1143,7 @@ CREATE TABLE `_demands_rows` (
   CONSTRAINT `FK__demands_rows1` FOREIGN KEY (`_demands_headers_rid`) REFERENCES `_demands_headers` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK__demands_rows2` FOREIGN KEY (`_clients_rid`) REFERENCES `_clients` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__demands_rows3` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `_demands_rows`
@@ -1051,7 +1151,7 @@ CREATE TABLE `_demands_rows` (
 
 LOCK TABLES `_demands_rows` WRITE;
 /*!40000 ALTER TABLE `_demands_rows` DISABLE KEYS */;
-INSERT INTO `_demands_rows` VALUES (79,6,4726,1,0,NULL,1,'2010-04-05 18:40:14',NULL,1,0),(80,6,4720,0,1,NULL,1,'2010-04-05 18:40:14',NULL,1,0),(81,6,4727,0,1,NULL,1,'2010-04-05 18:40:14',NULL,1,0);
+INSERT INTO `_demands_rows` VALUES (103,8,4733,1,1,NULL,1,'2010-08-15 10:34:14',NULL,1,0),(104,8,4734,0,1,NULL,1,'2010-08-15 10:34:14',NULL,1,0),(105,8,4735,0,1,NULL,1,'2010-08-15 10:34:14',NULL,1,0),(115,9,4730,1,1,NULL,1,'2010-08-19 20:19:25',NULL,1,0),(116,9,4731,0,1,NULL,1,'2010-08-19 20:19:25',NULL,1,0),(117,9,4732,0,1,NULL,1,'2010-08-19 20:19:26',NULL,1,0),(120,10,4737,0,1,NULL,2,'2010-08-20 07:38:07',NULL,2,0),(121,10,4736,1,1,NULL,2,'2010-08-20 07:38:07',NULL,2,0),(122,10,4729,0,1,NULL,2,'2010-08-20 07:38:07',NULL,2,0);
 /*!40000 ALTER TABLE `_demands_rows` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1075,7 +1175,7 @@ CREATE TABLE `_documents` (
   KEY `NewIndex1` (`doc_type`),
   CONSTRAINT `FK__documents1` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__documents_2` FOREIGN KEY (`modifier_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14468 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=14478 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `_documents`
@@ -1083,7 +1183,7 @@ CREATE TABLE `_documents` (
 
 LOCK TABLES `_documents` WRITE;
 /*!40000 ALTER TABLE `_documents` DISABLE KEYS */;
-INSERT INTO `_documents` VALUES (159,'EMPTOPOSITIONS','',1,'2008-01-01 00:00:00','2009-07-29 13:06:41',1,0),(8243,'CALLS','Имя:\n	 Anna\n	\n	 \n	 E-mail:\n	 abushler@hotmail.com\n	\n	 \n	 Телефон:\n	 (818)3496331\n	\n	\n	 Количество человек:\n	 3\n	\n	\n	 Заказ из города:\n	 Киева\n	\n	 \n	 Примечания:\n	 Zdravstvuite!Ia vchera otpravila zapros na tur v Turtziyu, Kemer, \"Ambiente\" Hotel. Otveta ne poluchila. Zdu s neterpeniem otvet.\nBol\'shoe spasibo.\nAnna\n	\n   \n   \n  \n \n  \n  \n   Информация о туре  (ID: 268411353)\n  \n \n \n  \n  \n   \n   \n	 Оператор:\n	 TEZ\n	 СПО:\n	 284\n	\n   	\n	 Дата отправления:\n	 09.09.2008\n	 Длительность:\n	 8 дней\n	\n    \n	 Гостиница:\n	 Ambiente 4* (Турция / Кемер) Город вылета:Киеве\n	\n   	\n	 Размещение:\n	 DBL\n	 Тип питания:\n	 All inclusive\n	\n	\n	 Стоимость тура:\n	 $720.00\n	 Транспорт:\n	 авиа',1,'2008-08-08 05:35:01','2008-08-15 12:45:52',1,0),(8267,'CALLS','Имя:\n	 Юля\n	\n	 \n	 E-mail:\n	 yulia222@ukr.net\n	\n	 \n	 Телефон:\n	 2210898\n	\n	\n	 Количество человек:\n	 2\n	\n	\n	 Заказ из города:\n	 Киева\n	\n	 \n	 Примечания:\n	 \n	\n   \n   \n  \n \n  \n  \n   Информация о туре  (ID: 265942019)\n  \n \n \n  \n  \n   \n   \n	 Оператор:\n	 Turtess\n	 СПО:\n	 10090\n	\n   	\n	 Дата отправления:\n	 03.10.2008\n	 Длительность:\n	 8 дней\n	\n    \n	 Гостиница:\n	 Caprice Beach 4* (Турция / Мармарис) Город вылета:Киеве\n	\n   	\n	 Размещение:\n	 DBL\n	 Тип питания:\n	 All inclusive\n	\n	\n	 Стоимость тура:\n	 $569.00\n	 Транспорт:\n	 авиа',1,'2008-08-08 16:25:01','2008-08-14 10:30:00',1,0),(8435,'CALLS','Имя:\n	 Сергей\n	\n	 \n	 E-mail:\n	 s_rysyukov@ukr.net\n	\n	 \n	 Телефон:\n	 +380977495309\n	\n	\n	 Количество человек:\n	 1\n	\n	\n	 Заказ из города:\n	 Киева\n	\n	 \n	 Примечания:\n	 \n	\n   \n   \n  \n \n  \n  \n   Информация о туре  (ID: 272697805)\n  \n \n \n  \n  \n   \n   \n	 Оператор:\n	 Coral Travel\n	 СПО:\n	 326KIE-AYT\n	\n   	\n	 Дата отправления:\n	 28.08.2008\n	 Длительность:\n	 8 дней\n	\n    \n	 Гостиница:\n	 Sun Star 4* (Турция / Алания) Город вылета:Киеве\n	\n   	\n	 Размещение:\n	 DBL\n	 Тип питания:\n	 All inclusive\n	\n	\n	 Стоимость тура:\n	 $591.50\n	 Транспорт:\n	 авиа',1,'2008-08-12 14:05:01','2008-08-12 19:26:55',1,0),(8472,'CALLS','Имя:\n	 Людмила\n	\n	 \n	 E-mail:\n	 lb@ank.kiev.ua\n	\n	 \n	 Телефон:\n	 8-067-801-39-32\n	\n	\n	 Количество человек:\n	 4\n	\n	\n	 Заказ из города:\n	 Киева\n	\n	 \n	 Примечания:\n	 \n	\n   \n   \n  \n \n  \n  \n   Информация о туре  (ID: 266052896)\n  \n \n \n  \n  \n   \n   \n	 Оператор:\n	 Alma\n	 СПО:\n	 SPO-001 ALMA TOUR SUMMER\n	\n   	\n	 Дата отправления:\n	 22.08.2008\n	 Длительность:\n	 8 дней\n	\n    \n	 Гостиница:\n	 Касабланка 4* (Болгария / Обзор) Город вылета:Киеве\n	\n   	\n	 Размещение:\n	 DBL\n	 Тип питания:\n	 BB\n	\n	\n	 Стоимость тура:\n	 €371.00\n	 Транспорт:\n	 авиа',1,'2008-08-13 12:35:01','2008-08-13 14:41:34',1,0),(8582,'CALLS','',2,'2008-08-15 11:17:03','2010-05-07 11:28:29',2,0),(8587,'CALLS','',1,'2008-08-15 12:15:18','2009-07-16 23:41:29',1,0),(8595,'CALLS','',1,'2008-08-15 14:06:08','2009-07-16 23:41:10',1,0),(8596,'CALLS','',1,'2008-08-15 14:21:59','2010-07-15 21:52:09',1,1),(8625,'CALLS','менеджер Оля',1,'2008-08-16 12:38:23','2009-07-16 23:40:42',1,0),(8628,'CALLS','менеджер Оля',1,'2008-08-16 13:25:21','2009-07-16 23:40:20',1,0),(8632,'CALLS','менеджер Оля',1,'2008-08-16 13:42:16','2010-07-16 00:01:56',1,0),(8640,'CALLS','',1,'2008-08-16 16:15:45','2010-07-15 23:57:41',1,0),(8641,'CALLS','',1,'2008-08-16 16:24:10','2009-07-16 23:39:29',1,0),(14441,'ADVERTISES','',1,'2009-06-28 19:23:54','2009-06-28 21:31:38',1,0),(14442,'ADVERTISES','',1,'2009-06-28 23:44:47','2009-06-28 23:46:04',1,0),(14446,'DEMANDS','',1,'2009-07-10 11:45:18','2009-07-11 19:03:53',1,0),(14448,'INOUT','Тестовый документ',1,'2009-07-12 10:18:44','2010-07-15 19:58:47',1,1),(14450,'ADVERTISES','Otpusk.com по Раисы Окипной',1,'2009-07-18 14:55:21','2010-07-18 16:22:08',1,1),(14451,'ADVERTISES','',1,'2009-07-18 17:27:40','2010-07-18 16:22:44',1,1),(14452,'CALLS','',1,'2009-07-19 15:02:49','2009-09-05 20:12:39',1,0),(14453,'DEMANDS','Тестовый документ',1,'2009-07-23 00:13:09','2009-08-08 19:02:43',1,0),(14455,'DEMANDS','',1,'2009-07-26 18:03:39','2009-07-26 18:05:13',1,0),(14456,'CALLS','',1,'2009-09-02 15:42:27','2009-09-02 15:42:27',1,0),(14457,'AIRCALLS','',1,'2009-09-02 16:32:31','2010-07-15 23:26:45',1,1),(14460,'DEMANDS','',1,'2009-09-06 14:15:32','2010-04-05 21:40:14',1,0),(14461,'EMPTOPOSITIONS','Тестовый сотрудник',1,'2009-09-28 20:16:34','2010-03-16 17:31:38',1,0),(14463,'INOUT','',1,'2010-03-31 21:30:51','2010-03-31 21:30:51',1,0),(14464,'AIRSELL','',1,'2010-04-05 13:32:37','2010-07-16 00:17:26',1,0),(14465,'EMPTOPOSITIONS','',1,'2010-04-27 23:26:12','2010-07-18 17:05:58',1,0),(14466,'ADVERTISES','Реклама на Мета',1,'2010-05-02 21:16:24','2010-05-02 21:36:29',1,0),(14467,'INOUT','На транспорт',1,'2010-07-15 19:49:51','2010-07-15 19:58:29',1,0);
+INSERT INTO `_documents` VALUES (159,'EMPTOPOSITIONS','',1,'2008-01-01 00:00:00','2009-07-29 13:06:41',1,0),(8582,'CALLS','',2,'2008-08-15 11:17:03','2010-08-15 18:48:22',1,0),(14441,'ADVERTISES','',1,'2009-06-28 19:23:54','2009-06-28 21:31:38',1,0),(14442,'ADVERTISES','',1,'2009-06-28 23:44:47','2009-06-28 23:46:04',1,0),(14446,'DEMANDS','',1,'2009-07-10 11:45:18','2009-07-11 19:03:53',1,0),(14448,'INOUT','Тестовый документ',1,'2009-07-12 10:18:44','2010-07-15 19:58:47',1,1),(14450,'ADVERTISES','Otpusk.com по Раисы Окипной',1,'2009-07-18 14:55:21','2010-07-18 16:22:08',1,1),(14451,'ADVERTISES','',1,'2009-07-18 17:27:40','2010-07-18 16:22:44',1,1),(14453,'DEMANDS','Тестовый документ',1,'2009-07-23 00:13:09','2009-08-08 19:02:43',1,0),(14455,'DEMANDS','',1,'2009-07-26 18:03:39','2009-07-26 18:05:13',1,0),(14457,'AIRCALLS','',1,'2009-09-02 16:32:31','2010-07-15 23:26:45',1,1),(14461,'EMPTOPOSITIONS','Тестовый сотрудник',1,'2009-09-28 20:16:34','2010-03-16 17:31:38',1,0),(14463,'INOUT','',1,'2010-03-31 21:30:51','2010-03-31 21:30:51',1,0),(14464,'AIRSELL','',1,'2010-04-05 13:32:37','2010-07-16 00:17:26',1,0),(14465,'EMPTOPOSITIONS','',1,'2010-04-27 23:26:12','2010-07-18 17:05:58',1,0),(14466,'ADVERTISES','Реклама на Мета',1,'2010-05-02 21:16:24','2010-05-02 21:36:29',1,0),(14467,'INOUT','На транспорт',1,'2010-07-15 19:49:51','2010-07-15 19:58:29',1,0),(14470,'CALLS','тестирование',1,'2010-08-15 13:03:39','2010-08-15 14:02:11',1,0),(14471,'CALLS','',1,'2010-08-15 13:12:18','2010-08-15 18:56:15',1,0),(14472,'DEMANDS','',1,'2010-08-15 13:22:34','2010-08-15 13:34:14',1,0),(14473,'CALLS','',1,'2010-08-15 14:28:28','2010-08-15 18:51:25',1,0),(14474,'CALLS','',1,'2010-08-19 23:11:31','2010-08-19 23:11:31',1,0),(14475,'DEMANDS','',1,'2010-08-19 23:15:35','2010-08-19 23:19:25',1,0),(14476,'CALLS','',2,'2010-08-19 23:29:55','2010-08-19 23:31:08',2,0),(14477,'DEMANDS','для тестирования',2,'2010-08-20 10:28:41','2010-08-20 10:38:07',2,0);
 /*!40000 ALTER TABLE `_documents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1341,7 +1441,7 @@ CREATE TABLE `_finjournal` (
   CONSTRAINT `FK__outgoing_incoming2` FOREIGN KEY (`_currencies_rid`) REFERENCES `_currencies` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK__outgoing_incoming4` FOREIGN KEY (`modifier_users_rid`) REFERENCES `_users` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK__outgoing_incoming6` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3526 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=3530 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `_finjournal`
@@ -1349,7 +1449,7 @@ CREATE TABLE `_finjournal` (
 
 LOCK TABLES `_finjournal` WRITE;
 /*!40000 ALTER TABLE `_finjournal` DISABLE KEYS */;
-INSERT INTO `_finjournal` VALUES (3506,14441,1,3,759.21,2,'2009-06-27 21:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',1,'2009-06-28 18:09:50','2009-06-28 18:11:18',1,0),(3507,14442,1,3,280.00,2,'2009-06-29 21:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',1,'2009-06-28 20:45:55','2009-06-28 20:45:55',1,0),(3512,14451,1,3,466.00,2,'2009-07-17 21:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',1,'2009-07-24 07:10:16','2009-07-24 07:10:16',1,0),(3516,14455,1,4,8231.05,2,'2009-07-26 21:00:00','CLIENT','FILIAL',4720,NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,'',1,'2009-07-26 15:05:07','2009-08-08 10:22:37',1,0),(3519,14453,1,4,2000.00,1,'2009-07-31 21:00:00','CLIENT','FILIAL',4726,NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,'',1,'2009-08-08 16:02:37','2009-08-08 16:02:37',1,0),(3520,14460,1,4,9292.00,1,'2009-09-05 21:00:00','CLIENT','FILIAL',4726,NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,'',1,'2009-09-06 14:26:33','2009-09-06 14:26:33',1,0),(3521,14460,1,20,8700.00,2,'2009-09-06 21:00:00','FILIAL','TOUROPERATOR',NULL,NULL,12,NULL,NULL,NULL,NULL,45,NULL,NULL,'',1,'2009-09-06 14:28:31','2009-09-06 14:28:31',1,0),(3522,14448,1,12,160.00,2,'2010-02-14 22:00:00','FILIAL','CONTRAHENT',NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,2,'Оплата за интернет',1,'2010-04-01 22:46:32','2010-04-01 22:46:32',1,0),(3523,14466,1,3,300.00,2,'2010-04-19 21:00:00','FILIAL','CONTRAHENT',NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,3,'Размещение информации в разделе Метамаркет  \nРахунок-фактура № A-20.04-3 від 20.04.2010',1,'2010-05-02 18:35:25','2010-05-02 18:35:49',1,0),(3524,14467,1,2,1240.00,1,'2010-07-14 21:00:00','FILIAL','CONTRAHENT',NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,1,'',1,'2010-07-15 16:52:16','2010-07-15 16:52:23',1,0),(3525,14467,1,12,160.00,2,'2010-06-30 21:00:00','FILIAL','CONTRAHENT',NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,3,'',1,'2010-07-15 16:58:10','2010-07-15 16:58:10',1,0);
+INSERT INTO `_finjournal` VALUES (3506,14441,1,3,759.21,2,'2009-06-27 21:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',1,'2009-06-28 18:09:50','2009-06-28 18:11:18',1,0),(3507,14442,1,3,280.00,2,'2009-06-29 21:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',1,'2009-06-28 20:45:55','2009-06-28 20:45:55',1,0),(3512,14451,1,3,466.00,2,'2009-07-17 21:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',1,'2009-07-24 07:10:16','2009-07-24 07:10:16',1,0),(3516,14455,1,4,8231.05,2,'2009-07-26 21:00:00','CLIENT','FILIAL',4720,NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,'',1,'2009-07-26 15:05:07','2009-08-08 10:22:37',1,0),(3519,14453,1,4,2000.00,1,'2009-07-31 21:00:00','CLIENT','FILIAL',4726,NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,'',1,'2009-08-08 16:02:37','2009-08-08 16:02:37',1,0),(3522,14448,1,12,160.00,2,'2010-02-14 22:00:00','FILIAL','CONTRAHENT',NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,2,'Оплата за интернет',1,'2010-04-01 22:46:32','2010-04-01 22:46:32',1,0),(3523,14466,1,3,300.00,2,'2010-04-19 21:00:00','FILIAL','CONTRAHENT',NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,3,'Размещение информации в разделе Метамаркет  \nРахунок-фактура № A-20.04-3 від 20.04.2010',1,'2010-05-02 18:35:25','2010-05-02 18:35:49',1,0),(3524,14467,1,2,1240.00,1,'2010-07-14 21:00:00','FILIAL','CONTRAHENT',NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,1,'',1,'2010-07-15 16:52:16','2010-07-15 16:52:23',1,0),(3525,14467,1,12,160.00,2,'2010-06-30 21:00:00','FILIAL','CONTRAHENT',NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,3,'',1,'2010-07-15 16:58:10','2010-07-15 16:58:10',1,0),(3526,14472,1,4,5968.29,2,'2010-08-14 21:00:00','CLIENT','FILIAL',4733,NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,'',1,'2010-08-15 10:26:55','2010-08-15 10:26:55',1,0),(3527,14472,1,20,5127.00,2,'2010-08-14 21:00:00','FILIAL','TOUROPERATOR',NULL,NULL,12,NULL,NULL,NULL,NULL,40,NULL,NULL,'',1,'2010-08-15 10:34:03','2010-08-15 10:34:03',1,0),(3528,14475,1,4,7400.00,1,'2010-08-18 21:00:00','CLIENT','FILIAL',4730,NULL,NULL,12,NULL,NULL,NULL,NULL,NULL,NULL,'предоплата 50%',1,'2010-08-19 20:18:19','2010-08-19 20:18:19',1,0),(3529,14475,1,20,13540.00,2,'2010-08-19 21:00:00','FILIAL','TOUROPERATOR',NULL,NULL,12,NULL,NULL,NULL,NULL,45,NULL,NULL,'',1,'2010-08-19 20:19:06','2010-08-19 20:19:06',1,0);
 /*!40000 ALTER TABLE `_finjournal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1413,7 +1513,7 @@ CREATE TABLE `_hotels` (
   CONSTRAINT `FK__hotels_3` FOREIGN KEY (`_curourts_rid`) REFERENCES `_curourts` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__hotels_4` FOREIGN KEY (`modifier_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__hotels_5` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `_hotels`
@@ -1421,7 +1521,7 @@ CREATE TABLE `_hotels` (
 
 LOCK TABLES `_hotels` WRITE;
 /*!40000 ALTER TABLE `_hotels` DISABLE KEYS */;
-INSERT INTO `_hotels` VALUES (1,3,1,4,'Pharao Hotel Al Mashrabia Hurghada','',1,'2009-09-02 23:35:55','2010-04-07 00:05:10',1,0),(5,3,2,3,'Blue Reef Naama Bay','',1,'2009-09-02 23:54:20','2009-09-05 20:02:17',1,0),(6,3,2,3,'Aida','для теста',1,'2009-09-05 20:26:10','2009-09-05 20:27:16',1,0);
+INSERT INTO `_hotels` VALUES (1,3,1,4,'Pharao Hotel Al Mashrabia Hurghada','',1,'2009-09-02 23:35:55','2010-04-07 00:05:10',1,0),(5,3,2,3,'Blue Reef Naama Bay','',1,'2009-09-02 23:54:20','2009-09-05 20:02:17',1,0),(6,3,2,3,'Aida','для теста',1,'2009-09-05 20:26:10','2009-09-05 20:27:16',1,0),(7,7,14,5,'Alinn Sarigerme Boutique Hotel','',1,'2010-08-10 23:37:26','2010-08-10 23:37:29',1,0);
 /*!40000 ALTER TABLE `_hotels` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1552,6 +1652,37 @@ INSERT INTO `_inout_headers` VALUES (2,14448,'2009-07-11 21:00:00',NULL,1,'2009-
 UNLOCK TABLES;
 
 --
+-- Table structure for table `_interests`
+--
+
+DROP TABLE IF EXISTS `_interests`;
+CREATE TABLE `_interests` (
+  `rid` int(12) NOT NULL AUTO_INCREMENT,
+  `interests_name` varchar(255) DEFAULT NULL,
+  `descr` text,
+  `owner_users_rid` int(12) DEFAULT NULL,
+  `createDT` datetime DEFAULT NULL,
+  `modifyDT` datetime DEFAULT NULL,
+  `modifier_users_rid` int(12) DEFAULT NULL,
+  `archive` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`rid`),
+  KEY `FK__interests_1` (`modifier_users_rid`),
+  KEY `FK__interests_2` (`owner_users_rid`),
+  CONSTRAINT `FK__interests_1` FOREIGN KEY (`modifier_users_rid`) REFERENCES `_users` (`rid`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `FK__interests_2` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `_interests`
+--
+
+LOCK TABLES `_interests` WRITE;
+/*!40000 ALTER TABLE `_interests` DISABLE KEYS */;
+INSERT INTO `_interests` VALUES (1,'Природа','джунгли, горы, водопады, пещеры, флора, фауна',1,'2010-08-15 21:30:42','2010-08-15 21:50:28',1,1),(2,'Достопримечательности','архитектура, музеи, памятники, старинные замки',1,'2010-08-15 21:31:38','2010-08-15 21:50:37',1,1),(3,'Зрелища','театры, шоу, карнавалы, коррида, спортивные состязания',1,'2010-08-15 21:47:49','2010-08-15 21:51:20',1,1),(4,'Тусовка','дискотеки, бары',1,'2010-08-15 21:48:08','2010-08-15 21:51:40',1,1),(5,'Активные развлечения','аквапарки, аттракционы, рафтинг,\nдайвинг с инструктором',1,'2010-08-15 21:48:31','2010-08-15 21:51:52',1,1),(6,'Кулинария','рестораны, винодельни, сыроварни',1,'2010-08-15 21:48:57','2010-08-15 21:52:02',1,1),(7,'Шопинг','бутики, торговые центры, антиквариат, развалы',1,'2010-08-15 21:49:18','2010-08-15 21:52:13',1,1),(8,'Иной образ жизни','племена, монастыри',1,'2010-08-15 21:49:34','2010-08-15 21:52:21',1,1),(9,'Спортивный отдых','сплав, альпинизм, треккинг, горные лыжи, рыбалка, охота',1,'2010-08-15 21:49:53','2010-08-15 21:52:31',1,1),(10,'Пассивный отдых','пляж, бассейн, прогулки',1,'2010-08-15 21:50:13','2010-08-15 21:52:51',1,1);
+/*!40000 ALTER TABLE `_interests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `_modules`
 --
 
@@ -1572,7 +1703,7 @@ CREATE TABLE `_modules` (
   KEY `FK__menu_items2` (`owner_users_rid`),
   CONSTRAINT `FK__modules_1` FOREIGN KEY (`modifier_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__modules_2` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `_modules`
@@ -1580,7 +1711,7 @@ CREATE TABLE `_modules` (
 
 LOCK TABLES `_modules` WRITE;
 /*!40000 ALTER TABLE `_modules` DISABLE KEYS */;
-INSERT INTO `_modules` VALUES (1,'Статьи оплат','accountstates','Статьи оплат (доходов и затрат)',1,'2009-08-23 16:38:05','2010-04-29 21:16:42',1,0),(2,'Рекламные площадки','advertises','Управление рекламными площадями и затратами по рекламе',1,'2009-08-23 16:40:04','2009-08-23 22:02:40',1,0),(3,'Рекламные кампании','advertisescompanies','Управление рекламными кампаниями',1,'2009-08-23 16:40:29','2010-04-29 21:09:05',1,0),(4,'Рекламные носители','advertisessources','Справочник рекламных носителей',1,'2009-08-23 16:41:17','2010-05-06 14:46:50',1,0),(5,'Типы рекламных носителей','advertisestypes','Справочник типов рекламных носителей',1,'2009-08-23 16:41:59','2009-08-23 22:03:40',1,0),(6,'Контакты авиа','aircalls','Регистрация контактов для подсистемы авиа',1,'2009-08-23 16:42:56','2009-08-23 22:03:57',1,0),(7,'Авиакомпании','aircompanies','Справочник авиакомпаний',1,'2009-08-23 16:46:19','2009-08-23 22:04:19',1,0),(8,'Продажа авиабилетов','airsell','Документ продажи авиабилетов',1,'2009-08-23 16:47:09','2010-04-29 21:10:35',1,0),(9,'Контакты туров','calls','Документ регистрации контактов туров',1,'2009-08-23 16:47:46','2010-04-29 21:17:36',1,0),(10,'Корпоративный чат','chat','Корпоративный чат',1,'2009-08-23 16:48:58','2009-08-23 22:05:16',1,0),(11,'Города','cities','Справочник городов',1,'2009-08-23 16:49:34','2010-05-07 07:54:41',1,0),(12,'Клиенты','clients','Справочник клиентов',1,'2009-08-23 16:49:54','2010-04-29 19:21:38',1,0),(13,'Константы','constants','Справочник констант',1,'2009-08-23 16:50:25','2009-08-24 18:43:17',1,0),(14,'Страны','countries','Справочник стран',1,'2009-08-23 16:50:48','2009-08-23 22:06:29',1,0),(15,'Курорты','curourts','Справочник курортов',1,'2009-08-23 16:51:17','2010-05-07 08:27:24',1,0),(16,'Валюты','currencies','Справочник валют',1,'2009-08-23 16:52:12','2009-08-23 22:07:08',1,0),(17,'Продажа туров','demands','Документ продажи туров',1,'2009-08-23 16:52:43','2009-08-23 22:07:27',1,0),(18,'Сотрудники','employeers','Справочник сотрудников',1,'2009-08-23 16:53:10','2009-08-23 22:07:49',1,0),(19,'Назначения сотрудников','emptopositions','Документ назначения сотрудников',1,'2009-08-23 16:53:44','2009-08-23 22:08:07',1,0),(20,'Филиалы','filials','Справочник филиалов',1,'2009-08-23 16:54:27','2009-08-23 22:08:27',1,0),(21,'Журнал фин. операций','finjournal','Журнал финансовых операций',1,'2009-08-23 16:55:01','2009-08-24 21:19:17',1,0),(22,'Типы питания','food','Справочник типов питания',1,'2009-08-23 16:55:42','2009-08-23 22:12:57',1,0),(23,'Категории отелей','hotelscats','Справочник категорий отелей',1,'2009-08-23 16:56:13','2009-08-23 22:12:32',1,0),(24,'Доходы-затраты','inout','Документ регистрации финансовых операций по статьям',1,'2009-08-23 16:56:58','2009-08-23 22:12:14',1,0),(25,'Модули','modules','Модули системы',1,'2009-08-23 16:57:39','2009-08-23 22:11:47',1,0),(26,'Должности','positions','Справочник должностей',1,'2009-08-23 16:58:05','2009-08-23 22:11:24',1,0),(27,'Меню должностей','positionsmenu','Справочник меню для должностей',1,'2009-08-23 16:58:44','2009-08-23 22:11:04',1,0),(28,'Отчет, активность рекламы','r_advactivity','Отчет по активности рекламных носителей',1,'2009-08-23 16:59:30','2009-08-23 22:10:41',1,0),(29,'Отчет, эффективность рекламы','r_adveffectivity','Отчет по эффективности рекламных носителей',1,'2009-08-23 17:00:05','2009-08-23 22:10:25',1,0),(30,'Отчет, продажы','r_sales','Отчет по продажам',1,'2009-08-23 17:00:45','2009-08-23 22:10:06',1,0),(31,'Отчет, продажи по туроператорам','r_touroperators','Отчет по продажам в разрезе туроператоров',1,'2009-08-23 17:01:25','2009-08-23 22:09:49',1,0),(32,'Типы номеров','rooms','Справочник типов номеров',1,'2009-08-23 17:02:09','2009-08-23 22:09:33',1,0),(33,'Задачи','tasks','Модуль задач',1,'2009-08-23 17:02:36','2009-08-23 22:09:14',1,0),(34,'Туроператоры','touroperators','Справочник туроператоров',1,'2009-08-23 17:02:59','2009-08-23 22:08:58',1,0),(35,'Пользователи','users','Справочник пользователей',1,'2009-08-23 17:03:24','2009-08-23 19:04:47',1,0),(36,'Дисконтные карты','dcarts','Управление дисконтными картами',1,'2009-08-30 13:29:39','2010-05-07 07:55:34',1,0),(37,'База отелей','hotels','Справочник гостиниц',1,'2009-09-02 14:45:54','2010-04-29 21:27:50',1,0),(38,'Контрагенты','contrahens','Справочник прочих контрагентов',1,'2010-04-01 21:13:00','2010-04-01 21:13:24',1,0);
+INSERT INTO `_modules` VALUES (1,'Статьи оплат','accountstates','Статьи оплат (доходов и затрат)',1,'2009-08-23 16:38:05','2010-04-29 21:16:42',1,0),(2,'Рекламные площадки','advertises','Управление рекламными площадями и затратами по рекламе',1,'2009-08-23 16:40:04','2009-08-23 22:02:40',1,0),(3,'Рекламные кампании','advertisescompanies','Управление рекламными кампаниями',1,'2009-08-23 16:40:29','2010-04-29 21:09:05',1,0),(4,'Рекламные носители','advertisessources','Справочник рекламных носителей',1,'2009-08-23 16:41:17','2010-05-06 14:46:50',1,0),(5,'Типы рекламных носителей','advertisestypes','Справочник типов рекламных носителей',1,'2009-08-23 16:41:59','2009-08-23 22:03:40',1,0),(6,'Контакты авиа','aircalls','Регистрация контактов для подсистемы авиа',1,'2009-08-23 16:42:56','2009-08-23 22:03:57',1,0),(7,'Авиакомпании','aircompanies','Справочник авиакомпаний',1,'2009-08-23 16:46:19','2009-08-23 22:04:19',1,0),(8,'Продажа авиабилетов','airsell','Документ продажи авиабилетов',1,'2009-08-23 16:47:09','2010-04-29 21:10:35',1,0),(9,'Контакты туров','calls','Документ регистрации контактов туров',1,'2009-08-23 16:47:46','2010-04-29 21:17:36',1,0),(10,'Корпоративный чат','chat','Корпоративный чат',1,'2009-08-23 16:48:58','2009-08-23 22:05:16',1,0),(11,'Города','cities','Справочник городов',1,'2009-08-23 16:49:34','2010-05-07 07:54:41',1,0),(12,'Клиенты','clients','Справочник клиентов',1,'2009-08-23 16:49:54','2010-04-29 19:21:38',1,0),(13,'Константы','constants','Справочник констант',1,'2009-08-23 16:50:25','2009-08-24 18:43:17',1,0),(14,'Страны','countries','Справочник стран',1,'2009-08-23 16:50:48','2009-08-23 22:06:29',1,0),(15,'Курорты','curourts','Справочник курортов',1,'2009-08-23 16:51:17','2010-05-07 08:27:24',1,0),(16,'Валюты','currencies','Справочник валют',1,'2009-08-23 16:52:12','2009-08-23 22:07:08',1,0),(17,'Продажа туров','demands','Документ продажи туров',1,'2009-08-23 16:52:43','2010-08-19 20:32:49',1,0),(18,'Сотрудники','employeers','Справочник сотрудников',1,'2009-08-23 16:53:10','2009-08-23 22:07:49',1,0),(19,'Назначения сотрудников','emptopositions','Документ назначения сотрудников',1,'2009-08-23 16:53:44','2009-08-23 22:08:07',1,0),(20,'Филиалы','filials','Справочник филиалов',1,'2009-08-23 16:54:27','2010-08-20 07:53:19',1,0),(21,'Журнал фин. операций','finjournal','Журнал финансовых операций',1,'2009-08-23 16:55:01','2009-08-24 21:19:17',1,0),(22,'Типы питания','food','Справочник типов питания',1,'2009-08-23 16:55:42','2009-08-23 22:12:57',1,0),(23,'Категории отелей','hotelscats','Справочник категорий отелей',1,'2009-08-23 16:56:13','2009-08-23 22:12:32',1,0),(24,'Доходы-затраты','inout','Документ регистрации финансовых операций по статьям',1,'2009-08-23 16:56:58','2009-08-23 22:12:14',1,0),(25,'Модули','modules','Модули системы',1,'2009-08-23 16:57:39','2009-08-23 22:11:47',1,0),(26,'Должности','positions','Справочник должностей',1,'2009-08-23 16:58:05','2009-08-23 22:11:24',1,0),(27,'Меню должностей','positionsmenu','Справочник меню для должностей',1,'2009-08-23 16:58:44','2009-08-23 22:11:04',1,0),(28,'Отчет, активность рекламы','r_advactivity','Отчет по активности рекламных носителей',1,'2009-08-23 16:59:30','2009-08-23 22:10:41',1,0),(29,'Отчет, эффективность рекламы','r_adveffectivity','Отчет по эффективности рекламных носителей',1,'2009-08-23 17:00:05','2009-08-23 22:10:25',1,0),(30,'Отчет, продажы','r_sales','Отчет по продажам',1,'2009-08-23 17:00:45','2009-08-23 22:10:06',1,0),(31,'Отчет, продажи по туроператорам','r_touroperators','Отчет по продажам в разрезе туроператоров',1,'2009-08-23 17:01:25','2009-08-23 22:09:49',1,0),(32,'Типы номеров','rooms','Справочник типов номеров',1,'2009-08-23 17:02:09','2009-08-23 22:09:33',1,0),(33,'Задачи','tasks','Модуль задач',1,'2009-08-23 17:02:36','2009-08-23 22:09:14',1,0),(34,'Туроператоры','touroperators','Справочник туроператоров',1,'2009-08-23 17:02:59','2010-08-19 20:35:33',1,0),(35,'Пользователи','users','Справочник пользователей',1,'2009-08-23 17:03:24','2009-08-23 19:04:47',1,0),(36,'Дисконтные карты','dcarts','Управление дисконтными картами',1,'2009-08-30 13:29:39','2010-05-07 07:55:34',1,0),(37,'База отелей','hotels','Справочник гостиниц',1,'2009-09-02 14:45:54','2010-04-29 21:27:50',1,0),(38,'Контрагенты','contrahens','Справочник прочих контрагентов',1,'2010-04-01 21:13:00','2010-04-01 21:13:24',1,0),(39,'Интересы клиентов','interests','Справочник интересов клиентов.',1,'2010-08-15 18:07:34','2010-08-15 18:11:47',1,0);
 /*!40000 ALTER TABLE `_modules` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1615,7 +1746,7 @@ CREATE TABLE `_modules_permissions` (
   CONSTRAINT `FK__modules_permissions_2` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK__modules_permissions_3` FOREIGN KEY (`_modules_rid`) REFERENCES `_modules` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK__modules_permissions_4` FOREIGN KEY (`_positions_rid`) REFERENCES `_positions` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=490 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=511 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `_modules_permissions`
@@ -1623,7 +1754,7 @@ CREATE TABLE `_modules_permissions` (
 
 LOCK TABLES `_modules_permissions` WRITE;
 /*!40000 ALTER TABLE `_modules_permissions` DISABLE KEYS */;
-INSERT INTO `_modules_permissions` VALUES (11,35,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 19:04:47',NULL,NULL,0),(14,35,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 19:04:47',NULL,NULL,0),(15,35,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 19:04:47',NULL,NULL,0),(59,2,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:02:40',NULL,NULL,0),(62,2,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:02:40',NULL,NULL,0),(63,2,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:02:40',NULL,NULL,0),(83,5,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:03:40',NULL,NULL,0),(86,5,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:03:40',NULL,NULL,0),(87,5,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:03:40',NULL,NULL,0),(91,6,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:03:57',NULL,NULL,0),(94,6,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:03:57',NULL,NULL,0),(95,6,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:03:57',NULL,NULL,0),(99,7,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:04:19',NULL,NULL,0),(102,7,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:04:19',NULL,NULL,0),(103,7,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:04:19',NULL,NULL,0),(123,10,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:05:16',NULL,NULL,0),(126,10,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:05:16',NULL,NULL,0),(127,10,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:05:16',NULL,NULL,0),(155,14,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:06:29',NULL,NULL,0),(158,14,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:06:29',NULL,NULL,0),(159,14,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:06:29',NULL,NULL,0),(171,16,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:07:08',NULL,NULL,0),(174,16,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:07:08',NULL,NULL,0),(175,16,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:07:08',NULL,NULL,0),(179,17,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:07:27',NULL,NULL,0),(182,17,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:07:27',NULL,NULL,0),(183,17,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:07:27',NULL,NULL,0),(187,18,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:07:49',NULL,NULL,0),(190,18,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:07:49',NULL,NULL,0),(191,18,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:07:49',NULL,NULL,0),(195,19,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:08:07',NULL,NULL,0),(198,19,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:08:07',NULL,NULL,0),(199,19,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:08:07',NULL,NULL,0),(203,20,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:08:27',NULL,NULL,0),(206,20,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:08:27',NULL,NULL,0),(207,20,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:08:27',NULL,NULL,0),(211,34,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:08:58',NULL,NULL,0),(214,34,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:08:58',NULL,NULL,0),(215,34,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:08:58',NULL,NULL,0),(219,33,1,1,1,1,1,1,1,'OWN',NULL,NULL,'2009-08-23 22:09:14',NULL,NULL,0),(222,33,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:09:14',NULL,NULL,0),(223,33,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:09:14',NULL,NULL,0),(227,32,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:09:33',NULL,NULL,0),(230,32,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:09:33',NULL,NULL,0),(231,32,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:09:33',NULL,NULL,0),(235,31,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:09:49',NULL,NULL,0),(238,31,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:09:49',NULL,NULL,0),(239,31,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:09:49',NULL,NULL,0),(243,30,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:10:06',NULL,NULL,0),(246,30,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:10:06',NULL,NULL,0),(247,30,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:10:06',NULL,NULL,0),(251,29,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:10:25',NULL,NULL,0),(254,29,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:10:25',NULL,NULL,0),(255,29,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:10:25',NULL,NULL,0),(259,28,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:10:41',NULL,NULL,0),(262,28,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:10:41',NULL,NULL,0),(263,28,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:10:41',NULL,NULL,0),(267,27,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:11:04',NULL,NULL,0),(270,27,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:11:04',NULL,NULL,0),(271,27,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:11:04',NULL,NULL,0),(275,26,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:11:24',NULL,NULL,0),(278,26,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:11:24',NULL,NULL,0),(279,26,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:11:24',NULL,NULL,0),(283,25,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:11:47',NULL,NULL,0),(286,25,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:11:47',NULL,NULL,0),(287,25,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:11:47',NULL,NULL,0),(291,24,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:12:14',NULL,NULL,0),(294,24,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:12:14',NULL,NULL,0),(295,24,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:12:14',NULL,NULL,0),(299,23,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:12:32',NULL,NULL,0),(302,23,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:12:32',NULL,NULL,0),(303,23,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:12:32',NULL,NULL,0),(307,22,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:12:57',NULL,NULL,0),(310,22,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:12:57',NULL,NULL,0),(311,22,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:12:57',NULL,NULL,0),(387,13,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-24 18:43:17',NULL,NULL,0),(390,13,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-24 18:43:17',NULL,NULL,0),(391,13,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-24 18:43:17',NULL,NULL,0),(395,21,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-24 21:19:17',NULL,NULL,0),(398,21,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-24 21:19:17',NULL,NULL,0),(399,21,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-24 21:19:17',NULL,NULL,0),(427,38,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-01 21:13:24',NULL,NULL,0),(428,38,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-01 21:13:24',NULL,NULL,0),(429,38,2,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-01 21:13:24',NULL,NULL,0),(445,12,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-29 19:21:38',NULL,NULL,0),(446,12,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 19:21:39',NULL,NULL,0),(447,12,2,1,1,1,1,0,0,'FILIAL',NULL,NULL,'2010-04-29 19:21:39',NULL,NULL,0),(457,3,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-29 21:09:05',NULL,NULL,0),(458,3,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:09:05',NULL,NULL,0),(459,3,2,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:09:05',NULL,NULL,0),(460,8,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-29 21:10:35',NULL,NULL,0),(461,8,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:10:35',NULL,NULL,0),(462,8,2,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:10:35',NULL,NULL,0),(463,1,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-29 21:16:42',NULL,NULL,0),(464,1,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:16:42',NULL,NULL,0),(465,1,2,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:16:42',NULL,NULL,0),(469,9,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-29 21:17:36',NULL,NULL,0),(470,9,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:17:36',NULL,NULL,0),(471,9,2,1,1,1,1,0,0,'OWN',NULL,NULL,'2010-04-29 21:17:36',NULL,NULL,0),(475,37,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-29 21:27:50',NULL,NULL,0),(476,37,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:27:50',NULL,NULL,0),(477,37,2,0,0,1,0,0,0,'ALL',NULL,NULL,'2010-04-29 21:27:50',NULL,NULL,0),(478,4,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-05-06 14:46:50',NULL,NULL,0),(479,4,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-05-06 14:46:50',NULL,NULL,0),(480,4,2,0,0,1,0,0,0,'ALL',NULL,NULL,'2010-05-06 14:46:50',NULL,NULL,0),(481,11,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-05-07 07:54:41',NULL,NULL,0),(482,11,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-05-07 07:54:41',NULL,NULL,0),(483,11,2,1,1,1,1,0,0,'ALL',NULL,NULL,'2010-05-07 07:54:41',NULL,NULL,0),(484,36,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-05-07 07:55:34',NULL,NULL,0),(485,36,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-05-07 07:55:34',NULL,NULL,0),(486,36,2,0,0,1,0,0,0,'ALL',NULL,NULL,'2010-05-07 07:55:34',NULL,NULL,0),(487,15,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-05-07 08:27:24',NULL,NULL,0),(488,15,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-05-07 08:27:24',NULL,NULL,0),(489,15,2,1,1,1,1,0,0,'ALL',NULL,NULL,'2010-05-07 08:27:24',NULL,NULL,0);
+INSERT INTO `_modules_permissions` VALUES (11,35,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 19:04:47',NULL,NULL,0),(14,35,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 19:04:47',NULL,NULL,0),(15,35,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 19:04:47',NULL,NULL,0),(59,2,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:02:40',NULL,NULL,0),(62,2,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:02:40',NULL,NULL,0),(63,2,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:02:40',NULL,NULL,0),(83,5,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:03:40',NULL,NULL,0),(86,5,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:03:40',NULL,NULL,0),(87,5,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:03:40',NULL,NULL,0),(91,6,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:03:57',NULL,NULL,0),(94,6,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:03:57',NULL,NULL,0),(95,6,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:03:57',NULL,NULL,0),(99,7,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:04:19',NULL,NULL,0),(102,7,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:04:19',NULL,NULL,0),(103,7,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:04:19',NULL,NULL,0),(123,10,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:05:16',NULL,NULL,0),(126,10,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:05:16',NULL,NULL,0),(127,10,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:05:16',NULL,NULL,0),(155,14,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:06:29',NULL,NULL,0),(158,14,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:06:29',NULL,NULL,0),(159,14,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:06:29',NULL,NULL,0),(171,16,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:07:08',NULL,NULL,0),(174,16,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:07:08',NULL,NULL,0),(175,16,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:07:08',NULL,NULL,0),(187,18,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:07:49',NULL,NULL,0),(190,18,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:07:49',NULL,NULL,0),(191,18,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:07:49',NULL,NULL,0),(195,19,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:08:07',NULL,NULL,0),(198,19,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:08:07',NULL,NULL,0),(199,19,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:08:07',NULL,NULL,0),(219,33,1,1,1,1,1,1,1,'OWN',NULL,NULL,'2009-08-23 22:09:14',NULL,NULL,0),(222,33,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:09:14',NULL,NULL,0),(223,33,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:09:14',NULL,NULL,0),(227,32,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:09:33',NULL,NULL,0),(230,32,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:09:33',NULL,NULL,0),(231,32,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:09:33',NULL,NULL,0),(235,31,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:09:49',NULL,NULL,0),(238,31,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:09:49',NULL,NULL,0),(239,31,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:09:49',NULL,NULL,0),(243,30,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:10:06',NULL,NULL,0),(246,30,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:10:06',NULL,NULL,0),(247,30,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:10:06',NULL,NULL,0),(251,29,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:10:25',NULL,NULL,0),(254,29,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:10:25',NULL,NULL,0),(255,29,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:10:25',NULL,NULL,0),(259,28,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:10:41',NULL,NULL,0),(262,28,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:10:41',NULL,NULL,0),(263,28,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:10:41',NULL,NULL,0),(267,27,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:11:04',NULL,NULL,0),(270,27,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:11:04',NULL,NULL,0),(271,27,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:11:04',NULL,NULL,0),(275,26,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:11:24',NULL,NULL,0),(278,26,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:11:24',NULL,NULL,0),(279,26,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:11:24',NULL,NULL,0),(283,25,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:11:47',NULL,NULL,0),(286,25,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:11:47',NULL,NULL,0),(287,25,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:11:47',NULL,NULL,0),(291,24,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:12:14',NULL,NULL,0),(294,24,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:12:14',NULL,NULL,0),(295,24,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:12:14',NULL,NULL,0),(299,23,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:12:32',NULL,NULL,0),(302,23,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:12:32',NULL,NULL,0),(303,23,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:12:32',NULL,NULL,0),(307,22,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-23 22:12:57',NULL,NULL,0),(310,22,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:12:57',NULL,NULL,0),(311,22,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-23 22:12:57',NULL,NULL,0),(387,13,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-24 18:43:17',NULL,NULL,0),(390,13,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-24 18:43:17',NULL,NULL,0),(391,13,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-24 18:43:17',NULL,NULL,0),(395,21,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2009-08-24 21:19:17',NULL,NULL,0),(398,21,3,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-24 21:19:17',NULL,NULL,0),(399,21,2,0,0,0,0,0,0,NULL,NULL,NULL,'2009-08-24 21:19:17',NULL,NULL,0),(427,38,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-01 21:13:24',NULL,NULL,0),(428,38,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-01 21:13:24',NULL,NULL,0),(429,38,2,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-01 21:13:24',NULL,NULL,0),(445,12,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-29 19:21:38',NULL,NULL,0),(446,12,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 19:21:39',NULL,NULL,0),(447,12,2,1,1,1,1,0,0,'FILIAL',NULL,NULL,'2010-04-29 19:21:39',NULL,NULL,0),(457,3,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-29 21:09:05',NULL,NULL,0),(458,3,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:09:05',NULL,NULL,0),(459,3,2,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:09:05',NULL,NULL,0),(460,8,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-29 21:10:35',NULL,NULL,0),(461,8,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:10:35',NULL,NULL,0),(462,8,2,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:10:35',NULL,NULL,0),(463,1,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-29 21:16:42',NULL,NULL,0),(464,1,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:16:42',NULL,NULL,0),(465,1,2,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:16:42',NULL,NULL,0),(469,9,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-29 21:17:36',NULL,NULL,0),(470,9,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:17:36',NULL,NULL,0),(471,9,2,1,1,1,1,0,0,'OWN',NULL,NULL,'2010-04-29 21:17:36',NULL,NULL,0),(475,37,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-04-29 21:27:50',NULL,NULL,0),(476,37,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-04-29 21:27:50',NULL,NULL,0),(477,37,2,0,0,1,0,0,0,'ALL',NULL,NULL,'2010-04-29 21:27:50',NULL,NULL,0),(478,4,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-05-06 14:46:50',NULL,NULL,0),(479,4,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-05-06 14:46:50',NULL,NULL,0),(480,4,2,0,0,1,0,0,0,'ALL',NULL,NULL,'2010-05-06 14:46:50',NULL,NULL,0),(481,11,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-05-07 07:54:41',NULL,NULL,0),(482,11,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-05-07 07:54:41',NULL,NULL,0),(483,11,2,1,1,1,1,0,0,'ALL',NULL,NULL,'2010-05-07 07:54:41',NULL,NULL,0),(484,36,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-05-07 07:55:34',NULL,NULL,0),(485,36,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-05-07 07:55:34',NULL,NULL,0),(486,36,2,0,0,1,0,0,0,'ALL',NULL,NULL,'2010-05-07 07:55:34',NULL,NULL,0),(487,15,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-05-07 08:27:24',NULL,NULL,0),(488,15,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-05-07 08:27:24',NULL,NULL,0),(489,15,2,1,1,1,1,0,0,'ALL',NULL,NULL,'2010-05-07 08:27:24',NULL,NULL,0),(499,39,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-08-15 18:11:47',NULL,NULL,0),(500,39,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-08-15 18:11:47',NULL,NULL,0),(501,39,2,0,0,1,0,0,0,'ALL',NULL,NULL,'2010-08-15 18:11:47',NULL,NULL,0),(502,17,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-08-19 20:32:49',NULL,NULL,0),(503,17,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-08-19 20:32:49',NULL,NULL,0),(504,17,2,1,1,1,1,1,1,'FILIAL',NULL,NULL,'2010-08-19 20:32:49',NULL,NULL,0),(505,34,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-08-19 20:35:33',NULL,NULL,0),(506,34,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-08-19 20:35:33',NULL,NULL,0),(507,34,2,0,0,1,0,0,0,'ALL',NULL,NULL,'2010-08-19 20:35:33',NULL,NULL,0),(508,20,1,1,1,1,1,1,1,'ALL',NULL,NULL,'2010-08-20 07:53:19',NULL,NULL,0),(509,20,3,0,0,0,0,0,0,NULL,NULL,NULL,'2010-08-20 07:53:19',NULL,NULL,0),(510,20,2,0,0,1,0,0,0,'ALL',NULL,NULL,'2010-08-20 07:53:19',NULL,NULL,0);
 /*!40000 ALTER TABLE `_modules_permissions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1687,7 +1818,7 @@ CREATE TABLE `_positions_menus` (
   CONSTRAINT `FK__positions_menus2` FOREIGN KEY (`_positions_rid`) REFERENCES `_positions` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__positions_menus3` FOREIGN KEY (`modifier_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__positions_menus_4` FOREIGN KEY (`_modules_rid`) REFERENCES `_modules` (`rid`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=318 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=319 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `_positions_menus`
@@ -1695,7 +1826,7 @@ CREATE TABLE `_positions_menus` (
 
 LOCK TABLES `_positions_menus` WRITE;
 /*!40000 ALTER TABLE `_positions_menus` DISABLE KEYS */;
-INSERT INTO `_positions_menus` VALUES (1,1,NULL,'Работа с клиентами',0,0,'',1,'2007-11-28 17:01:32','2010-03-03 21:46:51',1,0),(2,1,NULL,'Справочники',0,0,'Тестирование',1,'2007-12-11 10:31:51','2009-08-24 12:07:09',1,0),(3,1,NULL,'Отчеты',0,0,'',1,'2007-12-08 18:46:08','2009-08-24 12:07:37',1,0),(4,1,16,'Валюты',2,0,'',1,'2007-12-08 18:51:59','2009-08-24 12:08:00',1,0),(6,1,12,'Клиенты',2,0,'',1,'2007-11-13 18:58:09','2009-08-24 12:08:16',1,0),(10,1,NULL,'Администрирование',0,0,'',1,'2007-12-08 19:01:42','2009-08-24 12:09:11',1,0),(12,1,27,'Меню должностей',10,0,'',1,'2007-12-08 18:53:30','2009-08-24 12:10:24',1,0),(13,1,NULL,'География',2,0,'',1,'2007-12-08 19:00:43','2009-08-24 12:10:43',1,0),(14,1,14,'Страны',13,0,'',1,'2007-12-08 19:01:17','2009-08-24 12:11:07',1,0),(15,1,11,'Города',13,0,'',1,'2007-12-08 19:01:26','2009-08-24 12:11:27',1,0),(16,1,NULL,'Сотрудники',0,0,'Test',1,'2007-11-29 15:07:34','2009-08-24 12:11:52',1,0),(17,1,18,'Сотрудники',16,0,'Справочник сотрудников',1,'2007-12-10 18:21:22','2009-08-24 12:12:17',1,0),(18,1,26,'Должности',16,0,'',1,'2007-12-08 19:01:01','2009-08-24 12:12:42',1,0),(19,1,20,'Филиалы',2,0,'',1,'2007-12-08 19:00:47','2010-03-31 12:24:28',1,0),(21,1,9,'Контакты туров',1,0,'',1,'2007-11-15 11:30:26','2009-08-24 12:13:33',1,0),(22,1,17,'Продажа туров',1,0,'',1,'2007-11-15 11:40:16','2009-08-24 12:13:57',1,0),(25,1,NULL,'Реклама',0,0,'',1,'2007-11-15 17:43:11','2009-08-24 12:14:11',1,0),(26,1,2,'Рекламные площадки',25,0,'',1,'2007-11-15 17:43:53','2009-08-24 12:14:39',1,0),(28,1,35,'Пользователи',10,0,'',1,'2007-11-21 14:52:42','2009-08-24 12:15:22',1,0),(29,1,34,'Туроператоры',2,0,'',1,'2007-11-21 16:27:20','2009-08-24 12:26:58',1,0),(30,1,22,'Типы питания',2,0,'',1,'2007-11-21 16:43:39','2009-08-24 12:26:25',1,0),(31,1,32,'Типы номеров',2,0,'',1,'2007-11-21 16:54:07','2009-08-24 12:25:47',1,0),(32,1,23,'Категории отелей',2,0,'',1,'2007-12-05 15:21:45','2009-08-24 12:25:25',1,0),(34,1,15,'Курорты',13,0,'',1,'2008-01-09 14:51:19','2009-08-24 12:24:59',1,0),(37,1,19,'Назначения сотрудников',16,0,'',1,'2007-12-05 18:43:26','2009-09-02 15:26:27',1,0),(39,1,NULL,'Доходы-затраты',0,0,'',1,'2007-12-08 20:13:43','2009-08-24 12:24:03',1,0),(40,1,1,'Статьи оплат',39,0,'',1,'2007-12-08 20:15:06','2009-08-24 12:23:43',1,0),(41,1,24,'Доходы-затраты',39,0,'',1,'2007-12-12 10:07:40','2009-08-24 12:23:22',1,0),(52,1,5,'Типы рекламных носителей',25,0,'',1,'2007-12-20 10:33:30','2009-08-24 12:23:01',1,0),(53,1,4,'Рекламные носители',25,0,'',1,'2007-12-20 11:19:46','2009-08-24 12:22:28',1,0),(56,1,3,'Рекламные кампании',25,0,'',1,'2007-12-24 17:59:50','2009-08-24 12:22:05',1,0),(110,1,8,'Продажа авиабилетов',1,0,'',1,'2008-03-07 18:54:28','2009-08-24 12:21:34',1,0),(177,1,NULL,'Авиапродажи',2,0,'',1,'2008-08-28 12:16:04','2009-08-24 12:21:10',1,0),(178,1,7,'Авиакомпании',177,0,'',1,'2008-08-28 12:18:11','2009-08-24 12:20:43',1,0),(233,1,6,'Контакты авиапродаж',1,0,'',1,'2008-10-24 16:59:35','2009-08-24 12:20:22',1,0),(300,1,13,'Константы',10,0,'',1,'2009-07-08 12:15:53','2009-08-24 12:19:26',1,0),(301,1,NULL,'Отчеты по маркетингу',3,0,'',1,'2009-07-15 23:32:45','2009-08-24 12:19:07',1,0),(302,1,28,'Активность рекламы',301,0,'',1,'2009-07-15 23:33:15','2009-08-24 12:18:43',1,0),(303,1,29,'Эффективность рекламы',301,0,'',1,'2009-07-20 18:21:11','2009-08-24 12:17:54',1,0),(304,1,NULL,'Бухгалтерские отчеты',3,0,'',1,'2009-07-24 12:03:50','2009-08-24 12:17:29',1,0),(305,1,31,'Отчет по туроператорам',304,0,'',1,'2009-07-24 12:04:17','2009-08-24 12:17:02',1,0),(306,1,30,'Отчет по продажам',304,0,'',1,'2009-08-08 16:30:30','2009-08-24 12:16:31',1,0),(307,1,25,'Модули',10,0,'',1,'2009-08-23 18:17:47','2009-08-24 12:15:58',1,0),(309,1,36,'Дисконтные карты',2,0,'',1,'2009-08-30 16:31:17','2009-08-30 16:33:20',1,0),(310,1,37,'База отелей',2,0,'Справочник гостиниц',1,'2009-09-02 17:47:32','2009-09-02 17:47:32',1,0),(311,2,NULL,'Работа с клиентами',0,0,'',1,'2009-09-28 20:25:39','2009-09-28 20:25:39',1,0),(312,2,9,'Контакты туров',311,0,'',1,'2009-09-28 20:26:36','2010-04-30 00:17:37',1,0),(313,2,17,'Продажа туров',311,0,'',1,'2009-09-28 20:27:07','2009-09-28 20:27:07',1,0),(314,1,38,'Прочие контрагенты',2,0,'Справочник прочих контрагентов',1,'2010-04-02 00:15:15','2010-04-02 00:15:15',1,0),(315,2,NULL,'Справочники',0,0,'Список справочников менеджера',1,'2010-04-29 22:13:36','2010-04-30 00:23:47',1,0),(316,2,12,'Справочник клиентов',315,1,'Справочник клиентов',1,'2010-04-29 22:14:28','2010-04-29 22:14:28',1,0),(317,2,37,'База отелей',315,3,'',1,'2010-04-30 00:28:00','2010-04-30 00:28:00',1,0);
+INSERT INTO `_positions_menus` VALUES (1,1,NULL,'Работа с клиентами',0,0,'',1,'2007-11-28 17:01:32','2010-03-03 21:46:51',1,0),(2,1,NULL,'Справочники',0,0,'Тестирование',1,'2007-12-11 10:31:51','2009-08-24 12:07:09',1,0),(3,1,NULL,'Отчеты',0,0,'',1,'2007-12-08 18:46:08','2009-08-24 12:07:37',1,0),(4,1,16,'Валюты',2,0,'',1,'2007-12-08 18:51:59','2009-08-24 12:08:00',1,0),(6,1,12,'Клиенты',2,0,'',1,'2007-11-13 18:58:09','2009-08-24 12:08:16',1,0),(10,1,NULL,'Администрирование',0,0,'',1,'2007-12-08 19:01:42','2009-08-24 12:09:11',1,0),(12,1,27,'Меню должностей',10,0,'',1,'2007-12-08 18:53:30','2009-08-24 12:10:24',1,0),(13,1,NULL,'География',2,0,'',1,'2007-12-08 19:00:43','2009-08-24 12:10:43',1,0),(14,1,14,'Страны',13,0,'',1,'2007-12-08 19:01:17','2009-08-24 12:11:07',1,0),(15,1,11,'Города',13,0,'',1,'2007-12-08 19:01:26','2009-08-24 12:11:27',1,0),(16,1,NULL,'Сотрудники',0,0,'Test',1,'2007-11-29 15:07:34','2009-08-24 12:11:52',1,0),(17,1,18,'Сотрудники',16,0,'Справочник сотрудников',1,'2007-12-10 18:21:22','2009-08-24 12:12:17',1,0),(18,1,26,'Должности',16,0,'',1,'2007-12-08 19:01:01','2009-08-24 12:12:42',1,0),(19,1,20,'Филиалы',2,0,'',1,'2007-12-08 19:00:47','2010-03-31 12:24:28',1,0),(21,1,9,'Контакты туров',1,0,'',1,'2007-11-15 11:30:26','2009-08-24 12:13:33',1,0),(22,1,17,'Продажа туров',1,0,'',1,'2007-11-15 11:40:16','2009-08-24 12:13:57',1,0),(25,1,NULL,'Реклама',0,0,'',1,'2007-11-15 17:43:11','2009-08-24 12:14:11',1,0),(26,1,2,'Рекламные площадки',25,0,'',1,'2007-11-15 17:43:53','2009-08-24 12:14:39',1,0),(28,1,35,'Пользователи',10,0,'',1,'2007-11-21 14:52:42','2009-08-24 12:15:22',1,0),(29,1,34,'Туроператоры',2,0,'',1,'2007-11-21 16:27:20','2009-08-24 12:26:58',1,0),(30,1,22,'Типы питания',2,0,'',1,'2007-11-21 16:43:39','2009-08-24 12:26:25',1,0),(31,1,32,'Типы номеров',2,0,'',1,'2007-11-21 16:54:07','2009-08-24 12:25:47',1,0),(32,1,23,'Категории отелей',2,0,'',1,'2007-12-05 15:21:45','2009-08-24 12:25:25',1,0),(34,1,15,'Курорты',13,0,'',1,'2008-01-09 14:51:19','2009-08-24 12:24:59',1,0),(37,1,19,'Назначения сотрудников',16,0,'',1,'2007-12-05 18:43:26','2009-09-02 15:26:27',1,0),(39,1,NULL,'Доходы-затраты',0,0,'',1,'2007-12-08 20:13:43','2009-08-24 12:24:03',1,0),(40,1,1,'Статьи оплат',39,0,'',1,'2007-12-08 20:15:06','2009-08-24 12:23:43',1,0),(41,1,24,'Доходы-затраты',39,0,'',1,'2007-12-12 10:07:40','2009-08-24 12:23:22',1,0),(52,1,5,'Типы рекламных носителей',25,0,'',1,'2007-12-20 10:33:30','2009-08-24 12:23:01',1,0),(53,1,4,'Рекламные носители',25,0,'',1,'2007-12-20 11:19:46','2009-08-24 12:22:28',1,0),(56,1,3,'Рекламные кампании',25,0,'',1,'2007-12-24 17:59:50','2009-08-24 12:22:05',1,0),(110,1,8,'Продажа авиабилетов',1,0,'',1,'2008-03-07 18:54:28','2009-08-24 12:21:34',1,0),(177,1,NULL,'Авиапродажи',2,0,'',1,'2008-08-28 12:16:04','2009-08-24 12:21:10',1,0),(178,1,7,'Авиакомпании',177,0,'',1,'2008-08-28 12:18:11','2009-08-24 12:20:43',1,0),(233,1,6,'Контакты авиапродаж',1,0,'',1,'2008-10-24 16:59:35','2009-08-24 12:20:22',1,0),(300,1,13,'Константы',10,0,'',1,'2009-07-08 12:15:53','2009-08-24 12:19:26',1,0),(301,1,NULL,'Отчеты по маркетингу',3,0,'',1,'2009-07-15 23:32:45','2009-08-24 12:19:07',1,0),(302,1,28,'Активность рекламы',301,0,'',1,'2009-07-15 23:33:15','2009-08-24 12:18:43',1,0),(303,1,29,'Эффективность рекламы',301,0,'',1,'2009-07-20 18:21:11','2009-08-24 12:17:54',1,0),(304,1,NULL,'Бухгалтерские отчеты',3,0,'',1,'2009-07-24 12:03:50','2009-08-24 12:17:29',1,0),(305,1,31,'Отчет по туроператорам',304,0,'',1,'2009-07-24 12:04:17','2009-08-24 12:17:02',1,0),(306,1,30,'Отчет по продажам',304,0,'',1,'2009-08-08 16:30:30','2009-08-24 12:16:31',1,0),(307,1,25,'Модули',10,0,'',1,'2009-08-23 18:17:47','2009-08-24 12:15:58',1,0),(309,1,36,'Дисконтные карты',2,0,'',1,'2009-08-30 16:31:17','2009-08-30 16:33:20',1,0),(310,1,37,'База отелей',2,0,'Справочник гостиниц',1,'2009-09-02 17:47:32','2009-09-02 17:47:32',1,0),(311,2,NULL,'Работа с клиентами',0,0,'',1,'2009-09-28 20:25:39','2009-09-28 20:25:39',1,0),(312,2,9,'Контакты туров',311,0,'',1,'2009-09-28 20:26:36','2010-04-30 00:17:37',1,0),(313,2,17,'Продажа туров',311,0,'',1,'2009-09-28 20:27:07','2009-09-28 20:27:07',1,0),(314,1,38,'Прочие контрагенты',2,0,'Справочник прочих контрагентов',1,'2010-04-02 00:15:15','2010-04-02 00:15:15',1,0),(315,2,NULL,'Справочники',0,0,'Список справочников менеджера',1,'2010-04-29 22:13:36','2010-04-30 00:23:47',1,0),(316,2,12,'Справочник клиентов',315,1,'Справочник клиентов',1,'2010-04-29 22:14:28','2010-04-29 22:14:28',1,0),(317,2,37,'База отелей',315,3,'',1,'2010-04-30 00:28:00','2010-04-30 00:28:00',1,0),(318,1,39,'Интересы клиентов',2,0,'Справочник для интересов клиентов',1,'2010-08-15 21:09:43','2010-08-15 21:10:44',1,0);
 /*!40000 ALTER TABLE `_positions_menus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1751,7 +1882,7 @@ CREATE TABLE `_sessions` (
 
 LOCK TABLES `_sessions` WRITE;
 /*!40000 ALTER TABLE `_sessions` DISABLE KEYS */;
-INSERT INTO `_sessions` VALUES ('3cd9fae0b65882d2f7e1ea829f02e501','10.0.33.33','Mozilla/5.0 (X11; U; Linux i686; ru; rv:1.9.1.3) G',1280437899,'a:3:{s:4:\"URID\";s:1:\"1\";s:8:\"LANGUAGE\";s:7:\"russian\";s:11:\"obj_airsell\";a:1:{s:10:\"searchrule\";a:0:{}}}'),('94fa6fda2f9ddc271b0d5659e72eda75','10.0.33.30','Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1;',1280424352,'a:3:{s:4:\"URID\";s:1:\"1\";s:8:\"LANGUAGE\";s:7:\"russian\";s:11:\"obj_airsell\";a:1:{s:10:\"searchrule\";a:0:{}}}');
+INSERT INTO `_sessions` VALUES ('104fb02f2524935b7c620ebe447a51c7','10.0.33.33','Mozilla/5.0 (X11; U; Linux i686; ru; rv:1.9.1.3) G',1282317178,'a:6:{s:8:\"LANGUAGE\";s:7:\"russian\";s:9:\"obj_calls\";a:1:{s:10:\"searchrule\";a:0:{}}s:10:\"tasks_page\";i:0;s:13:\"to_show_tasks\";s:3:\"All\";s:11:\"obj_modules\";a:1:{s:10:\"searchrule\";a:1:{s:4:\"like\";a:1:{s:20:\"_modules.module_name\";s:8:\"фили\";}}}s:4:\"URID\";s:1:\"1\";}'),('a909449b9440e0f2dd91df0be88af5ea','10.0.33.30','Mozilla/5.0 (Windows; U; Windows NT 5.1; ru; rv:1.',1282288150,'a:2:{s:4:\"URID\";s:1:\"2\";s:8:\"LANGUAGE\";s:7:\"russian\";}');
 /*!40000 ALTER TABLE `_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1778,7 +1909,7 @@ CREATE TABLE `_tasks` (
   KEY `FK__rooms2` (`owner_users_rid`),
   CONSTRAINT `FK__tasks_1` FOREIGN KEY (`modifier_users_rid`) REFERENCES `_users` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK__tasks_2` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `_tasks`
@@ -1786,7 +1917,7 @@ CREATE TABLE `_tasks` (
 
 LOCK TABLES `_tasks` WRITE;
 /*!40000 ALTER TABLE `_tasks` DISABLE KEYS */;
-INSERT INTO `_tasks` VALUES (12,NULL,'TASKS','2009-09-04 21:00:00','Для тестирования',1,2,1,'2009-09-20 19:17:49','2009-09-20 19:17:49',1,0),(13,4675,'CLIENTS','2009-09-19 21:00:00','Тестирование функциональности',1,2,1,'2009-09-28 16:25:06','2009-09-28 16:25:06',1,0),(18,1,'FOOD','2009-09-29 21:00:00','Задачи',1,0,1,'2010-02-10 20:39:01','2010-02-10 20:39:01',1,0),(19,8582,'CALLS','2009-09-27 21:00:00','Тестирование задач',1,1,1,'2009-09-28 17:23:48','2009-09-28 17:23:48',1,0),(20,14461,'EMPTOPOSITIONS','2009-09-27 21:00:00','Исправить назначение на должность для тестового менеджера по туризму',1,0,1,'2010-02-10 13:24:47','2010-02-10 13:24:47',1,0),(21,2,'USERS','2009-09-27 21:00:00','Удалить, когда будет не нужно',1,2,1,'2010-02-10 13:24:51','2010-02-10 13:24:51',1,0),(23,NULL,'TASKS','2010-02-09 22:00:00','Тестовая задача2',1,2,1,'2010-02-10 20:11:25','2010-02-10 20:11:25',1,0),(24,NULL,'TASKS','2010-02-09 22:00:00','Тестовая задача3',1,2,1,'2010-02-10 12:17:31','2010-02-10 12:17:31',1,0),(25,NULL,'TASKS','2010-02-28 22:00:00','Тестирование задач',1,0,1,'2010-02-10 20:03:38','2010-02-10 20:03:38',1,0),(26,NULL,'TASKS','2010-01-31 22:00:00','Поверка корректности выполнения задач в IE',1,2,1,'2010-02-10 20:38:50','2010-02-10 20:38:50',1,0),(27,NULL,'TASKS','2010-01-31 22:00:00','Поверка корректности выполнения задач в IE',1,2,1,'2010-02-10 20:38:52','2010-02-10 20:38:52',1,0),(28,NULL,'TASKS','2010-01-31 22:00:00','Поверка корректности выполнения задач в IE',1,2,1,'2010-02-10 20:38:54','2010-02-10 20:38:54',1,0),(29,NULL,'TASKS','2010-01-31 22:00:00','Поверка корректности выполнения задач в IE',1,2,1,'2010-02-10 20:38:56','2010-02-10 20:38:56',1,0),(30,NULL,'TASKS','2010-01-31 22:00:00','test',1,2,1,'2010-02-10 20:38:59','2010-02-10 20:38:59',1,0),(31,14462,'ADVERTISES','2010-03-17 22:00:00','Удалить после тестирования',1,2,1,'2010-03-18 20:48:46','2010-03-18 20:48:46',1,0);
+INSERT INTO `_tasks` VALUES (12,NULL,'TASKS','2009-09-04 21:00:00','Для тестирования',1,2,1,'2009-09-20 19:17:49','2009-09-20 19:17:49',1,0),(13,4675,'CLIENTS','2009-09-19 21:00:00','Тестирование функциональности',1,2,1,'2009-09-28 16:25:06','2009-09-28 16:25:06',1,0),(18,1,'FOOD','2009-09-29 21:00:00','Задачи',1,0,1,'2010-02-10 20:39:01','2010-02-10 20:39:01',1,0),(19,8582,'CALLS','2009-09-27 21:00:00','Тестирование задач',1,1,1,'2009-09-28 17:23:48','2009-09-28 17:23:48',1,0),(20,14461,'EMPTOPOSITIONS','2009-09-27 21:00:00','Исправить назначение на должность для тестового менеджера по туризму',1,0,1,'2010-02-10 13:24:47','2010-02-10 13:24:47',1,0),(26,NULL,'TASKS','2010-01-31 22:00:00','Поверка корректности выполнения задач в IE',1,2,1,'2010-02-10 20:38:50','2010-02-10 20:38:50',1,0),(29,NULL,'TASKS','2010-01-31 22:00:00','Поверка корректности выполнения задач в IE',1,2,1,'2010-02-10 20:38:56','2010-02-10 20:38:56',1,0),(32,14472,'DEMANDS','2010-08-31 21:00:00','Проконтролировать выдачу документов туристам',0,1,1,'2010-08-15 13:40:40','2010-08-15 13:40:40',1,0),(33,14476,'CALLS','2010-08-19 21:00:00','Созвониться с Эллой и уточнить наличие мест в гостиницы',0,2,2,'2010-08-19 20:30:55','2010-08-19 20:30:55',2,0);
 /*!40000 ALTER TABLE `_tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1894,7 +2025,7 @@ CREATE TABLE `_tours` (
   CONSTRAINT `FK__tours5` FOREIGN KEY (`_curourts_rid`) REFERENCES `_curourts` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__tours8` FOREIGN KEY (`_currencies_rid`) REFERENCES `_currencies` (`rid`) ON UPDATE CASCADE,
   CONSTRAINT `FK__tours9` FOREIGN KEY (`owner_users_rid`) REFERENCES `_users` (`rid`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `_tours`
@@ -1902,7 +2033,7 @@ CREATE TABLE `_tours` (
 
 LOCK TABLES `_tours` WRITE;
 /*!40000 ALTER TABLE `_tours` DISABLE KEYS */;
-INSERT INTO `_tours` VALUES (1,45,4,2,2,5,3,2,'стандарт',1000.00,9.20,1.00,0.00,0.00,9292.00,'Киев-Хургада-Киев','2009-09-20 21:00:00','2009-09-26 21:00:00','групповой','--',0,'',8700.00,'132456','2009-09-06 21:00:00',0,NULL,'',0,NULL,1,'2009-09-06 11:15:32','2010-04-05 18:40:14',1,0);
+INSERT INTO `_tours` VALUES (1,45,4,2,2,5,3,2,'стандарт',1000.00,9.20,1.00,0.00,0.00,9292.00,'Киев-Хургада-Киев','2009-09-20 21:00:00','2009-09-26 21:00:00','групповой','--',0,'',8700.00,'132456','2009-09-06 21:00:00',1,NULL,'',0,NULL,1,'2009-09-06 11:15:32','2010-08-10 22:20:57',1,0),(2,45,5,2,2,7,7,14,'standart',1258.00,7.92,1.00,0.00,0.00,10062.99,'Киев-Даламан-Киев','2010-08-27 21:00:00','2010-09-03 21:00:00','групповой','-',0,'',0.00,'','0000-00-00 00:00:00',1,NULL,'',0,NULL,1,'2010-08-10 21:15:18','2010-08-10 21:18:58',1,0),(3,40,1,6,2,NULL,1,13,'стандарт',748.00,7.90,1.00,0.00,0.00,5968.29,'Киев-Симферополь-Алушта-Симферополь-Киев','2010-09-05 21:00:00','2010-09-11 21:00:00','групповой','-',0,'есть',5127.00,'','0000-00-00 00:00:00',1,NULL,'123456',0,NULL,1,'2010-08-15 10:22:34','2010-08-15 10:34:14',1,0),(4,45,3,6,4,NULL,64,NULL,'стандарт',1420.00,10.32,1.00,0.00,0.00,14800.94,'Киев-Афины-Киев','2010-08-31 21:00:00','2010-09-07 21:00:00','груповий','-',1,'',13540.00,'123','2010-08-19 21:00:00',1,NULL,'12345',0,NULL,1,'2010-08-19 20:15:35','2010-08-19 20:19:25',1,0),(5,45,5,6,2,1,3,1,'люкс',1680.00,7.95,1.03,0.00,0.00,13493.57,'КИев-Хургада-Киев','2010-08-19 21:00:00','2010-08-27 21:00:00','групп.','--',0,'',0.00,'','0000-00-00 00:00:00',0,NULL,'',0,NULL,2,'2010-08-20 07:28:42','2010-08-20 07:38:07',2,0);
 /*!40000 ALTER TABLE `_tours` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1949,4 +2080,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-07-29 21:13:40
+-- Dump completed on 2010-08-20 15:15:38
