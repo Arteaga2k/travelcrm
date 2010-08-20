@@ -35,7 +35,6 @@ class Filials_model extends Crmmodel{
 		$this->db->from('_filials');
 		$this->db->where(array('_filials.rid'=>$rid));
 		$query = $this->db_get('_filials');
-		echo $this->db->last_query();
 		return $query->num_rows()?$query->row():False;
 	}
 	
