@@ -26,6 +26,25 @@ function get_client_history($rid){
 	return $ci->load->view('clients/history', $data, True);	
 }
 
+function get_client_interests($rid){
+	$interests = array();
+	$ci = &get_instance();
+	$ci->load->model('clients_model');
+	$interests_list = $ci->clients_model->get_interests($rid);
+	foreach($interests_list as $interest) $interests[$interest->_interests_rid] = $interest->mark;
+	return $interests; 	
+}
+
+/**
+ * Построить диаграмму предпочтений клиента
+ * 
+ * @param $rid rid клиента
+ */
+function get_interests_chart($rid){
+	$ci = &get_instance();
+	$ci->load->plugin('ofc2');
+	
+}
 /**
  * Получить value_picker для Clients
  * 

@@ -21,8 +21,9 @@
 	<script src="<?=base_url()?>public/js/jqueryslidemenu.js" type="text/javascript"></script>
 	<script src="<?=base_url()?>public/js/jquery.dateentry.min.js" type="text/javascript"></script>
 	<script src="<?=base_url()?>public/js/jquery.timeentry.min.js" type="text/javascript"></script>
+	<script src="<?=base_url()?>public/js/jquery.textarearesizer.js" type="text/javascript"></script>
 	<script src="<?=base_url()?>public/js/vtip-min.js" type="text/javascript"></script>
-	
+	<script src="<?=base_url()?>public/js/jquery.jSlider.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="vcrmpage">

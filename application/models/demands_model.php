@@ -271,14 +271,15 @@ class Demands_model extends Docmodel{
 	
 	
 	public function get_clients_byrids($rids){
-		$this->db->select('*,
+		$this->db->select('_clients.*,
 							CONCAT(_clients.f_pass_seria, _clients.f_pass_num) as f_pass,
 							DATE_FORMAT(_clients.birthday, \'%d.%m.%Y\') as birthday,
 							DATE_FORMAT(_clients.f_pass_period, \'%d.%m.%Y\') as f_pass_period', False);
 		$this->db->from('_clients');
-		$this->db->where_in('rid', $rids);
-		$this->db->order_by('l_name');
-		$query = $this->db_get('_documents');
+		$this->db->where_in('_clients.rid', $rids);
+		$this->db->order_by('_clients.l_name');
+		$query = $this->db_get('_clients');
+		#echo $this->db->last_query();
 		return $query->num_rows()?$query->result():array();
 	}
 	

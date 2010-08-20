@@ -107,7 +107,7 @@ class Hotelscats_model extends Crmmodel{
     		$this->db->trans_commit();
     		return $this->ci->input->post('rid');
 		}		
-	}		public function get_all(){		$this->db->select('*');		$this->db->from('_hotelscats');		$this->db->where(array('archive'=>0));		$query = $this->db->get();		return $query->num_rows()?$query->result():array();			}
+	}		public function get_all(){		$this->db->select('*');		$this->db->from('_hotelscats');		$query = $this->db->get();		return $query->num_rows()?$query->result():array();			}
 	
 }
 ?>

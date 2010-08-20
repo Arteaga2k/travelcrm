@@ -21,6 +21,7 @@ class Clients extends Crmcontroller {
 		$this->load->model('clients_model');
 		$this->load->helper('clients');
 		$this->load->helper('dcarts');
+		$this->load->helper('interests');
 		$this->load->library('upload');
 
 		# Overwrite jtp mapper if need 
@@ -318,6 +319,7 @@ class Clients extends Crmcontroller {
 		$this->form_validation->set_rules('f_name_lat', lang('F_NAME_LAT'), 'required|trim');
 		$this->form_validation->set_rules('_countries_rid', lang('CITIZENSHIP'), 'required|trim');
 		$this->form_validation->set_rules('_cities_rid', lang('CITY'), 'required|trim');
+		$this->form_validation->set_rules('_clients_interest', lang('INTERESTS_INFO'), '');
 		$this->form_validation->set_rules('sex', lang('SEX'), 'required|trim');
 		$this->form_validation->set_rules('nal_number', lang('NAL_NUM'), 'trim|numeric');
 		$this->form_validation->set_rules('phones', lang('PHONES'), 'trim');

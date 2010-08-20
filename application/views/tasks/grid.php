@@ -53,8 +53,8 @@
 				<?if(!$task->done){?>
 				<a href="javascript: if(confirm('<?=lang('CONFIRM_CLOSE_TASK')?>')) close_task(<?=$task->rid?>); void(0);" title="<?=lang('CLOSE_TASK')?>"><?=img('public/img/icons/close_inline.gif')?></a>
 				<div style="clear:both;height:2px"></div>
-				<a href="javascript: if(confirm('<?=lang('CONFIRM_DELETE_TASK')?>')) remove_task(<?=$task->rid?>); void(0);" title="<?=lang('DELETE_TASK')?>"><?=img('public/img/icons/delete_inline.gif')?></a>
 				<?}?>
+				<a href="javascript: if(confirm('<?=lang('CONFIRM_DELETE_TASK')?>')) remove_task(<?=$task->rid?>); void(0);" title="<?=lang('DELETE_TASK')?>"><?=img('public/img/icons/delete_inline.gif')?></a>
 			</td>
 		</tr>
 		<? } ?>
@@ -112,7 +112,7 @@
 			</div>
 	</div>
 		
-	<div class="column span-24 last tools">
+	<div class="column span-24 last tools" style="margin-top: 5px;">
 		<input type="submit" value="<?=lang('SAVE')?>" class="button" id="submit_tasks" name="submit" onclick="return add_task();">
 	</div>
 	

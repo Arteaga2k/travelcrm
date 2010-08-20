@@ -52,7 +52,7 @@ $autoload['libraries'] = array('database', 'validation', 'session', 'form_valida
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('ssl', 'form', 'url', 'others', 'html', 'language', 'array', 'date', 'text',
+$autoload['helper'] = array('ssl', 'form', 'url', 'others', 'html', 'language', 'array', 'date', 'text', 'modules',
 								'user', 'menu', 'tools', 'fields', 'countries', 'positions', 'employeers', 'contrahens',
 								'cities', 'touroperators', 'filials', 'users', 'tasks', 'chat',
 								'constants', 'string', 'helps', 'rss');

@@ -118,6 +118,5 @@ class Food_model extends Crmmodel{
 		return $query->num_rows()?$query->result():array(); 
 	}	
 	
-	
 }
 ?>

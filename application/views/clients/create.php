@@ -167,6 +167,32 @@
 	
 </fieldset>
 
+<fieldset>
+	<legend><?=lang('INTERESTS_INFO')?></legend>
+	<div class="column span-4">
+		<?=form_label(lang('CLIENTS_INTERESTS'), '_clients_interests')?>
+	</div>
+	<div class="column span-20 last">
+		<?foreach(get_interests() as $interest){?>
+		<div class="column span-10">
+			<?=form_label($interest->interests_name, '_clients_interests['.$interest->rid.']')?>
+			<?=($interest->descr?('<br><em>('.$interest->descr.')</em>'):'')?>
+			
+		</div>
+		<div class="column span-10 last">
+			<?=form_dropdown('_clients_interests['.$interest->rid.']', get_interests_levels(), element($interest->rid, $this->input->post('_clients_interests'), null, 'id="_clients_interests_'.$interest->rid.'"'))?>
+			<script type="text/javascript">
+			$(document).ready(function() {
+				$("#_clients_interests_<?=$interest->rid?>").jSlider({});
+			});			
+			</script>
+		</div>
+		<div class="clear"></div>
+		<?}?>
+	</div>
+	
+</fieldset>
+
 <div class="column span-4">
 	<?=form_label(lang('ARCHIVE'), 'archive')?>
 </div>

@@ -18,7 +18,6 @@ function get_module_permissions($module_rid){
 	return $ci->modules_model->get_module_permissions($module_rid);
 }
 
-
 function get_modules_list(){
 	$ci = &get_instance();
 	$ci->load->model('modules_model');
@@ -32,6 +31,12 @@ function get_modulename_byrid($rid, $full=False){
 	$ci = &get_instance();
 	$ci->load->model('modules_model');
 	return $ci->modules_model->get_modulename_byrid($rid, $full);
+}
+
+function get_modulerid_bycontroller($controller_name){
+	$ci = &get_instance();
+	$ci->load->model('modules_model');
+	return $ci->modules_model->get_modulerid_bycontroller($controller_name);
 }
 
 /**

@@ -75,6 +75,14 @@ class Clients_model extends Crmmodel{
 		$this->db->trans_begin();
 		$this->db->insert('_clients', $ins_arr);
 		$ins_rid = $this->db->insert_id();
+
+		foreach($this->ci->input->post('_clients_interests') as $_interests_rid=>$mark){
+			$ins_r = array('_clients_rid'=>$ins_rid,
+							'_interests_rid'=>$_interests_rid,
+							'mark'=>$mark);
+			$this->db->insert('_clients_interests', $ins_r);
+		}
+		
 		if ($this->db->trans_status() === FALSE){
     		$this->db->trans_rollback();
     		return False;
@@ -113,6 +121,14 @@ class Clients_model extends Crmmodel{
 		$this->db->set('modifyDT', 'now()', False);
 		$this->db->trans_begin();
 		$this->db->update('_clients', $update_arr, array('rid'=>$this->ci->input->post('rid')));
+		$this->db->delete('_clients_interests', array('_clients_rid'=>$this->ci->input->post('rid')));
+		foreach($this->ci->input->post('_clients_interests') as $_interests_rid=>$mark){
+			$ins_r = array('_clients_rid'=>$this->ci->input->post('rid'),
+							'_interests_rid'=>$_interests_rid,
+							'mark'=>$mark);
+			$this->db->insert('_clients_interests', $ins_r);
+		}
+		
 		if ($this->db->trans_status() === FALSE){
     		$this->db->trans_rollback();
     		return False;
@@ -299,5 +315,12 @@ class Clients_model extends Crmmodel{
 		return $query->num_rows()?True:False;
 	}
 	
+	public function get_interests($rid){
+		$this->db->select('_clients_interests.*');
+		$this->db->from('_clients_interests');
+		$this->db->where(array('_clients_interests._clients_rid'=>$rid));
+		$query = $this->db->get();
+		return $query->num_rows()?$query->result():array();
+	}	
 }
 ?>

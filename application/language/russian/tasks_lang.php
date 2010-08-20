@@ -39,5 +39,7 @@ $lang['COLAPSE'] = 'Cкрыть';
 /* { HELP */
 $lang['DATE_TASK_FIELD_HELP'] = 'Конечный срок выполнения задачи.<br>Для очистки поля нажмите клавишу Del';
 $lang['ATTACH_TO_CURRENT_OBJ_FIELD_HELP'] = 'Отметьте это поле, если Вы хотите<br>прикрепить задачу к текущему объекту';
+$lang['PRIORITY_FIELD_HELP'] = 'Установите важность задачи.';
+$lang['DESCR_TASK_FIELD_HELP'] = 'Опишите задачу.';
 /* } HELP */
 ?>

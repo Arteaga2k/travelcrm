@@ -51,4 +51,5 @@ $lang['AIRS_HISTORY'] = 'Авиабилеты';
 $lang['CLIENTS_CARDNUM_NOTUNIQUE'] = 'Эта дисконтная карта уже в использовании';
 $lang['CLIENTS_NO_TOURS_HISTORY'] = 'История туров пуста';
 $lang['CLIENTS_NO_AIRS_HISTORY'] = 'История авиабилетов пуста';
+$lang['INTERESTS_INFO'] = 'Предпочтения клиента';
 ?>

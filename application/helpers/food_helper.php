@@ -1,4 +1,10 @@
 <?php
+function get_food(){
+	$ci = &get_instance();
+	$ci->load->model('food_model');
+	return $ci->food_model->get_list();
+}
+
 function get_food_list(){
 	$ci = &get_instance();
 	$ci->load->model('food_model');
