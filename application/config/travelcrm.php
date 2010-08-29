@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$config['crm_version']	= 'v0.4.9b';
+$config['crm_version']	= 'v0.4.9b1';
 $config['crm_support_email']	= 'support@travelcrm.org.ua';
 $config['crm_profile_on']	= False;
 $config['crm_ssl_on']	= False;
