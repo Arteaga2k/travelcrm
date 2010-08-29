@@ -24,7 +24,7 @@ class Filials_model extends Crmmodel{
 		return $query->num_rows()?$query->result():array();
 	}
 	
-	public function get_edit($rid){
+	public function get_edit($rid, $secured = true){
 		$this->db->select('_filials.rid as rid, _filials.name as name, _filials._cities_rid,  
 							_filials.code as code, _filials.adress as adress,
 							_filials.phones as phones, _filials.email as email,
@@ -34,7 +34,7 @@ class Filials_model extends Crmmodel{
 							_filials.descr as descr, _filials.archive');
 		$this->db->from('_filials');
 		$this->db->where(array('_filials.rid'=>$rid));
-		$query = $this->db_get('_filials');
+		$query = $secured?$this->db_get('_filials'):$this->db->get();
 		return $query->num_rows()?$query->row():False;
 	}
 	

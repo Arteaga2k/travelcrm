@@ -18,7 +18,7 @@ function get_touroperatorname_byrid($rid){
 function get_touroperator_info($rid){
 	$ci = &get_instance();
 	$ci->load->model('touroperators_model');
-	return $ci->touroperators_model->get_edit($rid);
+	return $ci->touroperators_model->get_edit($rid, false);
 }
 
 /**

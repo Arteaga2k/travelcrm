@@ -8,7 +8,7 @@ function get_filial_name_byrid($rid){
 function get_filial_info($rid){
 	$ci = &get_instance();
 	$ci->load->model('filials_model');
-	return $ci->filials_model->get_edit($rid);
+	return $ci->filials_model->get_edit($rid, false);
 }
 
 /**
